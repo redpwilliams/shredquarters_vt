@@ -1,0 +1,28 @@
+.text
+    text-transform: uppercase
+    letter-spacing: 0.1em
+    color: #828282
+    font-size: 0.75em
+    margin: 4em auto
+    max-width: 30em
+    height: 4em
+
+.text::before, .text::after
+    content: ""
+    position: relative
+    border-top: 1px solid #ccc
+    display: inline-block
+    vertical-align: middle
+    margin-bottom: 0.15em
+    overflow: hidden
+
+.text::before
+    right: 0.75em
+    margin-left: -50%
+    width: 20%
+    max-width: 20%
+
+.text::after
+    left: 0.25em
+    margin-right: -50%
+    width: 60%
