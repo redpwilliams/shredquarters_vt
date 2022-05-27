@@ -1,4 +1,5 @@
 import { TextDivider } from "components/TextDivider/TextDivider"
+import { BoardType } from "components/BoardType/BoardType"
 import type { NextPage } from "next"
 import Head from "next/head"
 import Image from "next/image"
@@ -37,6 +38,16 @@ const Home: NextPage = () => {
           </div>
         </section>
         <TextDivider header="The Crew" float={20} />
+        <BoardType
+          src="/img/skateboard_iso.svg"
+          alt="Skateboard isometric picture"
+        >
+          The hallmark of Shredquarters - you can find a variety of
+          skateboarders affiliated with the club. From casual street skaters to
+          complex trick enthusiasts, you are sure to find your crowd here!
+          Shredquarters provides a unique community experience where even
+          beginner shredders can thrive on their deck.
+        </BoardType>
         <TextDivider header="The Team" float={80} />
         <TextDivider header="The Plan" float={20} />
         <TextDivider header="The Network" float={80} />
