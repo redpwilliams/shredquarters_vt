@@ -1,4 +1,23 @@
+@use "styles/colors" as *
+
+.container
+
+  margin: 10px 0
+
+  li
+    display: grid
+    grid-template-columns: 30% 70%
+    width: 100%
+    align-items: center
+  p
+    grid-column: 2 / 3
+    padding: 0 2em
+
 .iso
-  $img-size: 20%
+  $img-size: 35rem
   width: $img-size
   height: $img-size
+
+.description
+  color: $sq-white
+  font-size: 2.25rem

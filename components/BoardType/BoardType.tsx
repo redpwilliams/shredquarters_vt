@@ -21,7 +21,7 @@ const BoardType: NextPage<Props> = ({ src, alt, children }) => {
             alt={alt}
             layout="responsive"
           />
-          <p>{children}</p>
+          <p className={styles.description}>{children}</p>
         </li>
       </ul>
     </div>
