@@ -1,28 +1,32 @@
-.text
-    text-transform: uppercase
-    letter-spacing: 0.1em
-    color: #828282
-    font-size: 0.75em
-    margin: 4em auto
-    max-width: 30em
-    height: 4em
+@use "styles/colors" as *
 
-.text::before, .text::after
+@mixin line-divider
     content: ""
+    display: block
+    height: 2px
+    background-color: $sq-gray
+    top: 50%
+    position: absolute
+
+.container
     position: relative
-    border-top: 1px solid #ccc
-    display: inline-block
-    vertical-align: middle
-    margin-bottom: 0.15em
-    overflow: hidden
+    z-index: 1
+    margin: 2rem
+    padding: 0 2rem
+    &::after
+        @include line-divider
+        width: 100%
+        z-index: -1
 
-.text::before
-    right: 0.75em
-    margin-left: -50%
-    width: 20%
-    max-width: 20%
-
-.text::after
-    left: 0.25em
-    margin-right: -50%
-    width: 60%
+.text
+    font-size: 2.25rem
+    color: $sq-white
+    font-family: "IBM Plex Mono", monospace
+    text-transform: lowercase
+    width: fit-content
+    position: relative
+    background-color: #1e1e1e
+    left: 0%
+    transform: translateX(-0%)
+    padding: 2rem
+    white-space: nowrap

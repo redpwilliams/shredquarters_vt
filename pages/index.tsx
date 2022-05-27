@@ -36,7 +36,7 @@ const Home: NextPage = () => {
             />
           </div>
         </section>
-        <TextDivider>The Mission</TextDivider>
+        <TextDivider header="The Mission" float={20} />
       </main>
     </div>
   )
