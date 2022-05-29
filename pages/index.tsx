@@ -76,7 +76,7 @@ const Home: NextPage = () => {
           <UpcomingEvent
             day={5}
             month="June"
-            name="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+            name="Lorem ipsum dolor sit amet" // TODO - On extended hover, show description of event
             location="Best possible Place"
             link="https://goo.gl/maps/23YMJ86AsvqjRzCh9"
           />

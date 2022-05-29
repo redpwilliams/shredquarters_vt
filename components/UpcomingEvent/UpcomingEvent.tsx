@@ -29,12 +29,16 @@ const UpcomingEvent: NextPage<Props> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <h3>{stringifyDay(day)}</h3>
-      <h4>{month}</h4>
-      <p>{name}</p>
-      <h5>
-        <a href={link}>{`@ ${location}`}</a>
-      </h5>
+      <header>
+        <h3>{stringifyDay(day)}</h3>
+        <h4>{month}</h4>
+      </header>
+      <main>
+        <p>{name}</p>
+        <h5>
+          <a href={link}>{`@ ${location}`}</a>
+        </h5>
+      </main>
     </div>
   )
 }
