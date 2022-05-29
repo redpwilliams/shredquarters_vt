@@ -48,6 +48,25 @@ const Home: NextPage = () => {
           Shredquarters provides a unique community experience where even
           beginner shredders can thrive on their deck.
         </BoardType>
+        <BoardType
+          src="/img/longboard_iso.svg"
+          alt="Longboard isometric picture"
+        >
+          Shredquarters is packed with avid longboarders of all types: cruising,
+          freestyle, dancing, and more! No matter your flow, you are sure to
+          find your crew here. Learn different styles from the community and up
+          your longboarding game.
+        </BoardType>
+        <BoardType
+          src="/img/cruiser_iso.svg"
+          alt="Skateboard isometric picture"
+        >
+          You will find them zooming around campus, cruisers are a unique part
+          of Shredquarters. Although not trick-savvy, the cruiser community here
+          at Shredquarters is filled with talented riders that have fallen in
+          love with that familiar feeling of gliding on air. If you ride a
+          cruiser, Shredquarters is the perfect place for you!
+        </BoardType>
         <TextDivider header="The Team" float={80} />
         <TextDivider header="The Plan" float={20} />
         <TextDivider header="The Network" float={80} />
