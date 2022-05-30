@@ -28,7 +28,7 @@ const UpcomingEvent: NextPage<Props> = ({
   link
 }) => {
   return (
-    <div className={styles.container}>
+    <li className={styles.container}>
       <header>
         <h3>{stringifyDay(day)}</h3>
         <h4>{month}</h4>
@@ -39,7 +39,7 @@ const UpcomingEvent: NextPage<Props> = ({
           <a href={link}>{`@ ${location}`}</a>
         </h5>
       </main>
-    </div>
+    </li>
   )
 }
 

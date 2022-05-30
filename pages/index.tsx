@@ -73,13 +73,15 @@ const Home: NextPage = () => {
         <TextDivider header="The Team" float={80} />
         <TextDivider header="The Plan" float={20} />
         <section className={styles.events}>
-          <UpcomingEvent
-            day={5}
-            month="June"
-            name="Lorem ipsum dolor sit amet" // TODO - On extended hover, show description of event
-            location="Best possible Place"
-            link="https://goo.gl/maps/23YMJ86AsvqjRzCh9"
-          />
+          <ul>
+            <UpcomingEvent
+              day={5}
+              month="June"
+              name="Lorem ipsum dolor sit amet" // TODO - On extended hover, show description of event
+              location="Best possible Place"
+              link="https://goo.gl/maps/23YMJ86AsvqjRzCh9"
+            />
+          </ul>
         </section>
         <TextDivider header="The Network" float={80} />
       </main>
