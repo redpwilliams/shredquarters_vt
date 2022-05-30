@@ -84,6 +84,13 @@ const Home: NextPage = () => {
           </ul>
         </section>
         <TextDivider header="The Network" float={80} />
+        <section>
+          <ul>
+            <li>Gobbler Connect</li>
+            <li>Instagram</li>
+            <li>Contact</li>
+          </ul>
+        </section>
       </main>
     </div>
   )
