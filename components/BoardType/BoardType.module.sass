@@ -1,17 +1,19 @@
 @use "styles/colors" as *
+@use "styles/breakpoints" as *
+@use "styles/mixins" as *
 
 .container
-
   margin: 10px 0
 
-  li
-    display: grid
-    grid-template-columns: 1fr 1fr
-    width: 100%
-    align-items: center
   p
     grid-column: 2 / 3
     padding: 0 2em
+
+.board
+  display: grid
+  grid-template-columns: 1fr 1fr
+  width: 100%
+  align-items: center
 
 .iso
   $img-size: 30rem

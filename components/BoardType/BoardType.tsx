@@ -11,22 +11,20 @@ interface Props {
 
 const BoardType: NextPage<Props> = ({ src, alt, children }) => {
   return (
-    <div className={styles.container}>
-      <ul>
-        <li className={styles.board}>
-          <div className={styles.iso}>
-            <Image
-              src={src}
-              width={64}
-              height={64}
-              alt={alt}
-              layout="responsive"
-            />
-          </div>
-          <p className={styles.description}>{children}</p>
-        </li>
-      </ul>
-    </div>
+    <li className={styles.container}>
+      <div className={styles.board}>
+        <div className={styles.iso}>
+          <Image
+            src={src}
+            width={64}
+            height={64}
+            alt={alt}
+            layout="responsive"
+          />
+        </div>
+        <p className={styles.description}>{children}</p>
+      </div>
+    </li>
   )
 }
 
