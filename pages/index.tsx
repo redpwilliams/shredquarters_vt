@@ -84,12 +84,29 @@ const Home: NextPage = () => {
           </ul>
         </section>
         <TextDivider header="The Network" float={80} />
-        <section>
-          <ul>
-            <li>Gobbler Connect</li>
-            <li>Instagram</li>
-            <li>Contact</li>
-          </ul>
+        <section className={styles.network}>
+          <form className={styles.contact}>
+            <div className={styles.form_row}>
+              <label>First Name</label>
+              <input />
+            </div>
+            <div className={styles.form_row}>
+              <label>Last Name</label>
+              <input />
+            </div>
+            <div className={styles.form_row}>
+              <label>Email</label>
+              <input />
+            </div>
+            <div className={styles.form_row}>
+              <label>Subject</label>
+              <input />
+            </div>
+            <div className={styles.form_row}>
+              <label>Message</label>
+              <textarea />
+            </div>
+          </form>
         </section>
       </main>
     </div>
