@@ -1,19 +1,15 @@
 @use "styles/colors" as *
-@use "styles/breakpoints" as *
 @use "styles/mixins" as *
 
 .container
   margin: 10px 0
-
-  p
-    grid-column: 2 / 3
-    padding: 0 2em
 
 .board
   display: grid
   grid-template-columns: 1fr 1fr
   width: 100%
   align-items: center
+  position: relative
 
 .iso
   $img-size: 30rem
@@ -24,3 +20,22 @@
 .description
   color: $sq-white
   font-size: 2em
+  grid-column: 2 / 3
+  padding: 0 2em
+  height: fit-content
+  max-width: 60rem
+
+@include lg
+
+  .board
+    grid-template-columns: none
+    grid-auto-rows: minmax(min-content, max-content)
+
+  .iso
+    // align-self:
+
+  .description
+    height: fit-content
+    grid-column: 1
+    grid-row: 2 / 3
+    margin: 10px auto
