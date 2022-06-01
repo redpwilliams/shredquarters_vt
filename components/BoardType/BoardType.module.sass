@@ -10,11 +10,12 @@
   width: 100%
   align-items: center
   position: relative
+  justify-content: center
 
 .iso
   $img-size: 30rem
   width: $img-size
-  height: $img-size
+  height: auto
   justify-self: center
 
 .description
@@ -31,11 +32,9 @@
     grid-template-columns: none
     grid-auto-rows: minmax(min-content, max-content)
 
-  .iso
-    // align-self:
-
   .description
     height: fit-content
     grid-column: 1
     grid-row: 2 / 3
     margin: 10px auto
+    text-align: center

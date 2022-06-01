@@ -1,35 +1,26 @@
 @use "styles/colors" as *
-@use "styles/breakpoints" as *
 @use "styles/mixins" as *
 
 .container
-  // max-width: 90%
-  margin: 0 auto
 
 .hero
-  display: flex
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-template-rows: 1fr 1fr
   justify-content: space-between
   align-items: center
-
-.content
   color: $sq_white
-  display: flex
-  flex-direction: column
 
   h1
     font-family: "Raleway", sans-serif
-    font-size: clamp(40px, 6vw, 130px)
+    font-size: clamp(60px, 5.5vw, 130px)
     font-weight: 300
     text-transform: uppercase
     letter-spacing: 0.2rem
     line-height: 1
-
-    span
-      position: relative
-      display: block
-
-      &:first-child
-        text-align: right
+    text-align: right
+    justify-self: center
+    align-items: end
 
   h2
     font-family: "IBM Plex Mono", monospace
@@ -38,18 +29,30 @@
     font-size: 18px
   p
     font-size: 2.25rem
-    padding: 0 .5em 0 0
     margin: .5em 0
     color: $sq-gray
-    max-width: 25em
+    // max-width: 25em
 
 .iso_truck
-  $img-size: 40%
+  $img-size: 45vw
 
-  margin: 0 auto
+  padding: 10px
   display: block
-  min-width: $img-size
+  width: $img-size
+  min-width: 350px
   height: auto
+  grid-column: 2
+  grid-row: 1 / 3
+
+@include md
+  .hero
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+    p
+      text-align: center
 
 .events ul
   list-style: none

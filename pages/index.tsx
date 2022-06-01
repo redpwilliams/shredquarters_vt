@@ -16,18 +16,11 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <section className={styles.hero}>
-          <div className={styles.content}>
-            <h1>
-              <span>Shred</span>
-              <span>quarters</span>
-            </h1>
-            <p>
-              An all-inclusive skate club focused primarily on skateboarding and
-              longboarding, but open to anything on wheels! Meet fellow
-              shredders in an inclusive, social, and community-oriented club
-              right here on the Virginia Tech campus.
-            </p>
-          </div>
+          <h1>
+            Shred
+            <br />
+            quarters
+          </h1>
           <div className={styles.iso_truck}>
             <Image
               src={"/img/truck_iso.svg"}
@@ -37,6 +30,12 @@ const Home: NextPage = () => {
               alt="hero_blob"
             />
           </div>
+          <p>
+            An all-inclusive skate club focused primarily on skateboarding and
+            longboarding, but open to anything on wheels! Meet fellow shredders
+            in an inclusive, social, and community-oriented club right here on
+            the Virginia Tech campus.
+          </p>
         </section>
         <TextDivider header="The Crew" float={20} />
         <section>
