@@ -12,11 +12,16 @@ interface Props {
    */
   float?: number | string
 }
-const TextDivider: NextPage<Props> = ({ header, float = "0%" }) => {
+
+const TextDivider: NextPage<Props & React.HTMLAttributes<HTMLDivElement>> = ({
+  header,
+  float = "0%",
+  ...props
+}) => {
   if (typeof float === "number") float = float + "%"
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} {...props}>
       <h3
         className={styles.text}
         style={{ left: float, transform: `translateX(-${float})` }}

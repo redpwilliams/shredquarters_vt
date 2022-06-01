@@ -1,5 +1,6 @@
 import Head from "next/head"
 import Image from "next/image"
+import Link from "next/link"
 import { NextPage } from "next"
 
 import { BoardType } from "components/BoardType/BoardType"
@@ -40,8 +41,8 @@ const Home: NextPage = () => {
             the Virginia Tech campus.
           </p>
         </section>
-        <TextDivider header="The Crew" float={20} />
-        <section>
+        <TextDivider header="The Crew" float={20} id="crew" />
+        <section id="crew">
           <ul>
             <BoardType
               src="/img/skateboard_iso.svg"
@@ -75,8 +76,8 @@ const Home: NextPage = () => {
             </BoardType>
           </ul>
         </section>
-        <TextDivider header="The Team" float={80} />
-        <TextDivider header="The Plan" float={20} />
+        <TextDivider header="The Team" float={80} id="team" />
+        <TextDivider header="The Plan" float={20} id="plan" />
         <section className={styles.events}>
           <ul>
             <UpcomingEvent
@@ -88,7 +89,7 @@ const Home: NextPage = () => {
             />
           </ul>
         </section>
-        <TextDivider header="The Network" float={80} />
+        <TextDivider header="The Network" float={80} id="network" />
         <section className={styles.network}>
           <form className={styles.contact}>
             <div className={styles.form_row}>
