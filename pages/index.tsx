@@ -5,6 +5,7 @@ import Head from "next/head"
 import Image from "next/image"
 import styles from "../styles/Home.module.sass"
 import { UpcomingEvent } from "components/UpcomingEvent/UpcomingEvent"
+import { Footer } from "components/Footer/Footer"
 
 const Home: NextPage = () => {
   return (
@@ -111,6 +112,7 @@ const Home: NextPage = () => {
           </form>
         </section>
       </main>
+      <Footer />
     </div>
   )
 }
