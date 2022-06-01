@@ -1,11 +1,13 @@
-import { TextDivider } from "components/TextDivider/TextDivider"
-import { BoardType } from "components/BoardType/BoardType"
-import type { NextPage } from "next"
 import Head from "next/head"
 import Image from "next/image"
-import styles from "../styles/Home.module.sass"
-import { UpcomingEvent } from "components/UpcomingEvent/UpcomingEvent"
+import { NextPage } from "next"
+
+import { BoardType } from "components/BoardType/BoardType"
 import { Footer } from "components/Footer/Footer"
+import { TextDivider } from "components/TextDivider/TextDivider"
+import { UpcomingEvent } from "components/UpcomingEvent/UpcomingEvent"
+
+import styles from "../styles/Home.module.sass"
 
 const Home: NextPage = () => {
   return (
