@@ -10,7 +10,7 @@ interface Props {
 }
 const SnapPoint: NextPage<Props> = ({ href, children }) => {
   return (
-    <li>
+    <li style={{ transform: "rotate(270deg)", backgroundColor: "#1e1e1e" }}>
       <a href={href}>{children}</a>
     </li>
   )
