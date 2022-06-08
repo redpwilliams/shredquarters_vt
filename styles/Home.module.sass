@@ -66,18 +66,23 @@
     p
       text-align: center
 
-.events ul
-  list-style: none
-  display: grid
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
-  gap: 30px
-  overflow-x: scroll
-  grid-auto-flow: column
-  position: relative
-  width: min-content
+.events
 
-  -ms-overflow-style: none
-  scrollbar-width: none
+  width: 80%
+  margin: 0 auto
+
+  ul
+    list-style: none
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
+    gap: 30px
+    overflow-x: scroll
+    grid-auto-flow: column
+    position: relative
+    width: min-content
+
+    -ms-overflow-style: none
+    scrollbar-width: none
 
   &::-webkit-scrollbar
     display: none
