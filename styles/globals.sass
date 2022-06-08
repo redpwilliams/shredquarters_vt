@@ -3,6 +3,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap")
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap")
 
+// Debug
+$show-section-borders: false
+
 html,
 body
   padding: 0
@@ -29,6 +32,15 @@ main
 
 section
   margin: 20px 80px
+
+  @if $show-section-borders
+    border: 2px solid blue
+
+  &:first-of-type
+    margin: 0px 80px 20px 80px
+
+    @if $show-section-borders
+      border: 2px solid green
 
 *,
 *::before,
