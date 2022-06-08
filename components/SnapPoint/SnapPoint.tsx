@@ -1,5 +1,6 @@
 import { NextPage } from "next"
 import { ReactNode } from "react"
+import styles from "./SnapPoint.module.sass"
 
 interface Props {
   /** href to snap to */
@@ -10,7 +11,7 @@ interface Props {
 }
 const SnapPoint: NextPage<Props> = ({ href, children }) => {
   return (
-    <li style={{ transform: "rotate(270deg)", backgroundColor: "#1e1e1e" }}>
+    <li className={styles.container}>
       <a href={href}>{children}</a>
     </li>
   )
