@@ -4,12 +4,10 @@ import { NextPage } from "next"
 
 import { BoardType } from "components/BoardType/BoardType"
 import { Footer } from "components/Footer/Footer"
-import { SnapPoint } from "components/SnapPoint/SnapPoint"
 import { TextDivider } from "components/TextDivider/TextDivider"
 import { UpcomingEvent } from "components/UpcomingEvent/UpcomingEvent"
-
-import styles from "../styles/Home.module.sass"
 import { Aside } from "components/Aside/Aside"
+import styles from "../styles/Home.module.sass"
 
 const Home: NextPage = () => {
   return (
@@ -95,28 +93,54 @@ const Home: NextPage = () => {
           </section>
           <TextDivider header="The Network" float={80} id="network" />
           <section className={styles.network}>
-            <form className={styles.contact}>
-              <div className={styles.form_row}>
+            <form className={styles.contact} noValidate autoComplete="off">
+              <div className={styles.form_row} id={styles.firstname}>
                 <label>First Name</label>
-                <input />
+                <input type="text" />
               </div>
-              <div className={styles.form_row}>
+              <div className={styles.form_row} id={styles.lastname}>
                 <label>Last Name</label>
-                <input />
+                <input type="text" />
               </div>
-              <div className={styles.form_row}>
+              <div className={styles.form_row} id={styles.email}>
                 <label>Email</label>
-                <input />
+                <input type="email" />
               </div>
-              <div className={styles.form_row}>
+              <div className={styles.form_row} id={styles.phone}>
+                <label>Phone</label>
+                <input type="tel" />
+              </div>
+              <div className={styles.form_row} id={styles.subject}>
                 <label>Subject</label>
-                <input />
+                <input id="text" />
               </div>
-              <div className={styles.form_row}>
+              <div className={styles.form_row} id={styles.message}>
                 <label>Message</label>
                 <textarea />
               </div>
+              <button>
+                Send it
+                <div>
+                  <Image
+                    width={24}
+                    height={12}
+                    alt=""
+                    src="/img/RightArrow.svg"
+                  />
+                </div>
+              </button>
             </form>
+            <div className={styles.wheel_iso}>
+              <div>
+                <Image
+                  width={64}
+                  height={64}
+                  alt=""
+                  src="/img/wheel_iso.svg"
+                  layout="responsive"
+                />
+              </div>
+            </div>
           </section>
         </div>
       </main>
