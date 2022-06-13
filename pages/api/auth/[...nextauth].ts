@@ -10,5 +10,8 @@ export default NextAuth({
       //@ts-ignore
       clientSecret: process.env.GOOGLE_CLIENT_SECRET
     })
-  ]
+  ],
+  pages: {
+    signIn: "/auth/signIn"
+  }
 })

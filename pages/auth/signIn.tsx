@@ -10,8 +10,10 @@ const SignIn: NextPage = () => {
   const router = useRouter()
 
   useEffect(() => {
+    console.log(session)
     if (session) router.push("/admin")
-  }, [router, session])
+  }, [session, router])
+
   return (
     <div className={styles.container}>
       <h1>Access Protected</h1>

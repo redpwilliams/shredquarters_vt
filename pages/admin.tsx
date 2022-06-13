@@ -1,19 +1,18 @@
-import { GetServerSideProps, NextPage } from "next"
+import { NextPage } from "next"
 import { useRouter } from "next/router"
-import { signOut, getSession } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
 import { useEffect } from "react"
-import { Session } from "next-auth/core/types"
 
-type Props = {
-  session: Session
-}
-
-const Admin: NextPage<Props> = ({ session }) => {
+const Admin: NextPage = () => {
   const router = useRouter()
+  const { data: session } = useSession()
   console.log(session)
 
   useEffect(() => {
-    if (!session) router.push("/auth/signIn")
+    if (session === null) {
+      console.log(session)
+      router.push("/auth/signIn")
+    }
   }, [router, session])
 
   return (
@@ -31,11 +30,6 @@ const Admin: NextPage<Props> = ({ session }) => {
       </div>
     )
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async context => {
-  const session = await getSession(context)
-  return { props: { session } }
 }
 
 export default Admin
