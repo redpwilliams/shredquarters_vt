@@ -7,7 +7,9 @@ const Footer: NextPage = () => {
 
   return (
     <footer className={styles.container}>
-      <h2>Shredquarters 2022</h2>
+      <h2>
+        <Link href="/">Shredquarters 2022</Link>
+      </h2>
       <ul>
         <li>Instagram</li>
         <li>Gobbler Connect</li>
