@@ -2,6 +2,7 @@ import { NextPage } from "next"
 import { useRouter } from "next/router"
 import { signOut, useSession } from "next-auth/react"
 import { useEffect } from "react"
+import { Footer } from "components/Footer/Footer"
 
 const Admin: NextPage = () => {
   const router = useRouter()
@@ -27,6 +28,7 @@ const Admin: NextPage = () => {
         >
           Signout
         </button>
+        <Footer />
       </div>
     )
   )
