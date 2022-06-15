@@ -1,14 +1,10 @@
 import { NextPage } from "next"
-import { useRouter } from "next/router"
-import { signOut, useSession } from "next-auth/react"
+import { signOut } from "next-auth/react"
 import { Footer } from "components/Footer/Footer"
 import { useAuth } from "@hooks/useAuth"
 
 const Admin: NextPage = () => {
   const isAuthenticated = useAuth()
-  console.log("State:", isAuthenticated)
-  // const router = useRouter() // REVIEW - This may not be needed? Handle in parent admin
-
   return isAuthenticated ? <AuthenticatedAdmin /> : <h1>Loading . . .</h1>
 }
 
