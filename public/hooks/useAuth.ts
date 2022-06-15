@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react"
+import { useEffect, useReducer, useRef } from "react"
 import { useRouter } from "next/router"
 import { useSession } from "next-auth/react"
 
@@ -11,14 +11,20 @@ const useAuth = () => {
   const { status } = useSession()
   const [isAuthenticated, dispatch] = useReducer(reducer, false)
 
+  const authed = useRef(false)
+
   useEffect(() => {
     switch (status) {
       case "authenticated":
         dispatch({ type: "authenticated" })
+        authed.current = true
         return
       case "unauthenticated":
-        router.push("/auth/signIn")
         dispatch({ type: "unauthenticated" })
+        if (authed.current) {
+          router.push("/")
+          // authed.current = false
+        } else router.push("/auth/signIn")
         return
       case "loading":
         dispatch({ type: "loading" })
