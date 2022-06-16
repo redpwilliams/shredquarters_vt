@@ -18,6 +18,7 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["components/*"],
+      "@context/*": ["public/context/*"],
       "@hooks/*": ["public/hooks/*"],
       "@img/*": ["public/img/*"],
       "@public/*": ["public/*"],
