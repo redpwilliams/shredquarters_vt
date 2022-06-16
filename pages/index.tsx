@@ -8,11 +8,8 @@ import { TextDivider } from "components/TextDivider/TextDivider"
 import { UpcomingEvent } from "components/UpcomingEvent/UpcomingEvent"
 import { Aside } from "components/Aside/Aside"
 import styles from "../styles/Home.module.sass"
-import { useSession } from "next-auth/react"
 
 const Home: NextPage = () => {
-  const { data: session } = useSession()
-  console.log(session)
   return (
     <div className={styles.container}>
       <Head>
