@@ -12,10 +12,8 @@ const SignIn: NextPage = () => {
     () => {
       router.push("/admin")
     },
-    () => {
-      console.log("signIn is unAuthed")
-    },
-    () => console.log("signIn is loading")
+    null,
+    null
   )
 
   return (

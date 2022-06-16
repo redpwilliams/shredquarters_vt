@@ -23,7 +23,7 @@ const Admin: NextPage = () => {
         router.push("/auth/signIn")
       }
     },
-    () => console.log("admin is loading")
+    null
   )
   return isAuthenticated ? <AuthenticatedAdmin /> : <LoadingBackdrop />
 }

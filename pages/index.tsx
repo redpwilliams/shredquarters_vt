@@ -6,7 +6,7 @@ import { BoardType } from "components/BoardType/BoardType"
 import { Footer } from "components/Footer/Footer"
 import { TextDivider } from "components/TextDivider/TextDivider"
 import { UpcomingEvent } from "components/UpcomingEvent/UpcomingEvent"
-import { Aside } from "components/Aside/Aside"
+// import { Aside } from "components/Aside/Aside"
 import styles from "../styles/Home.module.sass"
 
 const Home: NextPage = () => {
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <Aside />
+        {/* <Aside /> */}
         <div className={styles.content}>
           <section className={styles.hero}>
             <h1>

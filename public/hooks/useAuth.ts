@@ -21,7 +21,6 @@ const useAuth = (
   const [isAuthenticated, dispatch] = useReducer(reducer, false)
 
   useEffect(() => {
-    console.log("Status:", status)
     switch (status) {
       // Runs when client has been authenticated
       case "authenticated":
