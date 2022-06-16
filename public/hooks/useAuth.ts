@@ -1,53 +1,56 @@
-import { useEffect, useReducer, useRef } from "react"
-import { useRouter } from "next/router"
+import { useEffect, useReducer } from "react"
 import { useSession } from "next-auth/react"
+
+/** Function that triggers on that specific authentication state */
+type handlerFunction = (() => void) | null
 
 /**
  * Returns the authentication state of the client,
  * and redirects to index if unauthenticated
+ *
+ * @param signIn Function to run when signing in
+ * @param signOut Function to run when signing out
+ * @param loading Function to run when loading
  */
-const useAuth = () => {
-  const router = useRouter()
+const useAuth = (
+  signIn: handlerFunction,
+  signOut: handlerFunction,
+  loading: handlerFunction
+): AuthState => {
   const { status } = useSession()
   const [isAuthenticated, dispatch] = useReducer(reducer, false)
 
-  /**
-   * `false` if client has no record of being authenticated
-   * during the lifetime of the session,
-   * `true` if there is a record (such as being signed out)
-   *
-   * Used to push client to home vs sign in page
-   */
-  const authedPrior = useRef(false)
-
   useEffect(() => {
+    console.log("Status:", status)
     switch (status) {
-      // Maintains that client has been authenticated
+      // Runs when client has been authenticated
       case "authenticated":
         dispatch({ type: "authenticated" })
-        authedPrior.current = true
+        if (signIn !== null) signIn()
+        return
 
-      // Pushes route to home or sign in based on prior auth status
+      // Runs when client has been unauthenticated
       case "unauthenticated":
         dispatch({ type: "unauthenticated" })
-        if (authedPrior.current) {
-          router.push("/")
-        } else router.push("/auth/signIn")
+        if (signOut !== null) signOut()
+        return
 
-      // Loading state, if necessary
+      // Runs when client is in a loading state
       case "loading":
         dispatch({ type: "loading" })
+        if (loading !== null) loading()
+        return
 
       // Should never run
       default:
         throw new Error(`'status' var held an unexpected value: ${status}`)
     }
-  }, [status, router])
+  }, [status, signIn, signOut, loading])
 
   return isAuthenticated
 }
 
-type State = boolean
+type AuthState = boolean | null
 type Action = { type: "authenticated" | "unauthenticated" | "loading" }
 
 /**
@@ -55,16 +58,16 @@ type Action = { type: "authenticated" | "unauthenticated" | "loading" }
  *
  * @param state Current state of the component
  * @param action New state to dispatch
- * @returns { State } The updated state
+ * @returns { AuthState } The updated state
  */
-const reducer = (state: State, action: Action): State => {
+const reducer = (state: AuthState, action: Action): AuthState => {
   switch (action.type) {
     case "authenticated":
       return true
     case "unauthenticated":
       return false
   }
-  return false
+  return null
 }
 
 export { useAuth }

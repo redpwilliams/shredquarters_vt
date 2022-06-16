@@ -1,9 +1,10 @@
+import { useAuth } from "@hooks/useAuth"
 import { NextPage } from "next"
-import { useSession, signIn } from "next-auth/react"
 import Link from "next/link"
 import styles from "./Footer.module.sass"
+
 const Footer: NextPage = () => {
-  const { data: session } = useSession()
+  const authState = useAuth(null, null, null)
 
   return (
     <footer className={styles.container}>
@@ -14,7 +15,7 @@ const Footer: NextPage = () => {
         <li>Instagram</li>
         <li>Gobbler Connect</li>
         <li>
-          <Link href={session ? "/admin" : "/auth/signIn"}>Admin</Link>
+          <Link href={authState ? "/admin" : "/auth/signIn"}>Admin</Link>
         </li>
       </ul>
     </footer>

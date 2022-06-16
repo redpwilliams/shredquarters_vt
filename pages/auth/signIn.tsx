@@ -1,18 +1,22 @@
 import { NextPage } from "next"
-import { useSession, signIn } from "next-auth/react"
+import { signIn } from "next-auth/react"
 import { useRouter } from "next/router"
-import { useEffect } from "react"
 import GoogleIcon from "@mui/icons-material/Google"
 import styles from "@styles/SignIn.module.sass"
+import { useAuth } from "@hooks/useAuth"
 
 const SignIn: NextPage = () => {
-  const { data: session } = useSession()
   const router = useRouter()
 
-  useEffect(() => {
-    console.log(session)
-    if (session) router.push("/admin")
-  }, [session, router])
+  useAuth(
+    () => {
+      router.push("/admin")
+    },
+    () => {
+      console.log("signIn is unAuthed")
+    },
+    () => console.log("signIn is loading")
+  )
 
   return (
     <div className={styles.container}>
