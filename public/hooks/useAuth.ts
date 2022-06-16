@@ -70,3 +70,4 @@ const reducer = (state: AuthState, action: Action): AuthState => {
 }
 
 export { useAuth }
+export type { AuthState }
