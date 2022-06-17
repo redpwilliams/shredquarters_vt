@@ -21,6 +21,7 @@
       "@context/*": ["public/context/*"],
       "@hooks/*": ["public/hooks/*"],
       "@img/*": ["public/img/*"],
+      "@layouts/*": ["public/layouts/*"],
       "@public/*": ["public/*"],
       "@styles/*": ["styles/*"]
     }
