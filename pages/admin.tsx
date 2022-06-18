@@ -1,10 +1,11 @@
 import { NextPage } from "next"
 import { signOut } from "next-auth/react"
-import { Footer } from "components/Footer/Footer"
+// import { Footer } from "components/Footer/Footer"
 import { useAuth } from "@hooks/useAuth"
 import { Backdrop, CircularProgress } from "@mui/material"
 import { useRouter } from "next/router"
 import { useRef } from "react"
+import { AdminLayout } from "@layouts/AdminLayout"
 
 /**
  * Renders `AuthenticatedAdmin` component if authenticated,
@@ -30,21 +31,21 @@ const Admin: NextPage = () => {
 
 /** Renders when client is Authenticated */
 const AuthenticatedAdmin = () => {
-  // Router object
-  const router = useRouter()
   return (
-    <div style={{ color: "white" }}>
-      Admin: We must be signed in to view this page
-      <button
-        onClick={() => {
-          signOut()
-          router.push("/")
-        }}
-      >
-        Signout
-      </button>
-      <Footer />
-    </div>
+    <AdminLayout>
+      <p>
+        The Shrequarters Admin Console is a page available to predetermined and
+        authenticated users to add, update, or remove content relating to the
+        Shredquarters Website.
+      </p>
+      <h2>Operations Include:</h2>
+      <ul>
+        <li>Events</li>
+        <li>Officers</li>
+        <li>Admin Users</li>
+      </ul>
+      {/* <Footer /> */}
+    </AdminLayout>
   )
 }
 

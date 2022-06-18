@@ -5,11 +5,15 @@ import { ReactNode } from "react"
 
 interface Props {
   children: ReactNode
+  blacklist: NextPage[]
 }
 
-const AuthWrapper: NextPage<Props> = ({ children }) => {
+/**
+ * AuthWrapper Component
+ * Everything in this component will have access to the authentication status of the client
+ */
+const AuthWrapper: NextPage<Props> = ({ children, blacklist }) => {
   const authState = useAuth(null, null, null)
-  console.log(authState)
 
   return (
     <AuthContext.Provider value={authState}>{children}</AuthContext.Provider>
