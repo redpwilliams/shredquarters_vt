@@ -1,0 +1,56 @@
+@use "styles/colors" as *
+.container
+  color: $sq-white
+
+  h1
+    font-size: clamp(2vw, 3.5rem, 10vw)
+    padding: 0.25em 0.5em
+    text-align: center
+    margin: 2rem auto 1rem auto
+    line-height: 1.2em
+
+.content
+  display: grid
+  grid-template-columns: 30% auto
+
+.nav
+  display: flex
+  flex-direction: column
+  justify-content: center
+  font-size: clamp(1.1rem, 1.6vw, 3rem)
+  color: $sq-gray
+  text-transform: lowercase
+  font-family: "IBM Plex Mono", monospace
+  max-width: 80%
+  margin-left: 20%
+
+  li
+    padding: 0.25em 0.1em
+    margin: 1.5rem 0
+
+  a
+    position: relative
+
+    &::after
+      content: ""
+      background-color: $sq-gold
+      position: absolute
+      width: 0%
+      right: 0
+      height: 2px
+      display: block
+      transition: 0.1s width ease
+
+    &:hover::after,
+    &:focus::after,
+    &:active::after
+      pointer-events: none
+      width: 100%
+      right: auto
+      left: 0
+
+.children
+  max-width: 80%
+  p
+    font-size: 1.25rem
+    color: #c2c2c2
