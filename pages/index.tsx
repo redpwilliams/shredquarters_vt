@@ -6,6 +6,7 @@ import { BoardType } from "components/BoardType/BoardType"
 import { Footer } from "components/Footer/Footer"
 import { TextDivider } from "components/TextDivider/TextDivider"
 import { UpcomingEvent } from "components/UpcomingEvent/UpcomingEvent"
+import { InputElement } from "components/InputElement/InputElement"
 import styles from "../styles/Home.module.sass"
 
 const Home: NextPage = () => {
@@ -93,28 +94,30 @@ const Home: NextPage = () => {
           <section className={styles.network}>
             <form className={styles.contact} noValidate autoComplete="off">
               <div className={styles.form_row} id={styles.firstname}>
-                <label>First Name</label>
-                <input type="text" />
+                <InputElement
+                  label="First Name"
+                  id={styles.firstname}
+                  type="text"
+                />
               </div>
               <div className={styles.form_row} id={styles.lastname}>
-                <label>Last Name</label>
-                <input type="text" />
+                <InputElement
+                  label="Last Name"
+                  id={styles.lastname}
+                  type="text"
+                />
               </div>
               <div className={styles.form_row} id={styles.email}>
-                <label>Email</label>
-                <input type="email" />
+                <InputElement label="Email" id={styles.email} type="email" />
               </div>
               <div className={styles.form_row} id={styles.phone}>
-                <label>Phone</label>
-                <input type="tel" />
+                <InputElement label="Phone" id={styles.phone} type="tel" />
               </div>
               <div className={styles.form_row} id={styles.subject}>
-                <label>Subject</label>
-                <input id="text" />
+                <InputElement label="Subject" id={styles.subject} type="text" />
               </div>
               <div className={styles.form_row} id={styles.message}>
-                <label>Message</label>
-                <textarea />
+                <InputElement label="Message" variant="textarea" />
               </div>
               <button>
                 Send it
