@@ -1,23 +1,8 @@
 import { AdminLayout } from "@layouts/AdminLayout"
+import { StepButton } from "@components/StepButton/StepButton"
 import { Step, Stepper, StepLabel, StepContent } from "@mui/material"
-import {
-  ReactNode,
-  useState,
-  DetailedHTMLProps,
-  ButtonHTMLAttributes,
-  CSSProperties
-} from "react"
+import { useState, CSSProperties } from "react"
 import styles from "@styles/Events.module.sass"
-
-const StepButton = ({
-  children,
-  ...props
-}: { children?: ReactNode } & DetailedHTMLProps<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->) => {
-  return <button {...props}>{children}</button>
-}
 
 type Step = {
   label: string
@@ -81,6 +66,9 @@ const Events = () => {
             className={styles.nextButton}
             onClick={handleNext}
             disabled={activeStep === steps.length - 1}
+            style={
+              activeStep === steps.length - 1 ? inactiveButtonStyles : undefined
+            }
           >
             Next
           </StepButton>
