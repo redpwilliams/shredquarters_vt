@@ -1,0 +1,33 @@
+@use "styles/colors" as *
+.ie
+  font-size: 2rem
+  input, label, textarea
+    display: block
+    width: 100%
+
+  label
+    margin-bottom: 8px
+    font-size: 0.6em
+    font-family: "IBM Plex Mono", monospace
+    color: $sq-gray
+
+  textarea
+    resize: none
+    column-gap: normal
+
+  input, textarea
+    font-family: "IBM Plex Mono", monospace
+    color: $sq-white
+    background-color: transparent
+    border: none
+    border-bottom: 2px solid #4a4a4a
+    line-height: 1.5em
+    padding: 2px 5px
+    transition-timing-function: ease-out
+    transition-duration: 0.35s
+    font-size: 0.8em
+    border-radius: 6px 6px 0 0
+
+    &:focus
+      outline: none
+      border-bottom: 2px solid $sq-white

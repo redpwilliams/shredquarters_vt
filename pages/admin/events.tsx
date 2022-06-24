@@ -3,16 +3,27 @@ import { StepButton } from "@components/StepButton/StepButton"
 import { Step, Stepper, StepLabel, StepContent } from "@mui/material"
 import { useState, CSSProperties } from "react"
 import styles from "@styles/Events.module.sass"
+import { InputElement } from "@components/InputElement/InputElement"
 
 type Step = {
   label: string
   description: string
+  component?: any
 }
 
 const steps: Step[] = [
   {
     label: "Choose an event name",
-    description: "This is the description for choosing a name"
+    description: "This is the description for choosing a name",
+    component: (
+      <>
+        <InputElement
+          label="Event name"
+          style={{ fontSize: "1.5rem" }}
+          id={styles.inpute}
+        />
+      </>
+    )
   },
 
   {
@@ -48,7 +59,9 @@ const Events = () => {
           return (
             <Step key={step.label}>
               <StepLabel>{step.label}</StepLabel>
-              <StepContent>{step.description}</StepContent>
+              <StepContent style={{ position: "relative" }}>
+                {step.component}
+              </StepContent>
             </Step>
           )
         })}
