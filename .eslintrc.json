@@ -5,6 +5,7 @@
   },
   "extends": [
     "plugin:react/recommended",
+    "next",
     "next/core-web-vitals",
     "airbnb",
     "airbnb-typescript"
