@@ -1,7 +1,7 @@
-import { NextPage } from "next"
-import Image from "next/image"
-import { ReactNode } from "react"
-import styles from "./BoardType.module.sass"
+import { NextPage } from 'next'
+import Image from 'next/image'
+import { ReactNode } from 'react'
+import styles from './BoardType.module.sass'
 
 interface Props {
   src: string
@@ -9,23 +9,15 @@ interface Props {
   children: ReactNode
 }
 
-const BoardType: NextPage<Props> = ({ src, alt, children }) => {
-  return (
-    <li className={styles.container}>
-      <div className={styles.board}>
-        <div className={styles.iso}>
-          <Image
-            src={src}
-            width={64}
-            height={64}
-            alt={alt}
-            layout="responsive"
-          />
-        </div>
-        <p className={styles.description}>{children}</p>
+const BoardType: NextPage<Props> = ({ src, alt, children }) => (
+  <li className={styles.container}>
+    <div className={styles.board}>
+      <div className={styles.iso}>
+        <Image src={src} width={64} height={64} alt={alt} layout='responsive' />
       </div>
-    </li>
-  )
-}
+      <p className={styles.description}>{children}</p>
+    </div>
+  </li>
+)
 
 export { BoardType }

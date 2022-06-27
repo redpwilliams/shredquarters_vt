@@ -1,36 +1,34 @@
-import { AdminLayout } from "@layouts/AdminLayout"
-import { StepButton } from "@components/StepButton/StepButton"
-import { Step, Stepper, StepLabel, StepContent } from "@mui/material"
-import { useState, CSSProperties } from "react"
-import styles from "@styles/Events.module.sass"
-import { InputElement } from "@components/InputElement/InputElement"
+import { AdminLayout } from '@layouts/AdminLayout'
+import { StepButton } from '@components/StepButton/StepButton'
+import { Step, Stepper, StepLabel, StepContent } from '@mui/material'
+import { useState, CSSProperties } from 'react'
+import styles from '@styles/Events.module.sass'
+import { InputElement } from '@components/InputElement/InputElement'
 
-type Step = {
+type CustomStep = {
   label: string
   description: string
   component?: any
 }
 
-const steps: Step[] = [
+const steps: CustomStep[] = [
   {
-    label: "Choose an event name",
-    description: "This is the description for choosing a name",
+    label: 'Choose an event name',
+    description: 'This is the description for choosing a name',
     component: (
-      <>
-        <InputElement
-          label="Event name"
-          style={{ fontSize: "1.5rem" }}
-          id={styles.inpute}
-        />
-      </>
+      <InputElement
+        label='Event name'
+        style={{ fontSize: '1.5rem' }}
+        id={styles.inpute}
+      />
     )
   },
 
   {
-    label: "Select event characteristics",
-    description: "Description for characteristics"
+    label: 'Select event characteristics',
+    description: 'Description for characteristics'
   },
-  { label: "Confirm data", description: "Confirm data here" }
+  { label: 'Confirm data', description: 'Confirm data here' }
 ]
 
 const Events = () => {
@@ -44,27 +42,25 @@ const Events = () => {
   }
 
   const handleSubmit = () => {
-    console.log("Submitting")
+    console.log('Submitting')
   }
 
   const inactiveButtonStyles: CSSProperties = {
-    opacity: "50%",
-    cursor: "default"
+    opacity: '50%',
+    cursor: 'default'
   }
 
   return (
     <div className={styles.container}>
-      <Stepper activeStep={activeStep} orientation="vertical">
-        {steps.map(step => {
-          return (
-            <Step key={step.label}>
-              <StepLabel>{step.label}</StepLabel>
-              <StepContent style={{ position: "relative" }}>
-                {step.component}
-              </StepContent>
-            </Step>
-          )
-        })}
+      <Stepper activeStep={activeStep} orientation='vertical'>
+        {steps.map((step) => (
+          <Step key={step.label}>
+            <StepLabel>{step.label}</StepLabel>
+            <StepContent style={{ position: 'relative' }}>
+              {step.component}
+            </StepContent>
+          </Step>
+        ))}
       </Stepper>
       <div className={styles.navButtons}>
         <div className={styles.leftButtons}>

@@ -1,32 +1,29 @@
-import { NextPage } from "next"
-import styles from "./InputElement.module.sass"
+import { NextPage } from 'next'
 import {
   DetailedHTMLProps,
   HTMLAttributes,
   HTMLInputTypeAttribute
-} from "react"
+} from 'react'
+import styles from './InputElement.module.sass'
 
-type InputElement = {
+type Props = {
   label: string
   id?: string
   type?: HTMLInputTypeAttribute
-  variant?: "input" | "textarea"
+  variant?: 'input' | 'textarea'
 } & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
-const InputElement: NextPage<InputElement> = ({
+const InputElement: NextPage<Props> = ({
   label,
   id,
   type,
-  variant = "input",
+  variant = 'input',
   ...props
-}) => {
-  console.log(props)
-  return (
-    <div className={styles.ie} {...props}>
-      <label>{label}</label>
-      {variant === "input" ? <input id={id} type={type} /> : <textarea />}
-    </div>
-  )
-}
+}) => (
+  <div className={styles.ie} {...props}>
+    <label>{label}</label>
+    {variant === 'input' ? <input id={id} type={type} /> : <textarea />}
+  </div>
+)
 
 export { InputElement }

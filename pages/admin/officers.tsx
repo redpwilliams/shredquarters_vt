@@ -1,8 +1,6 @@
-import { AdminLayout } from "@layouts/AdminLayout"
+import { AdminLayout } from '@layouts/AdminLayout'
 
-const Officers = () => {
-  return <div>Officers</div>
-}
+const Officers = () => <div>Officers</div>
 
 Officers.PageLayout = AdminLayout
 
