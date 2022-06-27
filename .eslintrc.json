@@ -27,6 +27,11 @@
     "jsx-a11y/label-has-associated-control": "off",
     "react/function-component-definition": "off",
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": "off"
+    "@typescript-eslint/no-use-before-define": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-param-reassign": "off",
+    "import/prefer-default-export": "off",
+    "react/prop-types": "off",
+    "arrow-body-style": "warn"
   }
 }

@@ -1,5 +1,5 @@
-import { NextPage } from "next"
-import styles from "./TextDivider.module.sass"
+import { NextPage } from 'next'
+import styles from './TextDivider.module.sass'
 
 interface Props {
   /** Header text to display on divider */
@@ -15,10 +15,10 @@ interface Props {
 
 const TextDivider: NextPage<Props & React.HTMLAttributes<HTMLDivElement>> = ({
   header,
-  float = "0%",
+  float = '0%',
   ...props
 }) => {
-  if (typeof float === "number") float = float + "%"
+  if (typeof float === 'number') float = `${float}%`
 
   return (
     <div className={styles.container} {...props}>
