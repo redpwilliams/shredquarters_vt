@@ -1,17 +1,14 @@
-import "../styles/globals.sass"
-import type { AppProps } from "next/app"
-import { SessionProvider } from "next-auth/react"
-import { AuthWrapper } from "@components/AuthWrapper/AuthWrapper"
-import { ReactNode } from "react"
-import Home from "../pages/index"
+import '../styles/globals.sass'
+import type { AppProps } from 'next/app'
+import { SessionProvider } from 'next-auth/react'
+import { AuthWrapper } from '@components/AuthWrapper/AuthWrapper'
+import { ReactNode } from 'react'
 
 type LayoutComponent = AppProps & {
-  Component: AppProps["Component"] & {
+  Component: AppProps['Component'] & {
     PageLayout?: ({ children }: { children: ReactNode }) => JSX.Element
   }
 }
-
-const blacklist = [Home]
 
 function MyApp({
   Component,
@@ -19,7 +16,7 @@ function MyApp({
 }: LayoutComponent) {
   return (
     <SessionProvider session={session}>
-      <AuthWrapper blacklist={blacklist}>
+      <AuthWrapper>
         {Component.PageLayout ? (
           <Component.PageLayout>
             <Component {...pageProps} />
