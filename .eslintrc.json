@@ -35,6 +35,7 @@
     "arrow-body-style": "warn",
     "react/button-has-type": "off",
     "import/extensions": "off",
-    "import/no-cycle": "off"
+    "import/no-cycle": "off",
+    "jsx-a11y/anchor-is-valid": "off"
   }
 }

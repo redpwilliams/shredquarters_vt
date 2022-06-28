@@ -18,13 +18,12 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["components/*"],
-      "@context/*": ["public/context/*"],
-      "@hooks/*": ["public/hooks/*"],
+      "@context/*": ["components/context/*"],
+      "@hooks/*": ["components/hooks/*"],
       "@img/*": ["public/img/*"],
-      "@layouts/*": ["public/layouts/*"],
+      "@layouts/*": ["components/layouts/*"],
       "@public/*": ["public/*"],
-      "@styles/*": ["styles/*"],
-      "@types/*": ["public/types/*"]
+      "@styles/*": ["styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

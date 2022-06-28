@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import { signOut } from 'next-auth/react'
-import { useAuth } from '@hooks/useAuth'
+import { useAuth } from '@components/hooks'
 import { Backdrop, CircularProgress } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'

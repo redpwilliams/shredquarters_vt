@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
-import { useAuth } from '@hooks/useAuth'
-import { AuthContext } from '@context/AuthContext'
+import { useAuth } from '@components/hooks'
+import { AuthContext } from '@components/context'
 import { ReactNode } from 'react'
 
 interface Props {
@@ -9,7 +9,9 @@ interface Props {
 
 /**
  * AuthWrapper Component
- * Everything in this component will have access to the authentication status of the client
+ *
+ * {@param} children Everything in this component that
+ * will have access to the authentication status of the client
  */
 const AuthWrapper: NextPage<Props> = ({ children }) => {
   const authState = useAuth(null, null, null)

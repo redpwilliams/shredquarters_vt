@@ -3,7 +3,7 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import GoogleIcon from '@mui/icons-material/Google'
 import styles from '@styles/SignIn.module.sass'
-import { useAuth } from '@hooks/useAuth'
+import { useAuth } from '@components/hooks'
 
 const SignIn: NextPage = () => {
   const router = useRouter()

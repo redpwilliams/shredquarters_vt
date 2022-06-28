@@ -1,9 +1,8 @@
-import { AdminLayout } from '@layouts/AdminLayout'
-import { StepButton } from '@components/inputs/StepButton'
+import { AdminLayout } from '@components/layouts'
+import { InputElement, StepButton } from '@components/inputs'
 import { Step, Stepper, StepLabel, StepContent } from '@mui/material'
 import { useState, CSSProperties } from 'react'
 import styles from '@styles/Events.module.sass'
-import { InputElement } from '@components/inputs'
 
 type CustomStep = {
   label: string

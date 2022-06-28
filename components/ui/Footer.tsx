@@ -1,4 +1,4 @@
-import { useAuth } from '@hooks/useAuth'
+import { useAuth } from '@components/hooks'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import styles from './Footer.module.sass'

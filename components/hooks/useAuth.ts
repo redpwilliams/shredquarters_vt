@@ -1,8 +1,8 @@
-import { useEffect, useReducer } from "react"
-import { useSession } from "next-auth/react"
+import { useEffect, useReducer } from 'react'
+import { useSession } from 'next-auth/react'
 
 /** Function that triggers on that specific authentication state */
-type handlerFunction = (() => void) | null
+type HandlerFunction = (() => void) | null
 
 /**
  * Returns the authentication state of the client,
@@ -13,9 +13,9 @@ type handlerFunction = (() => void) | null
  * @param loading Function to run when loading
  */
 const useAuth = (
-  signIn: handlerFunction,
-  signOut: handlerFunction,
-  loading: handlerFunction
+  signIn: HandlerFunction,
+  signOut: HandlerFunction,
+  loading: HandlerFunction
 ): AuthState => {
   const { status } = useSession()
   const [isAuthenticated, dispatch] = useReducer(reducer, false)
@@ -23,20 +23,20 @@ const useAuth = (
   useEffect(() => {
     switch (status) {
       // Runs when client has been authenticated
-      case "authenticated":
-        dispatch({ type: "authenticated" })
+      case 'authenticated':
+        dispatch({ type: 'authenticated' })
         if (signIn !== null) signIn()
         return
 
       // Runs when client has been unauthenticated
-      case "unauthenticated":
-        dispatch({ type: "unauthenticated" })
+      case 'unauthenticated':
+        dispatch({ type: 'unauthenticated' })
         if (signOut !== null) signOut()
         return
 
       // Runs when client is in a loading state
-      case "loading":
-        dispatch({ type: "loading" })
+      case 'loading':
+        dispatch({ type: 'loading' })
         if (loading !== null) loading()
         return
 
@@ -50,7 +50,7 @@ const useAuth = (
 }
 
 type AuthState = boolean | null
-type Action = { type: "authenticated" | "unauthenticated" | "loading" }
+type Action = { type: 'authenticated' | 'unauthenticated' | 'loading' }
 
 /**
  * `React.useReducer` reducer function to handle state.
@@ -61,12 +61,13 @@ type Action = { type: "authenticated" | "unauthenticated" | "loading" }
  */
 const reducer = (state: AuthState, action: Action): AuthState => {
   switch (action.type) {
-    case "authenticated":
+    case 'authenticated':
       return true
-    case "unauthenticated":
+    case 'unauthenticated':
       return false
+    default:
+      return null
   }
-  return null
 }
 
 export { useAuth }
