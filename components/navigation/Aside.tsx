@@ -1,5 +1,5 @@
-import { SnapPoint } from 'components/SnapPoint/SnapPoint'
 import { NextPage } from 'next'
+import { SnapPoint } from './SnapPoint'
 import styles from './Aside.module.sass'
 
 const Aside: NextPage = () => (
