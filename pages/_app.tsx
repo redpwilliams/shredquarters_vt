@@ -1,7 +1,7 @@
 import '../styles/globals.sass'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
-import { AuthWrapper } from '@components/AuthWrapper/AuthWrapper'
+import { AuthWrapper } from '@components/ui'
 import { ReactNode } from 'react'
 
 type LayoutComponent = AppProps & {

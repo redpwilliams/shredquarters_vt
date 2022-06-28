@@ -34,6 +34,7 @@
     "react/prop-types": "off",
     "arrow-body-style": "warn",
     "react/button-has-type": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "import/no-cycle": "off"
   }
 }
