@@ -4,7 +4,7 @@ import { useAuth } from '@components/hooks'
 import { Backdrop, CircularProgress } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'
-import { AdminLayout } from '@layouts/AdminLayout'
+import { AdminLayout } from '@components/layouts/'
 
 /**
  * Renders `AuthenticatedAdmin` component if authenticated, fdgfhg

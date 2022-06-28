@@ -1,2 +1,2 @@
-export * from './Aside'
-export * from './SnapPoint'
+export * from './Aside/Aside'
+export * from './SnapPoint/SnapPoint'

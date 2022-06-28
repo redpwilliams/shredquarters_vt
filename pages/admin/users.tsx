@@ -1,4 +1,4 @@
-import { AdminLayout } from '@layouts/AdminLayout'
+import { AdminLayout } from '@components/layouts'
 
 const Users = () => <div>Admin Users</div>
 
