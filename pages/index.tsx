@@ -2,10 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { NextPage } from 'next'
 
-import { BoardType } from 'components/BoardType/BoardType'
-import { Footer } from 'components/Footer/Footer'
-import { TextDivider } from 'components/TextDivider/TextDivider'
-import { UpcomingEvent } from 'components/UpcomingEvent/UpcomingEvent'
+import { BoardType, Footer, TextDivider, UpcomingEvent } from '@components/ui'
 // import { InputElement } from "components/InputElement/InputElement"
 import styles from '../styles/Home.module.sass'
 
