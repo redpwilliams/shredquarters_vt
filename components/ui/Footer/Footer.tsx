@@ -15,6 +15,10 @@ const Footer: NextPage = () => {
         <li>Instagram</li>
         <li>Gobbler Connect</li>
         <li>
+          {/* TODO - USeContext for admin path.
+              Ex: User navigates to /admin/events. Then back to Index
+              When User navigates to /admin, they are redirected
+              to /admin/events instead of just /admin (the home page) */}
           <Link href={authState ? '/admin' : '/auth/signIn'}>Admin</Link>
         </li>
       </ul>
