@@ -3,6 +3,7 @@ import { InputElement } from '@components/inputs'
 import type { ConsoleStep } from '@components/layouts'
 
 const eventSteps: ConsoleStep[] = [
+  // Event Name
   {
     label: 'Choose an event name',
     component: (
@@ -10,6 +11,7 @@ const eventSteps: ConsoleStep[] = [
     )
   },
 
+  // Event Characteristics
   {
     label: 'Select event characteristics',
     component: (
@@ -32,6 +34,8 @@ const eventSteps: ConsoleStep[] = [
       </>
     )
   },
+
+  // Confirm
   {
     label: 'Confirm data',
     component: (

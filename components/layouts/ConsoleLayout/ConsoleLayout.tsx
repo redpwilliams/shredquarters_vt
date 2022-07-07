@@ -1,14 +1,20 @@
-import { Step, StepContent, StepLabel, Stepper } from '@mui/material'
 import { CSSProperties, useState } from 'react'
+import { Step, StepContent, StepLabel, Stepper } from '@mui/material'
 import { StepButton } from '@components/inputs'
 import styles from './ConsoleLayout.module.sass'
 
+/** Blueprint for each step of the Stepper */
 type ConsoleStep = {
+  /** The label of the step */
   label: string
-  component: any
+
+  /** Component to render for that step */
+  component: JSX.Element
 }
 
+/** Props for the ConsoleLayout */
 interface ConsoleLayoutProps {
+  /** An array of steps to be included in the Stepper */
   steps: ConsoleStep[]
 }
 
