@@ -1,17 +1,12 @@
 import { AdminLayout, ConsoleLayout } from '@components/layouts'
 import { InputElement } from '@components/inputs'
-import styles from '@styles/Events.module.sass'
 import type { ConsoleStep } from '@components/layouts'
 
 const eventSteps: ConsoleStep[] = [
   {
     label: 'Choose an event name',
     component: (
-      <InputElement
-        label='Event name'
-        style={{ fontSize: '1.5rem' }}
-        id={styles.inpute}
-      />
+      <InputElement label='Event name' style={{ fontSize: '1.5rem' }} />
     )
   },
 
@@ -22,19 +17,16 @@ const eventSteps: ConsoleStep[] = [
         <InputElement
           label='Event date'
           style={{ fontSize: '1.5rem' }}
-          id={styles.inpute}
           type='date'
         />
         <InputElement
           label='Event Start Time'
           style={{ fontSize: '1.5rem' }}
-          id={styles.inpute}
           type='time'
         />
         <InputElement
           label='Event End Time'
           style={{ fontSize: '1.5rem' }}
-          id={styles.inpute}
           type='time'
         />
       </>
