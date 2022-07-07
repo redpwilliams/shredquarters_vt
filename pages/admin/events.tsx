@@ -6,14 +6,12 @@ import styles from '@styles/Events.module.sass'
 
 type CustomStep = {
   label: string
-  description: string
   component?: any
 }
 
 const steps: CustomStep[] = [
   {
     label: 'Choose an event name',
-    description: 'This is the description for choosing a name',
     component: (
       <InputElement
         label='Event name'
@@ -25,9 +23,38 @@ const steps: CustomStep[] = [
 
   {
     label: 'Select event characteristics',
-    description: 'Description for characteristics'
+    component: (
+      <>
+        <InputElement
+          label='Event date'
+          style={{ fontSize: '1.5rem' }}
+          id={styles.inpute}
+          type='date'
+        />
+        <InputElement
+          label='Event Start Time'
+          style={{ fontSize: '1.5rem' }}
+          id={styles.inpute}
+          type='time'
+        />
+        <InputElement
+          label='Event End Time'
+          style={{ fontSize: '1.5rem' }}
+          id={styles.inpute}
+          type='time'
+        />
+      </>
+    )
   },
-  { label: 'Confirm data', description: 'Confirm data here' }
+  {
+    label: 'Confirm data',
+    component: (
+      <>
+        <h2>Is all this information correct?</h2>
+        <p>Information goes here</p>
+      </>
+    )
+  }
 ]
 
 const Events = () => {
