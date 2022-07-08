@@ -40,7 +40,7 @@ const Home: NextPage = () => (
         </section>
         <TextDivider header='The Crew' float={20} id='crew' />
         <section>
-          <ul>
+          <ul className={styles.boards}>
             <BoardType
               src='/img/skateboard_iso.svg'
               alt='Skateboard isometric picture'

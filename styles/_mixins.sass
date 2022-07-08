@@ -1,20 +1,36 @@
 @use "styles/breakpoints" as *
 // Small devices
-@mixin sm
-  @media (max-width: #{$screen-sm-min})
+@mixin sm-min
+  @media (min-width: #{$screen-sm-min})
+    @content
+
+@mixin sm-max
+  @media (max-width: #{$screen-sm-max})
     @content
 
 // Medium devices
-@mixin md
-  @media (max-width: #{$screen-md-min})
+@mixin md-min
+  @media (min-width: #{$screen-md-min})
+    @content
+
+@mixin md-max
+  @media (max-width: #{$screen-md-max})
     @content
 
 // Large devices
-@mixin lg
-  @media (max-width: #{$screen-lg-min})
+@mixin lg-min
+  @media (min-width: #{$screen-lg-min})
+    @content
+
+@mixin lg-max
+  @media (max-width: #{$screen-lg-max})
     @content
 
 // Extra large devices
-@mixin xl
+@mixin xl-min
   @media (max-width: #{$screen-xl-min})
+    @content
+
+@mixin xl-max
+  @media (max-width: #{$screen-xl-max})
     @content

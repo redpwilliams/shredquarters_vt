@@ -1,10 +1,21 @@
 @use "styles/colors"
+@use "styles/font-sizes"
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap")
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap")
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap")
 
 // Debug
 $show-section-borders: false
+
+:root
+  --fs-xss: #{font-sizes.$fs-xxs}
+  --fs-xs: #{font-sizes.$fs-xs}
+  --fs-sm: #{font-sizes.$fs-sm}
+  --fs-md: #{font-sizes.$fs-md}
+  --fs-lg: #{font-sizes.$fs-lg}
+  --fs-xl: #{font-sizes.$fs-xl}
+  --fs-xxl: #{font-sizes.$fs-xxl}
+  --fs-heading: #{font-sizes.$fs-heading}
 
 html,
 body
@@ -32,7 +43,7 @@ main
   height: 100%
 
 section
-  margin: 20px 80px
+  // margin: 20px 80px
   position: relative
   z-index: 4
 
@@ -40,7 +51,7 @@ section
     border: 2px solid blue
 
   &:first-of-type
-    margin: 0px 80px 20px 80px
+    margin: 0px 10% 20px 10%
 
     @if $show-section-borders
       border: 2px solid green

@@ -4,37 +4,55 @@
 .container
   margin: 10px 0
 
+.container:nth-child(even)
+  & .board
+    flex-direction: row
+
+  p
+    text-align: right
+    text-align-last: justified
+  .iso
+    transform: scaleX(-1)
+
+.container:nth-child(n) .board
+  margin: 7.5rem 15%
+
 .board
-  display: grid
-  grid-template-columns: 1fr 1fr
-  width: 100%
+  display: flex
+  flex-direction: row-reverse
+  // grid-template-columns: auto auto
   align-items: center
+  justify-content: flex-end
   position: relative
-  justify-content: center
+  margin: auto 0
 
 .iso
-  $img-size: 30rem
-  width: $img-size
+  $img-size: 26rem
+  min-width: $img-size
+  margin: 0 60px
   height: auto
   justify-self: center
 
 .description
   color: $sq-white
-  font-size: 2em
+  font-size: clamp(var(--fs-sm), 20vw, var(--fs-lg))
   grid-column: 2 / 3
-  padding: 0 2em
   height: fit-content
-  max-width: 60rem
+  width: 45rem
+  max-width: 75%
 
-@include lg
-
-  .board
-    grid-template-columns: none
-    grid-auto-rows: minmax(min-content, max-content)
+@include md-max
+  .container:nth-child(n) .board
+    flex-direction: column
+    margin: 7.5rem auto
 
   .description
     height: fit-content
     grid-column: 1
     grid-row: 2 / 3
     margin: 10px auto
-    text-align: center
+    text-align: justified
+
+@include lg-max
+  .container:nth-child(n) .board
+    margin: 7.5rem 5%
