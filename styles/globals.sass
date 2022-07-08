@@ -78,9 +78,25 @@ button
   font-family: "IBM Plex Mono", monospace
   font-weight: 500
 
+.MuiStepLabel-iconContainer
+  transform: scale(1.5)
+  transform-origin: top left
+  width: fit-content
+  aspect-ratio: 1
+  // display: none
+  padding: 0
+
 .MuiStepLabel-label
-  font-size: 1rem
+  align-items: center
+  margin-left: 1.5em
+  &.Mui-active,
+  &.Mui-completed,
+  &.Mui-disabled,
   &.Mui-active
+    font-size: var(--fs-md)
+
+  &.Mui-active
+
     position: relative
     display: inline-block
     color: colors.$sq-white !important
@@ -97,9 +113,28 @@ button
       &:hover
         width: 100%
 
+.MuiStepContent-root
+  padding-left: 3rem
+  font-size: var(--fs-lg)
+
+  & input, textarea
+    font-size: .7em
+
 .MuiStepIcon-text
   fill: colors.$sq-black !important
   font-family: "IBM Plex Mono", monospace
+  font-size: 1.3rem
+  display: block
+  margin: auto
 
 .MuiCollapse-wrapperInner
+
   font-family: Raleway, sans-serif
+  & div:nth-child(n)
+    margin: 2rem 0 3rem 0
+
+  & div:last-child
+    margin-bottom: 0
+
+.MuiStepLabel-root
+  align-items: stretch

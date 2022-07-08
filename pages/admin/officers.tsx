@@ -5,15 +5,13 @@ const officerSteps: ConsoleStep[] = [
   // Officer's First Name
   {
     label: 'Add officer first name', // NOTE - Drop down to select an officer for editing info?
-    component: (
-      <InputElement label='First Name' style={{ fontSize: '1.5rem' }} />
-    )
+    component: <InputElement label='First Name' />
   },
 
   // Officer's Last Name
   {
     label: 'Add officer last name',
-    component: <InputElement label='Last Name' style={{ fontSize: '1.5rem' }} />
+    component: <InputElement label='Last Name' />
   },
 
   // TODO - Add Image
@@ -21,13 +19,7 @@ const officerSteps: ConsoleStep[] = [
   // Officer Bio
   {
     label: 'Add officer bio',
-    component: (
-      <InputElement
-        label='Biography'
-        variant='textarea'
-        style={{ fontSize: '1.5rem' }}
-      />
-    )
+    component: <InputElement label='Biography' variant='textarea' />
   },
 
   // Confirm

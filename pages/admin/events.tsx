@@ -7,7 +7,7 @@ const eventSteps: ConsoleStep[] = [
   {
     label: 'Choose an event name',
     component: (
-      <InputElement label='Event name' style={{ fontSize: '1.5rem' }} />
+      <InputElement label='Event name' style={{ fontSize: 'var(--fs-xl)' }} />
     )
   },
 
@@ -16,21 +16,9 @@ const eventSteps: ConsoleStep[] = [
     label: 'Select event characteristics',
     component: (
       <>
-        <InputElement
-          label='Event date'
-          style={{ fontSize: '1.5rem' }}
-          type='date'
-        />
-        <InputElement
-          label='Event Start Time'
-          style={{ fontSize: '1.5rem' }}
-          type='time'
-        />
-        <InputElement
-          label='Event End Time'
-          style={{ fontSize: '1.5rem' }}
-          type='time'
-        />
+        <InputElement label='Event date' type='date' />
+        <InputElement label='Event Start Time' type='time' />
+        <InputElement label='Event End Time' type='time' />
       </>
     )
   },

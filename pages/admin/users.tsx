@@ -5,9 +5,7 @@ const usersSteps: ConsoleStep[] = [
   // New User Email
   {
     label: 'Add a user email',
-    component: (
-      <InputElement label='User Email' style={{ fontSize: '1.5rem' }} />
-    )
+    component: <InputElement label='User Email' />
   },
 
   // Confirm

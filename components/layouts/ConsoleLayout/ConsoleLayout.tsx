@@ -44,7 +44,10 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
         {steps.map((step) => (
           <Step key={step.label}>
             <StepLabel>{step.label}</StepLabel>
-            <StepContent style={{ position: 'relative' }}>
+            <StepContent
+              TransitionProps={{ unmountOnExit: false }}
+              style={{ position: 'relative' }}
+            >
               {step.component}
             </StepContent>
           </Step>
