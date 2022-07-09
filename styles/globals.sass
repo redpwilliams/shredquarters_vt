@@ -17,6 +17,8 @@ $show-section-borders: false
   --fs-xxl: #{font-sizes.$fs-xxl}
   --fs-heading: #{font-sizes.$fs-heading}
 
+  --footer-height: 138px
+
 html,
 body
   padding: 0
@@ -26,8 +28,18 @@ body
   background-color: #1e1e1e
   background-position: center
   background-size: cover
-  height: 100%
   scroll-behavior: smooth
+
+#__next
+  min-height: 100vh
+  position: relative
+
+  & > div
+    padding-bottom: var(--footer-height)
+
+  & footer
+    position: absolute
+    bottom: 0
 
 a
   color: inherit

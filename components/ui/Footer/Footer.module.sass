@@ -1,26 +1,40 @@
 @use "styles/colors" as *
 
 .container
-  background-color: #090909
+  background-color: #111111
   margin-top: 20px
-  padding: 20px 0
+  padding-top: 20px
   color: $sq-white
   font-family: "IBM Plex Mono", monospace
   border-bottom: 4px solid transparent
   border-image: linear-gradient(45deg, #7e6327, #e8ea83)
   border-image-slice: 1
+  height: 138px
+  position: absolute
+  bottom: 0
+  width: 100%
 
   h2
     text-align: center
     font-size: 2rem
-    padding: 20px 10px
+    padding: 0.5em
 
   ul
-    font-size: 1.75rem
+    font-size: 1.5rem
+    text-align: center
     display: flex
-    flex-direction: column
     justify-content: center
     align-items: center
+    gap: 3rem
+    color: $sq-gray
 
   li
     padding: 8px 5px
+
+  p
+    text-align: center
+    background-color: #080808
+    padding: 10px 10px
+
+    span
+      color: $sq-gold

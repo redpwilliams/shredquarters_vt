@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { NextPage } from 'next'
 
-import { BoardType, Footer, TextDivider, UpcomingEvent } from '@components/ui'
+import { BoardType, TextDivider, UpcomingEvent } from '@components/ui'
 // import { InputElement } from "components/InputElement/InputElement"
 import styles from '../styles/Home.module.sass'
 
@@ -139,7 +139,6 @@ const Home: NextPage = () => (
         </section>
       </div>
     </main>
-    <Footer />
   </div>
 )
 

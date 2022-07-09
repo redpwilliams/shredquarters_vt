@@ -22,6 +22,10 @@ const Footer: NextPage = () => {
           <Link href={authState ? '/admin' : '/auth/signIn'}>Admin</Link>
         </li>
       </ul>
+      <p>
+        © 2022 Shredquarters at Virginia Tech, All rights reserved. Made with
+        love by <span>Red Williams</span>
+      </p>
     </footer>
   )
 }

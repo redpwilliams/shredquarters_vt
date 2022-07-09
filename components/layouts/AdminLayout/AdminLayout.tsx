@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 import Link from 'next/link'
-import { Footer } from '@components/ui'
 import styles from './AdminLayout.module.sass'
 
 const AdminLayout = ({ children }: { children: ReactNode }) => (
@@ -31,7 +30,6 @@ const AdminLayout = ({ children }: { children: ReactNode }) => (
       </ul>
       <div className={styles.children}>{children}</div>
     </div>
-    <Footer />
   </div>
 )
 
