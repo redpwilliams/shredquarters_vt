@@ -13,7 +13,7 @@ type Props = {
   label: string
 
   /** Custom label to give the InputField for form hook */
-  registerLabel?: string
+  registerLabel: string
 
   /** HTML id for string. TODO - Remove across project, this was stupid */
   id?: string
@@ -32,7 +32,7 @@ type Props = {
 
 const InputElement: NextPage<Props> = ({
   label,
-  registerLabel = label,
+  registerLabel,
   id,
   type,
   variant = 'input',

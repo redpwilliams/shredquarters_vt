@@ -1,4 +1,4 @@
-import { CSSProperties, useState } from 'react'
+import { CSSProperties, useState, useEffect, useRef } from 'react'
 import { Step, StepContent, StepLabel, Stepper } from '@mui/material'
 import { StepButton } from '@components/inputs'
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form'
@@ -28,10 +28,19 @@ interface IFormProps {
 }
 
 const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
+  const confirmationStep = useRef<ConsoleStep>({
+    label: 'Confirm data',
+    component: <h2>Is all this information correct?</h2>
+  })
+
+  steps = [...steps, confirmationStep.current]
+
+  // Stepper navigation
   const [activeStep, setActiveStep] = useState(0)
 
   const handleNext = () => {
     setActiveStep(activeStep + 1)
+    console.log(confirmationStep.current.component.props)
   }
 
   const handleBack = () => {
@@ -45,7 +54,33 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
 
   const onSubmit: SubmitHandler<IFormProps> = (data) => console.log(data)
 
+  // NOTE - Since only register is needed, change to pass that down to children
   const methods = useForm()
+
+  const watchAllFields = methods.watch()
+
+  // Update steps with confirmation step
+
+  useEffect(() => {
+    // console.log(watchAllFields)
+    confirmationStep.current = {
+      ...confirmationStep.current,
+      component: (
+        <>
+          <h2>Is everything correct?</h2>
+          <div className={styles.json}>
+            {Object.keys(watchAllFields).map((key) => (
+              <p key={watchAllFields[key]}>
+                {key}: {watchAllFields[key]}
+              </p>
+            ))}
+          </div>
+        </>
+      )
+    }
+    // console.log(watchAllFields)
+    // console.log(confirmationStep.current.component.props)
+  }, [watchAllFields])
 
   return (
     <FormProvider {...methods}>
