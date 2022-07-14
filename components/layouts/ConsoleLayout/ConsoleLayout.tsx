@@ -1,5 +1,14 @@
-import { CSSProperties, useState, useEffect, useRef } from 'react'
-import { Step, StepContent, StepLabel, Stepper } from '@mui/material'
+import { CSSProperties, useState } from 'react'
+import {
+  Step,
+  StepContent,
+  StepLabel,
+  Stepper,
+  Dialog,
+  DialogTitle,
+  DialogContent
+} from '@mui/material'
+// import CloseIcon from '@mui/icons-material/Close'
 import { StepButton } from '@components/inputs'
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form'
 import styles from './ConsoleLayout.module.sass'
@@ -28,19 +37,13 @@ interface IFormProps {
 }
 
 const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
-  const confirmationStep = useRef<ConsoleStep>({
-    label: 'Confirm data',
-    component: <h2>Is all this information correct?</h2>
-  })
-
-  steps = [...steps, confirmationStep.current]
+  const [submitReady, setSubmitReady] = useState(false)
 
   // Stepper navigation
   const [activeStep, setActiveStep] = useState(0)
 
   const handleNext = () => {
     setActiveStep(activeStep + 1)
-    console.log(confirmationStep.current.component.props)
   }
 
   const handleBack = () => {
@@ -52,35 +55,16 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
     cursor: 'default'
   }
 
-  const onSubmit: SubmitHandler<IFormProps> = (data) => console.log(data)
-
+  const onSubmit: SubmitHandler<IFormProps> = (data) => {
+    console.log(data)
+    setSubmitReady(true)
+  }
   // NOTE - Since only register is needed, change to pass that down to children
   const methods = useForm()
 
+  // Lets us watch the field values on each change
   const watchAllFields = methods.watch()
-
-  // Update steps with confirmation step
-
-  useEffect(() => {
-    // console.log(watchAllFields)
-    confirmationStep.current = {
-      ...confirmationStep.current,
-      component: (
-        <>
-          <h2>Is everything correct?</h2>
-          <div className={styles.json}>
-            {Object.keys(watchAllFields).map((key) => (
-              <p key={watchAllFields[key]}>
-                {key}: {watchAllFields[key]}
-              </p>
-            ))}
-          </div>
-        </>
-      )
-    }
-    // console.log(watchAllFields)
-    // console.log(confirmationStep.current.component.props)
-  }, [watchAllFields])
+  console.log(watchAllFields)
 
   return (
     <FormProvider {...methods}>
@@ -139,6 +123,32 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
             </StepButton>
           </div>
         </div>
+        <Dialog open={submitReady}>
+          <DialogTitle sx={{ fontSize: '2.5rem', textAlign: 'center' }}>
+            Submit this information?
+            {/* <IconButton
+              aria-label='close'
+              sx={{
+                position: 'absolute',
+                right: 8,
+                top: 8,
+                color: 'blue'
+              }}
+            /> */}
+            {/* <CloseIcon />
+            </IconButton> */}
+          </DialogTitle>
+          <DialogContent>
+            <ul className={styles.fields}>
+              {Object.keys(watchAllFields).map((key) => (
+                <li key={key}>
+                  <h2>{key}</h2>
+                  <p>{watchAllFields[key]}</p>
+                </li>
+              ))}
+            </ul>
+          </DialogContent>
+        </Dialog>
       </form>
     </FormProvider>
   )
