@@ -1,4 +1,9 @@
 @use "styles/colors" as *
+@use "styles/mixins" as *
+
+.container
+  margin-bottom: 60px
+  overflow-y: scroll
 
 .navButtons
   display: flex
@@ -44,3 +49,19 @@
   width: 100%
   justify-content: space-around
   align-content: center
+
+  li
+    padding: 1em
+
+  h2
+    color: var(--sq-gray)
+    font-weight: 400
+
+  p
+    color: var(--sq-gold)
+    font-size: 2rem
+    font-weight: bold
+
+@include md-max
+  .fields
+    flex-direction: column
