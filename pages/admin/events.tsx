@@ -7,7 +7,7 @@ const Events = () => {
     // Event Name
     {
       label: 'Choose an event name',
-      component: <InputElement label='Event name' registerLabel='name' />
+      component: <InputElement label='Name' registerLabel='name' />
     },
 
     // Event Characteristics

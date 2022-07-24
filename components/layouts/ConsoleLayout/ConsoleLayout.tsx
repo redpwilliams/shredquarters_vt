@@ -1,7 +1,6 @@
 import { CSSProperties, useState } from 'react'
 import { Step, StepContent, StepLabel, Stepper } from '@mui/material'
 import { ConfirmDialog } from '@components/ui/Dialog/Dialog'
-// import CloseIcon from '@mui/icons-material/Close'
 import { StepButton } from '@components/inputs'
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form'
 import styles from './ConsoleLayout.module.sass'
@@ -48,17 +47,11 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
     cursor: 'default'
   }
 
-  const onSubmit: SubmitHandler<IFormProps> = (data) => {
-    console.log(data)
+  const onSubmit: SubmitHandler<IFormProps> = () => {
     setSubmitReady(true)
   }
   // NOTE - Since only register is needed, change to pass that down to children
   const methods = useForm()
-
-  // Lets us watch the field values on each change
-  // const watchAllFields = methods.watch()
-
-  // const ref = useClickOutside(() => setSubmitReady(false))
 
   return (
     <FormProvider {...methods}>
@@ -118,41 +111,12 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
           </div>
         </div>
 
-        {/* <Dialog open={submitReady} sx={{ backdropFilter: 'blur(2px)' }}>
-          <DialogTitle sx={{ fontSize: '2.5rem', textAlign: 'center' }}>
-            Submit this information?
-            <IconButton
-              aria-label='close'
-              sx={{
-                position: 'absolute',
-                right: 8,
-                top: 8,
-                color: 'blue'
-              }}
-            />
-            <CloseIcon />
-            </IconButton>
-          </DialogTitle>
-          <DialogContent>
-            <ul className={styles.fields}>
-              {Object.keys(watchAllFields).map((key) => (
-                <li key={key}>
-                  <h2>{key}</h2>
-                  <p>{watchAllFields[key]}</p>
-                </li>
-              ))}
-            </ul>
-          </DialogContent>
-          <div className={styles.navButtons}>
-            <StepButton
-              className={styles.nextButton}
-              style={{ margin: '0 auto', width: '30vw' }}
-            >
-              Submit
-            </StepButton>
-          </div>
-        </Dialog> */}
-        <ConfirmDialog isOpen={submitReady} setOpen={setSubmitReady} />
+        <ConfirmDialog
+          isOpen={submitReady}
+          setOpen={setSubmitReady}
+          title='Submit this information?'
+          steps={steps}
+        />
       </form>
     </FormProvider>
   )
