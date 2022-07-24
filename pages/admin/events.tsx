@@ -15,17 +15,9 @@ const Events = () => {
       label: 'Select event characteristics',
       component: (
         <>
-          <InputElement label='Event date' type='date' registerLabel='date' />
-          <InputElement
-            label='Event Start Time'
-            type='time'
-            registerLabel='start'
-          />
-          <InputElement
-            label='Event End Time'
-            type='time'
-            registerLabel='end'
-          />
+          <InputElement label='Date' type='date' registerLabel='date' />
+          <InputElement label='Start Time' type='time' registerLabel='start' />
+          <InputElement label='End Time' type='time' registerLabel='end' />
         </>
       )
     }
