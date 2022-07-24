@@ -1,5 +1,6 @@
+/* eslint-disable no-promise-executor-return */
 import { NextPage } from 'next'
-import { ReactElement, ReactNode } from 'react'
+import { ReactElement, ReactNode, useState } from 'react'
 import {
   Dialog,
   DialogTitle,
@@ -12,6 +13,7 @@ import { styled } from '@mui/material/styles'
 import { ConsoleStep } from '@components/layouts'
 import { useFormContext } from 'react-hook-form'
 import { StepButton } from '@components/inputs'
+import { LoadingBackdrop } from '@components/ui'
 import styles from './Dialog.module.sass'
 
 // All this is just ripped from MUI
@@ -106,6 +108,24 @@ const ConfirmDialog: NextPage<IConfirm> = ({
     setOpen(false)
   }
 
+  const [backdropStatus, setBackdropStatus] = useState(false)
+
+  const handleSubmit = async () => {
+    // Remove Dialog
+    setOpen(false)
+    // Wait some time
+    await new Promise((resolve) => setTimeout(resolve, 1200))
+    console.log('Start Submit')
+    // Show loading animation
+    setBackdropStatus(true)
+    // Post data
+
+    await new Promise((resolve) => setTimeout(resolve, 5000))
+    // Remove loading animation
+    setBackdropStatus(false)
+    // Alert that submission was successful, or not successful
+  }
+
   return (
     <div>
       <BootstrapDialog
@@ -125,9 +145,18 @@ const ConfirmDialog: NextPage<IConfirm> = ({
           </ul>
         </DialogContent>
         <DialogActions sx={{ display: 'flex', justifyContent: 'center' }}>
-          <StepButton style={{ width: '50%' }}>Submit</StepButton>
+          <StepButton
+            type='submit'
+            onClick={handleSubmit}
+            style={{ width: '50%' }}
+          >
+            Submit
+          </StepButton>
         </DialogActions>
       </BootstrapDialog>
+      <div style={{ display: backdropStatus ? '' : 'none' }}>
+        <LoadingBackdrop />
+      </div>
     </div>
   )
 }

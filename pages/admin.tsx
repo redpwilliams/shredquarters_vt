@@ -1,10 +1,10 @@
 import { NextPage } from 'next'
 import { signOut } from 'next-auth/react'
 import { useAuth } from '@components/hooks'
-import { Backdrop, CircularProgress } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useRef } from 'react'
 import { AdminLayout } from '@components/layouts/'
+import { LoadingBackdrop } from '@components/ui'
 
 /**
  * Renders `AuthenticatedAdmin` component if authenticated, fdgfhg
@@ -41,15 +41,6 @@ const AuthenticatedAdmin = () => (
       of them.
     </p>
   </AdminLayout>
-)
-
-const LoadingBackdrop = () => (
-  <Backdrop
-    sx={{ color: 'gold', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-    open
-  >
-    <CircularProgress color='inherit' />
-  </Backdrop>
 )
 
 export default Admin

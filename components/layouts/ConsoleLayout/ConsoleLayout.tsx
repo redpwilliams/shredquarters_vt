@@ -56,7 +56,7 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
   const methods = useForm()
 
   const onSubmit: SubmitHandler<IFormProps> = () => {
-    if (methods.formState.isValid) setHasErrors(false)
+    setHasErrors(false)
     setSubmitReady(true)
   }
 
