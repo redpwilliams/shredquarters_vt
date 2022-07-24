@@ -1,8 +1,13 @@
 import { CSSProperties, useState } from 'react'
-import { Step, StepContent, StepLabel, Stepper } from '@mui/material'
+import { Step, StepContent, StepLabel, Stepper, Alert } from '@mui/material'
 import { ConfirmDialog } from '@components/ui/Dialog/Dialog'
 import { StepButton } from '@components/inputs'
-import { useForm, FormProvider, SubmitHandler } from 'react-hook-form'
+import {
+  useForm,
+  FormProvider,
+  SubmitHandler,
+  SubmitErrorHandler
+} from 'react-hook-form'
 import styles from './ConsoleLayout.module.sass'
 
 /** Blueprint for each step of the Stepper */
@@ -30,6 +35,7 @@ interface IFormProps {
 
 const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
   const [submitReady, setSubmitReady] = useState(false)
+  const [hasErrors, setHasErrors] = useState(false)
 
   // Stepper navigation
   const [activeStep, setActiveStep] = useState(0)
@@ -47,17 +53,22 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
     cursor: 'default'
   }
 
+  const methods = useForm()
+
   const onSubmit: SubmitHandler<IFormProps> = () => {
+    if (methods.formState.isValid) setHasErrors(false)
     setSubmitReady(true)
   }
-  // NOTE - Since only register is needed, change to pass that down to children
-  const methods = useForm()
+
+  const onError: SubmitErrorHandler<IFormProps> = () => {
+    setHasErrors(true)
+  }
 
   return (
     <FormProvider {...methods}>
       <form
         className={styles.container}
-        onSubmit={methods.handleSubmit(onSubmit)}
+        onSubmit={methods.handleSubmit(onSubmit, onError)}
       >
         <Stepper activeStep={activeStep} orientation='vertical'>
           {steps.map((step) => (
@@ -110,41 +121,17 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
             </StepButton>
           </div>
         </div>
-
-        {/* <Dialog open={submitReady} sx={{ backdropFilter: 'blur(2px)' }}>
-          <DialogTitle sx={{ fontSize: '2.5rem', textAlign: 'center' }}>
-            Submit this information?
-            <IconButton
-              aria-label='close'
-              sx={{
-                position: 'absolute',
-                right: 8,
-                top: 8,
-                color: 'blue'
-              }}
-            />
-            <CloseIcon />
-            </IconButton>
-          </DialogTitle>
-          <DialogContent>
-            <ul className={styles.fields}>
-              {Object.keys(watchAllFields).map((key) => (
-                <li key={key}>
-                  <h2>{key}</h2>
-                  <p>{watchAllFields[key]}</p>
-                </li>
-              ))}
-            </ul>
-          </DialogContent>
-          <div className={styles.navButtons}>
-            <StepButton
-              className={styles.nextButton}
-              style={{ margin: '0 auto', width: '30vw' }}
-            >
-              Submit
-            </StepButton>
-          </div>
-        </Dialog> */}
+        <Alert
+          severity='error'
+          sx={{
+            display: hasErrors ? '' : 'none',
+            margin: '0 auto',
+            fontSize: '1.25rem',
+            alignItems: 'center'
+          }}
+        >
+          Error: Ensure all fields are completed
+        </Alert>
         <ConfirmDialog
           isOpen={submitReady}
           setOpen={setSubmitReady}

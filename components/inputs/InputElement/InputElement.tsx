@@ -41,12 +41,16 @@ const InputElement: NextPage<Props> = ({
   const { register } = useFormContext()
 
   return (
-    <div className={styles.ie} {...props}>
+    <div className={styles.container} {...props}>
       <label>{label}</label>
       {variant === 'input' ? (
-        <input id={id} type={type} {...register(registerLabel)} />
+        <input
+          id={id}
+          type={type}
+          {...register(registerLabel, { required: true })}
+        />
       ) : (
-        <textarea {...register(registerLabel)} />
+        <textarea rows={5} {...register(registerLabel, { required: true })} />
       )}
     </div>
   )

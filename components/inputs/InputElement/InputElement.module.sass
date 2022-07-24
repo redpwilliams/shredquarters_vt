@@ -1,5 +1,5 @@
 @use "styles/colors" as *
-.ie
+.container
   font-size: 2rem
   input, label, textarea
     display: block
@@ -14,6 +14,7 @@
   textarea
     resize: none
     column-gap: normal
+    // white-space: pre
 
   input, textarea
     font-family: "IBM Plex Mono", monospace
@@ -31,3 +32,8 @@
     &:focus
       outline: none
       border-bottom: 2px solid $sq-white
+
+  input[type="time"]::-webkit-calendar-picker-indicator,
+  input[type="date"]::-webkit-calendar-picker-indicator
+    background: none
+    display: none

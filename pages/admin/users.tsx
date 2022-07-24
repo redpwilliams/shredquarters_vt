@@ -8,17 +8,6 @@ const usersSteps: ConsoleStep[] = [
     component: (
       <InputElement label='User Email' type='email' registerLabel='email' />
     )
-  },
-
-  // Confirm
-  {
-    label: 'Confirm data',
-    component: (
-      <>
-        <h2>Is all this information correct?</h2>
-        <p>Information goes here</p>
-      </>
-    )
   }
 ]
 

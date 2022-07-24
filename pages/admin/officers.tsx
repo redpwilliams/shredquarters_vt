@@ -5,13 +5,13 @@ const officerSteps: ConsoleStep[] = [
   // Officer's First Name
   {
     label: 'Add officer first name', // NOTE - Drop down to select an officer for editing info?
-    component: <InputElement label='First Name' />
+    component: <InputElement label='First Name' registerLabel='first_name' />
   },
 
   // Officer's Last Name
   {
     label: 'Add officer last name',
-    component: <InputElement label='Last Name' />
+    component: <InputElement label='Last Name' registerLabel='last_name' />
   },
 
   // TODO - Add Image
@@ -19,17 +19,8 @@ const officerSteps: ConsoleStep[] = [
   // Officer Bio
   {
     label: 'Add officer bio',
-    component: <InputElement label='Biography' variant='textarea' />
-  },
-
-  // Confirm
-  {
-    label: 'Confirm data',
     component: (
-      <>
-        <h2>Is all this information correct?</h2>
-        <p>Information goes here</p>
-      </>
+      <InputElement label='Biography' variant='textarea' registerLabel='bio' />
     )
   }
 ]
