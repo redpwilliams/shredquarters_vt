@@ -1,4 +1,5 @@
 import { ReactNode, DetailedHTMLProps, ButtonHTMLAttributes } from 'react'
+import styles from './StepButton.module.sass'
 
 type StepButtonProps = {
   children: ReactNode
@@ -8,7 +9,7 @@ type StepButtonProps = {
 >
 
 const StepButton = ({ children, ...props }: StepButtonProps) => (
-  <button type={props.type} {...props}>
+  <button className={styles.container} type={props.type} {...props}>
     {children}
   </button>
 )

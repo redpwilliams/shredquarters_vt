@@ -111,6 +111,40 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
           </div>
         </div>
 
+        {/* <Dialog open={submitReady} sx={{ backdropFilter: 'blur(2px)' }}>
+          <DialogTitle sx={{ fontSize: '2.5rem', textAlign: 'center' }}>
+            Submit this information?
+            <IconButton
+              aria-label='close'
+              sx={{
+                position: 'absolute',
+                right: 8,
+                top: 8,
+                color: 'blue'
+              }}
+            />
+            <CloseIcon />
+            </IconButton>
+          </DialogTitle>
+          <DialogContent>
+            <ul className={styles.fields}>
+              {Object.keys(watchAllFields).map((key) => (
+                <li key={key}>
+                  <h2>{key}</h2>
+                  <p>{watchAllFields[key]}</p>
+                </li>
+              ))}
+            </ul>
+          </DialogContent>
+          <div className={styles.navButtons}>
+            <StepButton
+              className={styles.nextButton}
+              style={{ margin: '0 auto', width: '30vw' }}
+            >
+              Submit
+            </StepButton>
+          </div>
+        </Dialog> */}
         <ConfirmDialog
           isOpen={submitReady}
           setOpen={setSubmitReady}

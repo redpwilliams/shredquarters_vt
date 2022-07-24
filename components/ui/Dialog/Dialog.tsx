@@ -119,13 +119,13 @@ const ConfirmDialog: NextPage<IConfirm> = ({
         >
           {title}
         </BootstrapDialogTitle>
-        <DialogContent dividers>
+        <DialogContent>
           <ul className={styles.fields}>
             {getConfirmFields().map((li) => li)}
           </ul>
         </DialogContent>
-        <DialogActions>
-          <StepButton>Submit</StepButton>
+        <DialogActions sx={{ display: 'flex', justifyContent: 'center' }}>
+          <StepButton style={{ width: '50%' }}>Submit</StepButton>
         </DialogActions>
       </BootstrapDialog>
     </div>
