@@ -20,8 +20,12 @@ import styles from './Dialog.module.sass'
 // https://mui.com/material-ui/react-dialog/#customization
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiPaper-root': {
+    color: '#303030'
+  },
   '& .MuiDialogTitle-root': {
-    fontSize: '2.5rem'
+    fontSize: '2.5rem',
+    color: '#fff'
   },
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2)
@@ -84,7 +88,8 @@ const ConfirmDialog: NextPage<IConfirm> = ({
 
     steps.forEach((step) => {
       if (step.component.type.name !== inputComponentName) {
-        step.component.props.children.forEach((child: ReactElement) => {
+        // REVIEW - I think this change fixes the issue
+        step.component.props.children?.forEach((child: ReactElement) => {
           inputsArray.push(
             <li key={child.props.registerLabel}>
               <h2>{child.props.label}</h2>
@@ -141,6 +146,7 @@ const ConfirmDialog: NextPage<IConfirm> = ({
         </BootstrapDialogTitle>
         <DialogContent>
           <ul className={styles.fields}>
+            {/* TODO -  */}
             {getConfirmFields().map((li) => li)}
           </ul>
         </DialogContent>
