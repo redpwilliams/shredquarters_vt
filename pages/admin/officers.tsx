@@ -4,7 +4,9 @@ import { AdminLayout, ConsoleLayout, ConsoleStep } from '@components/layouts'
 const officerSteps: ConsoleStep[] = [
   // Officer's First Name
   {
-    label: 'Add officer first name', // NOTE - Drop down to select an officer for editing info?
+    // NOTE - Drop down to select an officer for editing info?
+    // Either that or a update/delete toggle? Not priority
+    label: 'Add officer first name',
     component: <InputElement label='First Name' registerLabel='first_name' />
   },
 

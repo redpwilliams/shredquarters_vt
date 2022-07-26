@@ -20,6 +20,12 @@ const Events = () => {
           <InputElement label='End Time' type='time' registerLabel='end' />
         </>
       )
+    },
+
+    // Event Location
+    {
+      label: "Choose the event's location",
+      component: <InputElement label='Location' registerLabel='location' />
     }
   ]
 
