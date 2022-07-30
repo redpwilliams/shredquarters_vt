@@ -77,6 +77,10 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
               <StepContent
                 TransitionProps={{ unmountOnExit: false }}
                 style={{ position: 'relative' }}
+                sx={{
+                  paddingLeft: '3rem',
+                  fontSize: 'var(--fs-lg)'
+                }}
               >
                 {step.component}
               </StepContent>
@@ -127,7 +131,8 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
             display: hasErrors ? '' : 'none',
             margin: '0 auto',
             fontSize: '1.25rem',
-            alignItems: 'center'
+            alignItems: 'center',
+            backgroundColor: '#383838'
           }}
         >
           Error: Ensure all fields are completed
