@@ -7,17 +7,14 @@ import { BoardType, TextDivider, UpcomingEvent } from '@components/ui'
 import type { Officer } from '@public/types'
 
 // Supabase Client
-import { createClient, PostgrestResponse } from '@supabase/supabase-js'
+import { supabase } from '@db/_supabase'
+import type { PostgrestResponse } from '@supabase/supabase-js'
 
 // Styles
 import styles from '../styles/Home.module.sass'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   // Create Client
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SECRET!
-  )
 
   // Fetch all officers
   const { data }: PostgrestResponse<Officer> = await supabase
@@ -25,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     .select('*')
     .order('id')
 
-  return { props: { officers: data }, revalidate: 60 }
+  return { props: { officers: data } }
 }
 
 interface IHome {

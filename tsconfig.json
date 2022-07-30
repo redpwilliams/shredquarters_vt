@@ -23,7 +23,8 @@
       "@img/*": ["public/img/*"],
       "@layouts/*": ["components/layouts/*"],
       "@public/*": ["public/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
+      "@db/*": ["pages/api/db/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
