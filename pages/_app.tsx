@@ -1,7 +1,7 @@
 import '../styles/globals.sass'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
-import { AuthWrapper, Footer } from '@components/ui'
+import { AuthWrapper, Navbar, Footer } from '@components/ui'
 import { ReactNode } from 'react'
 
 type LayoutComponent = AppProps & {
@@ -17,6 +17,7 @@ function MyApp({
   return (
     <SessionProvider session={session}>
       <AuthWrapper>
+        <Navbar />
         {Component.PageLayout ? (
           <Component.PageLayout>
             <Component {...pageProps} />
