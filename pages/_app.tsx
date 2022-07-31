@@ -1,8 +1,9 @@
 import '../styles/globals.sass'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
-import { AuthWrapper, Navbar, Footer } from '@components/ui'
-import { ReactNode } from 'react'
+import { AuthWrapper, Navbar, SideMenu, Footer } from '@components/ui'
+import { MenuContext } from '@components/context'
+import { ReactNode, useState } from 'react'
 
 type LayoutComponent = AppProps & {
   Component: AppProps['Component'] & {
@@ -14,10 +15,16 @@ function MyApp({
   Component,
   pageProps: { session, ...pageProps }
 }: LayoutComponent) {
+  // Gets passed to context. All pages need to know to not scroll when modal is open
+  const [menuState, setMenuState] = useState(false)
+
   return (
     <SessionProvider session={session}>
       <AuthWrapper>
-        <Navbar />
+        <MenuContext.Provider value={{ menuState, setMenuState }}>
+          <Navbar />
+          <SideMenu />
+        </MenuContext.Provider>
         {Component.PageLayout ? (
           <Component.PageLayout>
             <Component {...pageProps} />
@@ -27,6 +34,11 @@ function MyApp({
         )}
         <Footer />
       </AuthWrapper>
+      <style jsx global>{`
+        html {
+          overflow-y: ${menuState ? 'hidden' : 'unset'};
+        }
+      `}</style>
     </SessionProvider>
   )
 }

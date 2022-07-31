@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { MenuContext } from '@components/context'
+import { useContext } from 'react'
 import styles from './Navbar.module.sass'
 
 const Navbar = () => (
@@ -15,29 +16,29 @@ const Navbar = () => (
 )
 
 const BurgerIcon = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const { menuState, setMenuState } = useContext(MenuContext)
 
   return (
-    <div className={styles.burger} onClick={() => setMenuOpen(!menuOpen)}>
+    <div className={styles.burger} onClick={() => setMenuState(!menuState)}>
       <span
         style={{
-          bottom: `${menuOpen ? 'calc(-50% + 1px)' : '0'}`,
-          transform: `rotate(${menuOpen ? '225deg' : '0deg'})`,
+          bottom: `${menuState ? 'calc(-50% + 1px)' : '0'}`,
+          transform: `rotate(${menuState ? '225deg' : '0deg'})`,
           transition: `${
-            menuOpen
+            menuState
               ? 'bottom 0.1s ease-out, transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s'
               : 'bottom 0.1s ease 0.25s, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.12s'
           }`,
           transitionTimingFunction: `cubic-bezier(
-            ${menuOpen ? '0.215, 0.61, 0.355, 1' : '0.55, 0.055, 0.675, 0.19'}
+            ${menuState ? '0.215, 0.61, 0.355, 1' : '0.55, 0.055, 0.675, 0.19'}
           )`
         }}
       />
       <span
         style={{
-          opacity: `${menuOpen ? '0' : '1'}`,
+          opacity: `${menuState ? '0' : '1'}`,
           transition: `${
-            menuOpen
+            menuState
               ? 'top 0.1s ease-out, opacity 0.1s ease-out 0.12s'
               : 'top 0.1s ease-in 0.25s, opacity 0.1s ease-in 0.12s'
           }`
@@ -45,43 +46,18 @@ const BurgerIcon = () => {
       />
       <span
         style={{
-          bottom: `${menuOpen ? 'calc(50% - 1px)' : '0'}`,
+          bottom: `${menuState ? 'calc(50% - 1px)' : '0'}`,
           transition: `${
-            menuOpen
+            menuState
               ? 'bottom 0.1s ease-out, transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s'
               : 'bottom 0.1s ease 0.25s, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.12s'
           }`,
           transitionTimingFunction: `cubic-bezier(
-            ${menuOpen ? '0.215, 0.61, 0.355, 1' : '0.55, 0.055, 0.675, 0.19'}
+            ${menuState ? '0.215, 0.61, 0.355, 1' : '0.55, 0.055, 0.675, 0.19'}
           )`,
-          transform: `rotate(${menuOpen ? '135deg' : '0'})`
+          transform: `rotate(${menuState ? '135deg' : '0'})`
         }}
       />
-      {/* <style jsx>
-      {`
-        .burger:first-child {
-          transition-delay: ${menuOpen ? '0.12s' : '0s'};
-          transform: rotate(${menuOpen ? '225deg' : '0deg'});
-          transition-timing-function: cubic-bezier(
-            ${menuOpen ? '0.215, 0.61, 0.355, 1' : '0.55, 0.055, 0.675, 0.19'}
-          );
-        }
-        .burger::before {
-          top: ${menuOpen ? '0px' : '-5px'};
-          opacity: ${menuOpen ? '0' : '1'};
-          transition: ${menuOpen
-            ? 'top 0.1s ease-out, opacity 0.1s ease-out 0.12s'
-            : 'top 0.1s ease-in 0.25s, opacity 0.1s ease-in'};
-        }
-        .burger::after {
-          bottom: ${menuOpen ? '0px' : '-5px'};
-          transition: ${menuOpen
-            ? 'bottom 0.1s ease-out, transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s'
-            : 'bottom 0.1s ease-in 0.25s, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19)'};
-          transform: rotate(${menuOpen ? '-90deg' : '0'});
-        }
-      `}
-    </style> */}
     </div>
   )
 }
