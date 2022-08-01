@@ -35,8 +35,10 @@ function MyApp({
         <Footer />
       </AuthWrapper>
       <style jsx global>{`
-        html {
-          overflow-y: ${menuState ? 'hidden' : 'unset'};
+        @media (max-width: 576px) {
+          html {
+            overflow-y: ${menuState ? 'hidden' : 'unset'};
+          }
         }
       `}</style>
     </SessionProvider>
