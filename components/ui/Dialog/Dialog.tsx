@@ -70,18 +70,26 @@ interface IConfirm {
   setOpen: (state: boolean) => void
   title: string
   steps: ConsoleStep[]
+  apiPath: string
 }
 
 const ConfirmDialog: NextPage<IConfirm> = ({
   isOpen,
   setOpen,
   title,
-  steps
+  steps,
+  apiPath
 }) => {
+  // Check if api path is good
+  if (!apiPath.startsWith('/api/'))
+    throw new Error(`Api route ${apiPath} is invalid.`)
+
+  // Get field values/data
   const { getValues } = useFormContext()
 
   const inputComponentName = 'InputElement'
 
+  // Get an array of all the InputElements (may be nested in a fragment)
   const getConfirmFields = () => {
     const inputsArray: ReactNode[] = []
     const data = getValues()
@@ -115,6 +123,7 @@ const ConfirmDialog: NextPage<IConfirm> = ({
 
   const [backdropStatus, setBackdropStatus] = useState(false)
 
+  // TODO - Will add a wait time for better user experience
   const handleSubmit = async () => {
     // Remove Dialog
     setOpen(false)

@@ -2,8 +2,8 @@ import { AdminLayout, ConsoleLayout } from '@components/layouts'
 import { InputElement } from '@components/inputs'
 import type { ConsoleStep } from '@components/layouts'
 
-const Events = () => {
-  const eventSteps: ConsoleStep[] = [
+const CreateEvent = () => {
+  const CreateEventSteps: ConsoleStep[] = [
     // Event Name
     {
       label: 'Choose an event name',
@@ -29,9 +29,9 @@ const Events = () => {
     }
   ]
 
-  return <ConsoleLayout steps={eventSteps} />
+  return <ConsoleLayout steps={CreateEventSteps} api='/api/events/create' />
 }
 
-Events.PageLayout = AdminLayout
+CreateEvent.PageLayout = AdminLayout
 
-export default Events
+export default CreateEvent

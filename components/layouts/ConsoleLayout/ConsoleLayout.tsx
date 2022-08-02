@@ -24,8 +24,12 @@ interface ConsoleLayoutProps {
   /** An array of steps to be included in the Stepper */
   steps: ConsoleStep[]
 
-  /** Function to handle when form is submitted */
-  // onSubmit?: SubmitHandler<any>
+  /**
+   * The api route Dialog will point to.
+   * Path *must* begin with '/api/*'.
+   * Will throw an error otherwise} TODO
+   */
+  api: string
 }
 
 /** Format for hook fields */
@@ -33,7 +37,7 @@ interface IFormProps {
   [key: string]: string
 }
 
-const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
+const ConsoleLayout = ({ steps, api }: ConsoleLayoutProps) => {
   const [submitReady, setSubmitReady] = useState(false)
   const [hasErrors, setHasErrors] = useState(false)
 
@@ -125,6 +129,7 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
             </StepButton>
           </div>
         </div>
+        {/* TODO - Extract, useContext to place at bottom of screen */}
         <Alert
           severity='error'
           sx={{
@@ -142,6 +147,7 @@ const ConsoleLayout = ({ steps }: ConsoleLayoutProps) => {
           setOpen={setSubmitReady}
           title='Submit this information?'
           steps={steps}
+          apiPath={api}
         />
       </form>
     </FormProvider>
