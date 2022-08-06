@@ -5,7 +5,7 @@ import type { ConsoleStep } from '@components/layouts'
 // TODO - Admin Page getStaticProps -> useContext to get names and qualities of projects
 
 const UpdateEvent = () => {
-  const eventNames = ['one, two, three']
+  const eventNames = ['one', 'two', 'three']
   const UpdateEventSteps: ConsoleStep[] = [
     // Event to Update
     {
