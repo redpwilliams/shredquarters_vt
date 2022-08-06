@@ -12,7 +12,7 @@ const AddUser = () => {
     }
   ]
 
-  return <ConsoleLayout steps={AddUserSteps} api='/api/admin/create' />
+  return <ConsoleLayout steps={AddUserSteps} api='/api/admin/users/create' />
 }
 
 AddUser.PageLayout = AdminLayout
