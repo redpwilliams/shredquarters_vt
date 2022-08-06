@@ -88,7 +88,9 @@ const Select = ({ ...props }) => (
     {...props.register(props.registerLabel, { required: true })}
   >
     {props.list.map((option: string) => (
-      <option value={option}>{option}</option>
+      <option key={option} value={option}>
+        {option}
+      </option>
     ))}
   </select>
 )

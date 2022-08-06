@@ -1,7 +1,8 @@
 @use "styles/colors" as *
 .container
   font-size: 2rem
-  input, label, textarea
+
+  label, input, textarea, select
     display: block
     width: 100%
 
@@ -14,9 +15,16 @@
   textarea
     resize: none
     column-gap: normal
-    // white-space: pre
 
-  input, textarea
+  select
+    display: inline-block
+    border: none
+    outline: none
+
+  option
+    background-color: var(--sq-black)
+
+  input, textarea, select
     font-family: "IBM Plex Mono", monospace
     color: $sq-white
     background-color: transparent

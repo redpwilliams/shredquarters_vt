@@ -12,7 +12,7 @@ const UpdateEvent = () => {
       label: 'Select an event to update',
       component: (
         <InputElement
-          label='Selected Event'
+          label='Event'
           registerLabel='event_name'
           variant='select'
           list={eventNames}
