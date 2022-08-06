@@ -1,59 +1,96 @@
 // TODO - Change InputElement to InputField
-import { NextPage } from 'next'
-import {
-  DetailedHTMLProps,
-  HTMLAttributes,
-  HTMLInputTypeAttribute
-} from 'react'
-import { useFormContext } from 'react-hook-form'
+import { createContext, HTMLInputTypeAttribute } from 'react'
+import { FieldValues, useFormContext, UseFormRegister } from 'react-hook-form'
 import styles from './InputElement.module.sass'
 
-type Props = {
+type Variant =
+  | {
+      variant: 'select'
+      list: string[]
+    }
+  | {
+      variant: 'textarea'
+    }
+  | {
+      variant?: 'input'
+    }
+
+type Props = Variant & {
   /** Header of the InputField */
   label: string
 
   /** Custom label to give the InputField for form hook */
   registerLabel: string
 
-  /** HTML id for string. TODO - Remove across project, this was stupid */
-  id?: string
-
   /** Input type of the field */
   type?: HTMLInputTypeAttribute
+}
 
-  /** Which available type of input to render */
-  variant?: 'input' | 'textarea'
-} & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+const InputContext = createContext<Props>({
+  label: 'Default Label',
+  registerLabel: 'example',
+  type: 'text',
+  variant: 'input'
+})
 
 /* 
   NOTE - I could add an opt out prop since this uses react hook form 
   by default, but honestly that probably isn't worth it/needed
 */
 
-const InputElement: NextPage<Props> = ({
-  label,
-  registerLabel,
-  id,
-  type,
-  variant = 'input',
-  ...props
-}) => {
+const InputElement = ({ ...props }: Props) => {
   const { register } = useFormContext()
 
   return (
-    <div className={styles.container} {...props}>
-      <label>{label}</label>
-      {variant === 'input' ? (
-        <input
-          id={id}
-          type={type}
-          {...register(registerLabel, { required: true })}
-        />
-      ) : (
-        <textarea rows={5} {...register(registerLabel, { required: true })} />
-      )}
-    </div>
+    <InputContext.Provider value={{ ...props }}>
+      <div className={styles.container}>
+        <label>{props.label}</label>
+        {getVariant(props.variant, register, props)}
+      </div>
+    </InputContext.Provider>
   )
 }
+
+const getVariant = (
+  variant: Props['variant'],
+  register: UseFormRegister<FieldValues>,
+  { ...props }
+) => {
+  switch (variant) {
+    case 'textarea':
+      return <TextArea {...props} register={register} />
+    case 'select':
+      return <Select {...props} register={register} />
+    default:
+      return <Input {...props} register={register} />
+  }
+}
+
+const Input = ({ ...props }) => (
+  <input
+    {...props}
+    {...props.register(props.registerLabel, { required: true })}
+  />
+)
+
+const TextArea = ({ ...props }) => (
+  <textarea
+    rows={5}
+    {...props}
+    {...props.register(props.registerLabel, { required: true })}
+  />
+)
+
+const Select = ({ ...props }) => (
+  <select
+    {...props}
+    {...props.register(props.registerLabel, { required: true })}
+  >
+    <option value='volvo'>Volvo</option>
+    <option value='saab'>Saab</option>
+    <option value='mercedes'>Mercedes</option>
+    <option value='audi'>Audi</option>
+  </select>
+)
 
 export { InputElement }
