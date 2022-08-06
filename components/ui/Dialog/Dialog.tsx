@@ -68,16 +68,16 @@ const BootstrapDialogTitle = (props: DialogTitleProps) => {
 interface IConfirm {
   isOpen: boolean
   setOpen: (state: boolean) => void
-  title: string
   steps: ConsoleStep[]
+  confirmMessage: string
   apiPath: string
 }
 
 const ConfirmDialog: NextPage<IConfirm> = ({
   isOpen,
   setOpen,
-  title,
   steps,
+  confirmMessage,
   apiPath
 }) => {
   // Check if api path is good
@@ -151,7 +151,7 @@ const ConfirmDialog: NextPage<IConfirm> = ({
           id='customized-dialog-title'
           onClose={handleClose}
         >
-          {title}
+          {confirmMessage}
         </BootstrapDialogTitle>
         <DialogContent>
           <ul className={styles.fields}>

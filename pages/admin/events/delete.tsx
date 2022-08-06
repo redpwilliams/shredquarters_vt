@@ -3,23 +3,29 @@ import { InputElement } from '@components/inputs'
 import type { ConsoleStep } from '@components/layouts'
 
 const DeleteEvent = () => {
-  const ol = ['one, two, three']
+  const eventNames = ['one, two, three']
   const DeleteEventSteps: ConsoleStep[] = [
     // Event to Delete
     {
       label: 'Select an event to remove',
       component: (
         <InputElement
-          label='Selected Event'
+          label='Event'
           registerLabel='event_name'
           variant='select'
-          list={ol}
+          list={eventNames}
         />
       )
     }
   ]
 
-  return <ConsoleLayout steps={DeleteEventSteps} api='/api/event/delete' />
+  return (
+    <ConsoleLayout
+      steps={DeleteEventSteps}
+      confirmMessage='Are you sure you want to delete this event?'
+      api='/api/event/delete'
+    />
+  )
 }
 
 DeleteEvent.PageLayout = AdminLayout

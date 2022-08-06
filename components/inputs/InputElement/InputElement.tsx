@@ -13,6 +13,7 @@ type Variant =
     }
   | {
       variant?: 'input'
+      placeholder?: string
     }
 
 type Props = Variant & {

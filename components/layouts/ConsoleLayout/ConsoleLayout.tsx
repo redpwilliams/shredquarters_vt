@@ -24,6 +24,9 @@ interface ConsoleLayoutProps {
   /** An array of steps to be included in the Stepper */
   steps: ConsoleStep[]
 
+  /** Replaces the default modal title */
+  confirmMessage?: string
+
   /**
    * The api route Dialog will point to.
    * Path *must* begin with '/api/*'.
@@ -37,7 +40,9 @@ interface IFormProps {
   [key: string]: string
 }
 
-const ConsoleLayout = ({ steps, api }: ConsoleLayoutProps) => {
+const ConsoleLayout = ({ steps, confirmMessage, api }: ConsoleLayoutProps) => {
+  confirmMessage ??= 'Submit this information?'
+
   const [submitReady, setSubmitReady] = useState(false)
   const [hasErrors, setHasErrors] = useState(false)
 
@@ -145,8 +150,8 @@ const ConsoleLayout = ({ steps, api }: ConsoleLayoutProps) => {
         <ConfirmDialog
           isOpen={submitReady}
           setOpen={setSubmitReady}
-          title='Submit this information?'
           steps={steps}
+          confirmMessage={confirmMessage}
           apiPath={api}
         />
       </form>
