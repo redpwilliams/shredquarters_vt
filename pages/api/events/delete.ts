@@ -13,9 +13,9 @@ export default async function handler(
   validate(req, res)
 
   // Parameters needed to make request
-  const params: Params = { event_name: req.body.event_name }
+  const params: Params = { name: req.body.event_name }
 
-  if (req.method === 'DELETE') {
+  if (req.method === 'POST') {
     const { data, error }: PostgrestResponse<Event> = await supabase
       .from('events')
       .delete()

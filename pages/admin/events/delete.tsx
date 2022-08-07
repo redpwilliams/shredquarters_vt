@@ -1,9 +1,27 @@
 import { AdminLayout, ConsoleLayout } from '@components/layouts'
 import { InputElement } from '@components/inputs'
 import type { ConsoleStep } from '@components/layouts'
+import type { Event } from '@public/types'
+import { supabase } from '@db/_supabase'
+import { PostgrestResponse } from '@supabase/supabase-js'
+import { GetServerSideProps } from 'next'
 
-const DeleteEvent = () => {
-  const eventNames = ['one, two, three']
+export const getServerSideProps: GetServerSideProps = async () => {
+  // Fetch all users
+  const { data }: PostgrestResponse<Event> = await supabase
+    .from('events')
+    .select('*')
+    .order('id')
+
+  return { props: { events: data } }
+}
+
+interface Props {
+  events: Event[]
+}
+
+const DeleteEvent = ({ events }: Props) => {
+  const eventNames = events.map((event) => event.name)
   const DeleteEventSteps: ConsoleStep[] = [
     // Event to Delete
     {
@@ -28,7 +46,7 @@ const DeleteEvent = () => {
   )
 }
 
-type Params = { event_name: string }
+type Params = { name: string }
 
 DeleteEvent.PageLayout = AdminLayout
 
