@@ -1,18 +1,35 @@
 import { AdminLayout, ConsoleLayout } from '@components/layouts'
 import { InputElement } from '@components/inputs'
 import type { ConsoleStep } from '@components/layouts'
+import { supabase } from '@db/_supabase'
+import { User } from '@public/types'
+import { PostgrestResponse } from '@supabase/supabase-js'
+import { GetServerSideProps } from 'next'
 
 // TODO - Admin Page getStaticProps -> useContext to get list of users
+export const getServerSideProps: GetServerSideProps = async () => {
+  // Fetch users
+  const { data }: PostgrestResponse<User> = await supabase
+    .from('admin_users')
+    .select('*')
+    .order('id')
 
-const UpdateEvent = () => {
-  const userEmails = ['one', 'two', 'three']
+  return { props: { users: data } }
+}
+
+interface IUpdateUsers {
+  users: User[]
+}
+
+const UpdateUser = ({ users }: IUpdateUsers) => {
+  const userEmails = users.map((user) => user.email)
   const UpdateEventSteps: ConsoleStep[] = [
     // Event to Update
     {
       label: 'Select an user to update',
       component: (
         <InputElement
-          label='User'
+          label='Previous Email'
           registerLabel='user'
           variant='select'
           list={userEmails}
@@ -22,13 +39,7 @@ const UpdateEvent = () => {
 
     {
       label: 'Provide the new email',
-      component: (
-        <InputElement
-          label='Email'
-          registerLabel='email'
-          placeholder='Previous email here'
-        />
-      )
+      component: <InputElement label='New Email' registerLabel='email' />
     }
   ]
 
@@ -49,7 +60,7 @@ type Params = {
 
 // NOTE - The union of these types represents the entire user data
 
-UpdateEvent.PageLayout = AdminLayout
+UpdateUser.PageLayout = AdminLayout
 
-export default UpdateEvent
+export default UpdateUser
 export type { Keys, Params }

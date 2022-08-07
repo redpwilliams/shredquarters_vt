@@ -12,6 +12,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { styled } from '@mui/material/styles'
 import { ConsoleStep } from '@components/layouts'
 import { useFormContext } from 'react-hook-form'
+import useSWR from 'swr'
 import { StepButton } from '@components/inputs'
 import { LoadingBackdrop } from '@components/ui'
 import styles from './Dialog.module.sass'
@@ -122,11 +123,32 @@ const ConfirmDialog: NextPage<IConfirm> = ({
   }
 
   const [backdropStatus, setBackdropStatus] = useState(false)
+  const [submitReady, setSubmitReady] = useState(false)
+
+  useSWR(
+    submitReady ? apiPath : null,
+    async () => {
+      const res = await fetch(apiPath, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(getValues())
+      })
+
+      const json = await res.json()
+      return json
+    },
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false
+    }
+  )
 
   // TODO - Will add a wait time for better user experience
   const handleSubmit = async () => {
     // Remove Dialog
     setOpen(false)
+    setSubmitReady(true)
     // Wait some time
     await new Promise((resolve) => setTimeout(resolve, 1200))
     console.log('Start Submit')
@@ -137,6 +159,7 @@ const ConfirmDialog: NextPage<IConfirm> = ({
     await new Promise((resolve) => setTimeout(resolve, 5000))
     // Remove loading animation
     setBackdropStatus(false)
+    setSubmitReady(false)
     // Alert that submission was successful, or not successful
   }
 

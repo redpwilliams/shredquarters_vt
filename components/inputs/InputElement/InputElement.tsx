@@ -1,6 +1,6 @@
 // TODO - Change InputElement to InputField
-import { createContext, HTMLInputTypeAttribute } from 'react'
-import { FieldValues, useFormContext, UseFormRegister } from 'react-hook-form'
+import { HTMLInputTypeAttribute } from 'react'
+import { useFormContext } from 'react-hook-form'
 import styles from './InputElement.module.sass'
 
 type Variant =
@@ -27,52 +27,35 @@ type Props = Variant & {
   type?: HTMLInputTypeAttribute
 }
 
-const InputContext = createContext<Props>({
-  label: 'Default Label',
-  registerLabel: 'example',
-  type: 'text',
-  variant: 'input'
-})
-
 /* 
   NOTE - I could add an opt out prop since this uses react hook form 
   by default, but honestly that probably isn't worth it/needed
 */
 
-const InputElement = ({ ...props }: Props) => {
-  const { register } = useFormContext()
+const InputElement = ({ ...props }: Props) => (
+  <div className={styles.container}>
+    <label>{props.label}</label>
+    {getVariant(props.variant, props)}
+  </div>
+)
 
-  return (
-    <InputContext.Provider value={{ ...props }}>
-      <div className={styles.container}>
-        <label>{props.label}</label>
-        {getVariant(props.variant, register, props)}
-      </div>
-    </InputContext.Provider>
-  )
-}
-
-const getVariant = (
-  variant: Props['variant'],
-  register: UseFormRegister<FieldValues>,
-  { ...props }
-) => {
+const getVariant = (variant: Props['variant'], { ...props }) => {
   switch (variant) {
     case 'textarea':
-      return <TextArea {...props} register={register} />
+      return <TextArea {...props} />
     case 'select':
-      return <Select {...props} register={register} />
+      return <Select {...props} />
     default:
-      return <Input {...props} register={register} />
+      return <Input {...props} />
   }
 }
 
-const Input = ({ ...props }) => (
-  <input
-    {...props}
-    {...props.register(props.registerLabel, { required: true })}
-  />
-)
+const Input = ({ ...props }) => {
+  const { register } = useFormContext()
+  return (
+    <input {...props} {...register(props.registerLabel, { required: true })} />
+  )
+}
 
 const TextArea = ({ ...props }) => (
   <textarea
@@ -82,17 +65,17 @@ const TextArea = ({ ...props }) => (
   />
 )
 
-const Select = ({ ...props }) => (
-  <select
-    {...props}
-    {...props.register(props.registerLabel, { required: true })}
-  >
-    {props.list.map((option: string) => (
-      <option key={option} value={option}>
-        {option}
-      </option>
-    ))}
-  </select>
-)
+const Select = ({ ...props }) => {
+  const { register } = useFormContext()
+  return (
+    <select {...props} {...register(props.registerLabel, { required: true })}>
+      {props.list.map((option: string) => (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      ))}
+    </select>
+  )
+}
 
 export { InputElement }

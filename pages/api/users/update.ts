@@ -22,7 +22,7 @@ export default async function handler(
 
   if (req.method === 'PATCH') {
     const { data, error }: PostgrestResponse<User> = await supabase
-      .from('events')
+      .from('admin_users')
       .update(entry)
       .match(params)
 
