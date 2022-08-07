@@ -21,7 +21,7 @@ const UpdateEvent = () => {
     },
 
     // Update name?
-    // TODO - Inputs with placeholder don't need to have new info,
+    // NOTE - Inputs with placeholder don't need to have new info,
     // it should just be previous value if blanked
     {
       label: "Update the event's name",
@@ -61,6 +61,33 @@ const UpdateEvent = () => {
   return <ConsoleLayout steps={UpdateEventSteps} api='/api/event/update' />
 }
 
+// What the API will use to format data
+type Keys = {
+  /** New name of the event */
+  name: string
+
+  /** New date */
+  date: string
+
+  /** New start time */
+  start_time: string
+
+  /** New end time */
+  end_time: string
+
+  /** New location */
+  location: string
+}
+
+// Additional data needed to make request
+type Params = {
+  /** Original name of the event */
+  name: string
+}
+
+// NOTE - The union of these types represents the entire user data
+
 UpdateEvent.PageLayout = AdminLayout
 
 export default UpdateEvent
+export type { Keys, Params }
