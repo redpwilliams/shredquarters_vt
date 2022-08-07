@@ -20,7 +20,7 @@ export default async function handler(
   // Parameters needed to make request
   const params: Params = { email: req.body.user }
 
-  if (req.method === 'PATCH') {
+  if (req.method === 'POST') {
     const { data, error }: PostgrestResponse<User> = await supabase
       .from('admin_users')
       .update(entry)

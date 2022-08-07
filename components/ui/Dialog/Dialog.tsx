@@ -129,7 +129,7 @@ const ConfirmDialog: NextPage<IConfirm> = ({
     submitReady ? apiPath : null,
     async () => {
       const res = await fetch(apiPath, {
-        method: 'PATCH',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(getValues())
       })
