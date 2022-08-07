@@ -7,14 +7,8 @@ const AddOfficer = () => {
     {
       // NOTE - Drop down to select an officer for editing info?
       // Either that or a update/delete toggle? Not priority
-      label: 'Add officer first name',
-      component: <InputElement label='First Name' registerLabel='first_name' />
-    },
-
-    // Officer's Last Name
-    {
-      label: 'Add officer last name',
-      component: <InputElement label='Last Name' registerLabel='last_name' />
+      label: 'Add an officer',
+      component: <InputElement label='Officer' registerLabel='name' />
     },
 
     // TODO - Add Image
@@ -32,7 +26,7 @@ const AddOfficer = () => {
     }
   ]
 
-  return <ConsoleLayout steps={AddOfficerSteps} api='/api/officer/create' />
+  return <ConsoleLayout steps={AddOfficerSteps} api='/api/officers/create' />
 }
 
 AddOfficer.PageLayout = AdminLayout

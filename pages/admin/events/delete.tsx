@@ -23,7 +23,7 @@ const DeleteEvent = () => {
     <ConsoleLayout
       steps={DeleteEventSteps}
       confirmMessage='Are you sure you want to delete this event?'
-      api='/api/event/delete'
+      api='/api/events/delete'
     />
   )
 }

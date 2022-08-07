@@ -58,7 +58,7 @@ const UpdateEvent = () => {
     }
   ]
 
-  return <ConsoleLayout steps={UpdateEventSteps} api='/api/event/update' />
+  return <ConsoleLayout steps={UpdateEventSteps} api='/api/events/update' />
 }
 
 // What the API will use to format data

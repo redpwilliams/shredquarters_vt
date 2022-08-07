@@ -8,8 +8,8 @@ const DeleteOfficer = () => {
       label: 'Choose an officer to remove',
       component: (
         <InputElement
-          label='User Email'
-          registerLabel='email'
+          label='Officer'
+          registerLabel='officer'
           variant='select'
           list={officers}
         />
@@ -17,11 +17,17 @@ const DeleteOfficer = () => {
     }
   ]
 
-  return <ConsoleLayout steps={DeleteOfficerSteps} api='/api/admin/create' />
+  return (
+    <ConsoleLayout
+      steps={DeleteOfficerSteps}
+      api='/api/admin/officers/delete'
+    />
+  )
 }
 
-// TODO - Each crud page should export a type for the data, so the api logic is more clear
+type Params = { name: string }
 
 DeleteOfficer.PageLayout = AdminLayout
 
 export default DeleteOfficer
+export type { Params }
