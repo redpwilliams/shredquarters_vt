@@ -35,7 +35,7 @@ function MyApp({
         <Footer />
       </AuthWrapper>
       <style jsx global>{`
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
           html {
             overflow-y: ${menuState ? 'hidden' : 'unset'};
           }
