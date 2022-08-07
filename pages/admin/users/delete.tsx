@@ -20,6 +20,11 @@ const DeleteUser = () => {
   return <ConsoleLayout steps={DeleteUserSteps} api='/api/admin/create' />
 }
 
+type Params = {
+  email: string
+}
+
 DeleteUser.PageLayout = AdminLayout
 
 export default DeleteUser
+export type { Params }

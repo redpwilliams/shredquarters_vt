@@ -1,9 +1,3 @@
-type Officer = {
-  id: number
-  name: string
-  title: string | null
-}
-
 type Event = {
   name: string
   date: string
@@ -12,4 +6,14 @@ type Event = {
   location: string
 }
 
-export type { Officer, Event }
+type Officer = {
+  id: number
+  name: string
+  title: string | null
+}
+
+type User = {
+  email: string
+}
+
+export type { Event, Officer, User }
