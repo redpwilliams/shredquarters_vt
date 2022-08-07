@@ -39,6 +39,7 @@ const DeleteUser = ({ users }: Props) => {
 }
 
 type Params = {
+  /** Selected email to remove from db */
   email: string
 }
 
