@@ -1,16 +1,25 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Event } from '@public/types'
+import type { Params } from 'pages/admin/events/delete'
 import type { PostgrestResponse } from '@supabase/postgrest-js'
 import { supabase } from '@db/_supabase'
+import { validate } from '../auth/[...nextauth]'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === 'POST') {
+  // Ensure request is authenticated
+  validate(req, res)
+
+  // Parameters needed to make request
+  const params: Params = { event_name: req.body.event_name }
+
+  if (req.method === 'DELETE') {
     const { data, error }: PostgrestResponse<Event> = await supabase
       .from('events')
-      .insert(req.body)
+      .delete()
+      .match(params)
 
     if (data) {
       return res.status(200).json(data)

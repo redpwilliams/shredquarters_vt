@@ -28,6 +28,9 @@ const DeleteEvent = () => {
   )
 }
 
+type Params = { event_name: string }
+
 DeleteEvent.PageLayout = AdminLayout
 
 export default DeleteEvent
+export type { Params }
