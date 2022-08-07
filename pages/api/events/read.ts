@@ -1,18 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Event } from '@public/types'
 import type { PostgrestResponse } from '@supabase/supabase-js'
-import { unstable_getServerSession } from 'next-auth/next'
 import { supabase } from '@db/_supabase'
-import { authOptions } from '../auth/[...nextauth]'
+import { validate } from '../auth/[...nextauth]'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const session = await unstable_getServerSession(req, res, authOptions)
-
-  // Unauthorized
-  if (session === null) return res.status(401).json({ error: 'Unauthorized' })
+  // Ensure request is authenticated
+  validate(req, res)
 
   // Handle GET request
   if (req.method === 'GET') {

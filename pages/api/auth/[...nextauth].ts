@@ -1,4 +1,5 @@
-import NextAuth, { NextAuthOptions } from 'next-auth'
+import { NextApiRequest, NextApiResponse } from 'next'
+import NextAuth, { NextAuthOptions, unstable_getServerSession } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 
 export const authOptions: NextAuthOptions = {
@@ -13,6 +14,14 @@ export const authOptions: NextAuthOptions = {
     signIn: '/auth/signIn'
   },
   secret: process.env.SECRET
+}
+
+export const validate = async (req: NextApiRequest, res: NextApiResponse) => {
+  // Get authorization status
+  const session = await unstable_getServerSession(req, res, authOptions)
+
+  // Unauthorized
+  if (session === null) res.status(401).json({ error: 'Unauthorized' })
 }
 
 export default NextAuth(authOptions)
