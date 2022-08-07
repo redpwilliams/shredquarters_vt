@@ -10,7 +10,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   // Ensure request is authenticated
-  validate(req, res)
+  await validate(req, res)
 
   const params: Params = {
     name: req.body.officer

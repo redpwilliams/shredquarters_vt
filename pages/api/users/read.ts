@@ -14,7 +14,7 @@ export default async function handler(
   // Handle GET request
   if (req.method === 'GET') {
     const { data, error }: PostgrestResponse<Event> = await supabase
-      .from('events')
+      .from('admin_users')
       .select('*')
       .order('id')
 
