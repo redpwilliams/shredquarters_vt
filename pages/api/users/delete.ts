@@ -16,10 +16,10 @@ export default async function handler(
     email: req.body.email
   }
 
-  // Handle GET request
-  if (req.method === 'DELETE') {
+  // Handle request
+  if (req.method === 'POST') {
     const { data, error }: PostgrestResponse<User> = await supabase
-      .from('events')
+      .from('admin_users')
       .delete()
       .match(params)
 
