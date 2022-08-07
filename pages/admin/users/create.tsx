@@ -12,9 +12,14 @@ const AddUser = () => {
     }
   ]
 
-  return <ConsoleLayout steps={AddUserSteps} api='/api/admin/users/create' />
+  return <ConsoleLayout steps={AddUserSteps} api='/api/users/create' />
+}
+
+type Keys = {
+  email: string
 }
 
 AddUser.PageLayout = AdminLayout
 
 export default AddUser
+export type { Keys }
