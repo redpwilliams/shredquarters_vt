@@ -1,25 +1,31 @@
 .container
-  width: 75%
+  width: 45%
+  // min-width: 20%
   height: 100vh
+  // height: calc(100% - var(--navbar-height) - var(--footer-height))
+  // height: calc(100% - var(--footer-height))
   z-index: 90
   position: fixed
   transition: 0.4s ease
   background-color: var(--sq-black)
   box-shadow: 0px 0px 10px 0px #0a0a0a
   padding-bottom: 0 !important
+  overflow-y: scroll
 
   .menu,
   .authMenu
-    height: calc(100% - var(--navbar-height))
+    // height: calc(100% - var(--navbar-height) - var(--footer-height))
+    position: absolute
+    top: var(--navbar-height)
     display: flex
     flex-direction: column
-    justify-content: center
+    justify-content: flex-start
     color: #FFFFFF
     font-size: 2rem
     padding: 1em
 
     li
-      padding: 1rem
+      padding: 0.8rem
 
       span
         font-family: 'IBM Plex Mono', monospace
@@ -33,9 +39,9 @@
     margin-bottom: 20px
 
   h2
-    font-size: 2rem
+    font-size: 1.5rem
     font-family: 'IBM Plex Mono', monospace
-    color: var(--sq-gray)
+    color: var(--sq-gold)
     padding: 5px 0
 
   ol
@@ -44,14 +50,4 @@
   li
     font-family: Raleway, sans-serif
     font-weight: lighter
-    padding: 2px 0
-    margin-left: 15px
-    position: relative
-
-    &::before
-      content: "\25CF"
-      color: var(--sq-gold)
-      position: absolute
-      display: inline-block
-      // width: 1em
-      margin-left: -1em
+    font-size: 0.8em

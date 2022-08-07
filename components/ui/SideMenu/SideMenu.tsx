@@ -14,7 +14,7 @@ const SideMenu = () => {
       className={styles.container}
       style={{
         transform: `translateX(${
-          menuState && size.width! < 576 ? '0%' : '-100%'
+          menuState && size.width! < 768 ? '0%' : '-100%'
         })`
       }}
     >
