@@ -13,6 +13,7 @@ type Officer = {
 }
 
 type User = {
+  id: number
   email: string
 }
 

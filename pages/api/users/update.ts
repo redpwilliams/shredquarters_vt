@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { Event } from '@public/types'
-import type { Keys, Params } from 'pages/admin/events/update'
+import type { User } from '@public/types'
+import type { Keys, Params } from 'pages/admin/users/update'
 import type { PostgrestResponse } from '@supabase/postgrest-js'
 import { supabase } from '@db/_supabase'
 import { validate } from '../auth/[...nextauth]'
@@ -14,18 +14,14 @@ export default async function handler(
 
   // Data to push to db
   const entry: Keys = {
-    name: req.body.new_name,
-    date: req.body.date,
-    start_time: req.body.start_time,
-    end_time: req.body.end_time,
-    location: req.body.location
+    email: req.body.email
   }
 
   // Parameters needed to make request
-  const params: Params = { name: req.body.event_name }
+  const params: Params = { email: req.body.user }
 
   if (req.method === 'PATCH') {
-    const { data, error }: PostgrestResponse<Event> = await supabase
+    const { data, error }: PostgrestResponse<User> = await supabase
       .from('events')
       .update(entry)
       .match(params)
