@@ -81,13 +81,10 @@
 
   ul
     list-style: none
-    display: grid
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
+    display: flex
+    flex-direction: column
     gap: 30px
-    overflow-x: scroll
-    grid-auto-flow: column
-    position: relative
-    width: min-content
+    width: 100%
 
     -ms-overflow-style: none
     scrollbar-width: none
