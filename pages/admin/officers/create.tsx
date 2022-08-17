@@ -15,13 +15,21 @@ const AddOfficer = () => {
 
     // Officer Bio
     {
-      label: 'Add officer bio',
+      label: 'Write the bio',
       component: (
         <InputElement
           label='Biography'
           variant='textarea'
           registerLabel='bio'
         />
+      )
+    },
+
+    // Officer picture
+    {
+      label: 'Choose a picture',
+      component: (
+        <InputElement label='Image' registerLabel='image' type='file' />
       )
     }
   ]
