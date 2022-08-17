@@ -57,13 +57,16 @@ const Input = ({ ...props }) => {
   )
 }
 
-const TextArea = ({ ...props }) => (
-  <textarea
-    rows={5}
-    {...props}
-    {...props.register(props.registerLabel, { required: true })}
-  />
-)
+const TextArea = ({ ...props }) => {
+  const { register } = useFormContext()
+  return (
+    <textarea
+      rows={5}
+      {...props}
+      {...register(props.registerLabel, { required: true })}
+    />
+  )
+}
 
 const Select = ({ ...props }) => {
   const { register } = useFormContext()
