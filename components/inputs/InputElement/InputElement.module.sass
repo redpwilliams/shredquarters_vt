@@ -36,6 +36,7 @@
     transition-duration: 0.35s
     font-size: 0.8em
     border-radius: 6px 6px 0 0
+    position: relative
 
     &:focus
       outline: none
@@ -45,3 +46,10 @@
   input[type="date"]::-webkit-calendar-picker-indicator
     background: none
     display: none
+
+  input::file-selector-button
+    border: none
+    position: absolute
+    opacity: 0
+    cursor: pointer
+    width: 100%
