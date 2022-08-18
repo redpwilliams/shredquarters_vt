@@ -4,7 +4,7 @@ import { NextPage, GetServerSideProps } from 'next'
 import { BoardType, TextDivider, UpcomingEvent } from '@components/ui'
 
 // GSP Types Used
-import type { Officer } from '@public/types'
+import type { Event } from '@public/types'
 
 // Supabase Client
 import { supabase } from '@db/_supabase'
@@ -16,20 +16,22 @@ import styles from '../styles/Home.module.sass'
 export const getServerSideProps: GetServerSideProps = async () => {
   // Create Client
 
-  // Fetch all officers
-  const { data }: PostgrestResponse<Officer> = await supabase
-    .from('officers')
+  // Fetch all events
+  const { data }: PostgrestResponse<Event> = await supabase
+    .from('events')
     .select('*')
     .order('id')
 
-  return { props: { officers: data } }
+  console.log(data)
+
+  return { props: { events: data } }
 }
 
 interface IHome {
-  officers: Officer[]
+  events: Event[]
 }
 
-const Home: NextPage<IHome> = () => (
+const Home: NextPage<IHome> = ({ events }) => (
   <div className={styles.container}>
     <Head>
       <title>Create Next App</title>
@@ -96,19 +98,22 @@ const Home: NextPage<IHome> = () => (
             </BoardType>
           </ul>
         </section>
-        <TextDivider header='The Team' float={80} id='team' />
-        <TextDivider header='The Plan' float={20} id='plan' />
+        <TextDivider header='The Plan' float={80} id='plan' />
         <section className={styles.events}>
           <ul>
-            <UpcomingEvent
-              day={5}
-              month='June'
-              name='Lorem ipsum dolor sit amet' // TODO - On extended hover, show description of event
-              location='Best possible Place'
-              link='https://goo.gl/maps/23YMJ86AsvqjRzCh9'
-            />
+            {events.map((event) => (
+              <UpcomingEvent
+                date={event.date}
+                name={event.name}
+                start_time={event.start_time}
+                end_time={event.end_time}
+                location={event.location}
+                key={event.id}
+              />
+            ))}
           </ul>
         </section>
+        <TextDivider header='The Team' float={20} id='team' />
         <TextDivider header='The Network' float={80} id='network' />
         <section className={styles.network}>
           <form className={styles.contact} noValidate autoComplete='off'>

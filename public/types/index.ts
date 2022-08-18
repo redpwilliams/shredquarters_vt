@@ -1,4 +1,5 @@
 type Event = {
+  id: number
   name: string
   date: string
   start_time: string

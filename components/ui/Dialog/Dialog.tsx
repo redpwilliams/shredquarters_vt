@@ -115,6 +115,7 @@ const ConfirmDialog: NextPage<IConfirm> = ({
         )
     })
 
+    // TODO - Final step to format all fields so they are ready for fetching later on
     return inputsArray
   }
 
