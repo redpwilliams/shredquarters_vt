@@ -37,7 +37,15 @@ const AuthenticatedAdmin = () => (
       Adds an event to the home page which automatically deletes when the event
       has passed.
     </p>
-    <LinkedHeader header='Remove an Event' href='/admin/events/delete' />
+    <LinkedHeader header='Remove an event' href='/admin/events/delete' />
+    <p>Manualy removes an event from the home page.</p>
+    <LinkedHeader header='Add an officer' href='/admin/officers/create' />
+    <p>Adds an officer&apos;s biography and picture to the home page.</p>
+    <LinkedHeader header='Remove an officer' href='/admin/officers/delete' />
+    <p>Removes all information of the officer from the home page.</p>
+    <LinkedHeader header='Add a user' href='/admin/users/create' />
+    <p>Gives access to the admin console to a specific user via email.</p>
+    <LinkedHeader header='Delete a user' href='/admin/users/delete' />
     <p>Manualy removes an event from the home page.</p>
   </AdminLayout>
 )
