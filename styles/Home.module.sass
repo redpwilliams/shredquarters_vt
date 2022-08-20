@@ -162,8 +162,14 @@
     align-items: center
     font-size: 1.6em
     cursor: pointer
+    width: fit-content
+
+    &:hover
+      .send_button
+        transform: translateX(10px)
 
     & > div
+      transition: 0.2s ease 0.1s
       margin-left: 10px
 
 .form_row

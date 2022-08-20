@@ -116,34 +116,40 @@ const Home: NextPage<IHome> = ({ events }) => (
         <TextDivider header='The Team' float={20} id='team' />
         <TextDivider header='The Network' float={80} id='network' />
         <section className={styles.network}>
-          <form className={styles.contact} noValidate autoComplete='off'>
+          <form
+            className={styles.contact}
+            noValidate
+            autoComplete='off'
+            action='https://formspree.io/f/mvoyoepo'
+            method='POST'
+          >
             <div className={styles.form_row} id={styles.firstname}>
               <label>First Name</label>
-              <input type='text' />
+              <input type='text' name='first_name' />
             </div>
             <div className={styles.form_row} id={styles.lastname}>
               <label>Last Name</label>
-              <input type='text' />
+              <input type='text' name='last_name' />
             </div>
             <div className={styles.form_row} id={styles.email}>
               <label>Email</label>
-              <input type='email' />
+              <input type='email' name='email' />
             </div>
             <div className={styles.form_row} id={styles.phone}>
               <label>Phone</label>
-              <input type='tel' />
+              <input type='tel' name='phone' />
             </div>
             <div className={styles.form_row} id={styles.subject}>
               <label>Subject</label>
-              <input id='text' />
+              <input id='text' name='subject' />
             </div>
             <div className={styles.form_row} id={styles.message}>
               <label>Message</label>
-              <textarea />
+              <textarea name='message' />
             </div>
             <button type='submit'>
               Send it
-              <div>
+              <div className={styles.send_button}>
                 <Image
                   width={24}
                   height={12}
