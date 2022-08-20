@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useRef } from 'react'
 import { AdminLayout } from '@components/layouts/'
 import { LoadingBackdrop } from '@components/ui'
+import Link from 'next/link'
 
 /**
  * Renders `AuthenticatedAdmin` component if authenticated, fdgfhg
@@ -31,16 +32,24 @@ const Admin: NextPage = () => {
 /** Renders when client is Authenticated */
 const AuthenticatedAdmin = () => (
   <AdminLayout>
+    <LinkedHeader header='Create an event' href='/admin/events/create' />
     <p>
-      The Shrequarters Admin Console is a page available to predetermined and
-      authenticated users to add, update, or remove content relating to the
-      Shredquarters Website.
-      <br />
-      <br />
-      This section will explain which options are available, and how to use each
-      of them.
+      Adds an event to the home page which automatically deletes when the event
+      has passed.
     </p>
+    <LinkedHeader header='Remove an Event' href='/admin/events/delete' />
+    <p>Manualy removes an event from the home page.</p>
   </AdminLayout>
+)
+
+interface LHProps {
+  header: string
+  href: string
+}
+const LinkedHeader = ({ header, href }: LHProps) => (
+  <h1>
+    <Link href={href}>{header}</Link>
+  </h1>
 )
 
 export default Admin
