@@ -5,23 +5,17 @@ const AdminNavigation = () => (
   <ul className={styles.container}>
     <li>
       <Link href='/admin' replace>
-        <a>Home</a>
+        About
       </Link>
     </li>
     <li>
-      <Link href='/admin/events' replace>
-        <a>Events</a>
-      </Link>
+      <Link href='/admin/events/create'>Events</Link>
     </li>
     <li>
-      <Link href='/admin/officers' replace>
-        <a>Officers</a>
-      </Link>
+      <Link href='/admin/officers/create'>Officers</Link>
     </li>
     <li>
-      <Link href='/admin/users' replace>
-        <a>Users</a>
-      </Link>
+      <Link href='/admin/users/create'>Users</Link>
     </li>
   </ul>
 )
