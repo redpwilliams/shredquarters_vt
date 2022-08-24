@@ -11,7 +11,11 @@ const AddOfficer = () => {
       component: <InputElement label='Officer' registerLabel='name' />
     },
 
-    // TODO - Add Image
+    // Officer Title
+    {
+      label: 'Specify their position',
+      component: <InputElement label='Position' registerLabel='position' />
+    },
 
     // Officer Bio
     {
@@ -23,14 +27,6 @@ const AddOfficer = () => {
           registerLabel='bio'
         />
       )
-    },
-
-    // Officer picture
-    {
-      label: 'Choose a picture',
-      component: (
-        <InputElement label='Image' registerLabel='image' type='file' />
-      )
     }
   ]
 
@@ -39,4 +35,17 @@ const AddOfficer = () => {
 
 AddOfficer.PageLayout = AdminLayout
 
+// What the API will use to format data
+type Keys = {
+  /** Officer's name */
+  name: string
+
+  /** Officer's position */
+  position: string
+
+  /** Officer biography */
+  bio: string
+}
+
 export default AddOfficer
+export type { Keys }

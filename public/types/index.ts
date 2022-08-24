@@ -24,9 +24,14 @@ type Event = {
 }
 
 type Officer = {
+  /** Database Id number */
   id: number
+
+  /** Officer's full name */
   name: string
-  title: string | null
+
+  /** Officer's position/role in the club */
+  position: string
 }
 
 type User = {
