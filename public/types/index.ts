@@ -1,9 +1,25 @@
+/**
+ * Event Type
+ * Events are shown on the events section of the website
+ * and has qualities relating to the name and setting of the event
+ */
 type Event = {
+  /** Database Id number */
   id: number
+
+  /** Name of the event */
   name: string
-  date: string
+
+  /** Full date of the event in YYYY-mm-dd format */
+  date: Date
+
+  /** Start time */
   start_time: string
+
+  /** End time */
   end_time: string
+
+  /** Location of the event */
   location: string
 }
 

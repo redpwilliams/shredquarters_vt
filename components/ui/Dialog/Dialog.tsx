@@ -97,7 +97,6 @@ const ConfirmDialog: NextPage<IConfirm> = ({
 
     steps.forEach((step) => {
       if (step.component.type.name !== inputComponentName) {
-        // REVIEW - I think this change fixes the issue
         step.component.props.children?.forEach((child: ReactElement) => {
           inputsArray.push(
             <li key={child.props.registerLabel}>

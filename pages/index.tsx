@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { NextPage, GetStaticProps } from 'next'
 import { BoardType, TextDivider, UpcomingEvent } from '@components/ui'
-
 // GSP Types Used
 import type { Event } from '@public/types'
 
@@ -23,11 +22,11 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { events: data } }
 }
 
-interface IHome {
+interface Props {
   events: Event[]
 }
 
-const Home: NextPage<IHome> = ({ events }) => (
+const Home: NextPage<Props> = ({ events }) => (
   <div className={styles.container}>
     <Head>
       <title>Create Next App</title>
@@ -98,14 +97,7 @@ const Home: NextPage<IHome> = ({ events }) => (
         <section className={styles.events}>
           <ul>
             {events.map((event) => (
-              <UpcomingEvent
-                date={event.date}
-                name={event.name}
-                start_time={event.start_time}
-                end_time={event.end_time}
-                location={event.location}
-                key={event.id}
-              />
+              <UpcomingEvent event={event} key={event.id} />
             ))}
           </ul>
         </section>
