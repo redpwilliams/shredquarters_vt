@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { Event } from '@public/types'
+import type { User } from '@public/types'
 import type { PostgrestResponse } from '@supabase/supabase-js'
 import { supabase } from '@db/_supabase'
 import { validate } from '../auth/[...nextauth]'
@@ -13,7 +13,7 @@ export default async function handler(
 
   // Handle GET request
   if (req.method === 'GET') {
-    const { data, error }: PostgrestResponse<Event> = await supabase
+    const { data, error }: PostgrestResponse<User> = await supabase
       .from('admin_users')
       .select('*')
       .order('id')

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { NextPage, GetServerSideProps } from 'next'
+import { NextPage, GetStaticProps } from 'next'
 import { BoardType, TextDivider, UpcomingEvent } from '@components/ui'
 
 // GSP Types Used
@@ -13,16 +13,12 @@ import type { PostgrestResponse } from '@supabase/supabase-js'
 // Styles
 import styles from '../styles/Home.module.sass'
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  // Create Client
-
+export const getStaticProps: GetStaticProps = async () => {
   // Fetch all events
   const { data }: PostgrestResponse<Event> = await supabase
     .from('events')
     .select('*')
     .order('id')
-
-  console.log(data)
 
   return { props: { events: data } }
 }
@@ -145,7 +141,7 @@ const Home: NextPage<IHome> = ({ events }) => (
             </div>
             <div className={styles.form_row} id={styles.message}>
               <label>Message</label>
-              <textarea name='message' />
+              <textarea name='message' rows={5} />
             </div>
             <button type='submit'>
               Send it
