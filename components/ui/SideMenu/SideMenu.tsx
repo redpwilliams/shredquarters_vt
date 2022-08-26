@@ -15,7 +15,8 @@ const SideMenu = () => {
       style={{
         transform: `translateX(${
           menuState && size.width! < 768 ? '0%' : '-100%'
-        })`
+        })`,
+        boxShadow: `0px 0px ${menuState ? '10px' : '0px'} 0px #0a0a0a`
       }}
     >
       {isAuthed ? <AuthMenu /> : <Menu />}
