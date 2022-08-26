@@ -27,11 +27,17 @@ type Officer = {
   /** Database Id number */
   id: number
 
-  /** Officer's full name */
-  name: string
+  /** Officer's first name */
+  first_name: string
+
+  /** Officer's last name */
+  last_name: string
 
   /** Officer's position/role in the club */
   position: string
+
+  /** The officer's corresponding src */
+  src: string
 }
 
 type User = {
