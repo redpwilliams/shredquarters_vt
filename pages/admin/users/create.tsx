@@ -7,7 +7,7 @@ const AddUser = () => {
     {
       label: 'Add a user email',
       component: (
-        <InputElement label='User Email' type='email' registerLabel='email' />
+        <InputElement label='User Email' type='email' register_label='email' />
       )
     }
   ]

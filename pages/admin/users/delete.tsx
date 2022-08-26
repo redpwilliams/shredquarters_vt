@@ -27,7 +27,7 @@ const DeleteUser = ({ users }: Props) => {
       component: (
         <InputElement
           label='User Email'
-          registerLabel='email'
+          register_label='email'
           variant='select'
           list={emails}
         />

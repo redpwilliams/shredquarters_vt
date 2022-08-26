@@ -5,16 +5,20 @@ const AddOfficer = () => {
   const AddOfficerSteps: ConsoleStep[] = [
     // Officer's First Name
     {
-      // NOTE - Drop down to select an officer for editing info?
-      // Either that or a update/delete toggle? Not priority
-      label: 'Add an officer',
-      component: <InputElement label='Officer' registerLabel='name' />
+      label: 'Provide their first name',
+      component: <InputElement label='Officer' register_label='name' />
     },
 
-    // Officer Title
+    // Officer's First Name
+    {
+      label: 'Provide their last name',
+      component: <InputElement label='Officer' register_label='name' />
+    },
+
+    // Officer position
     {
       label: 'Specify their position',
-      component: <InputElement label='Position' registerLabel='position' />
+      component: <InputElement label='Position' register_label='position' />
     },
 
     // Officer Bio
@@ -24,7 +28,7 @@ const AddOfficer = () => {
         <InputElement
           label='Biography'
           variant='textarea'
-          registerLabel='bio'
+          register_label='bio'
         />
       )
     }

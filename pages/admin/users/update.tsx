@@ -30,7 +30,7 @@ const UpdateUser = ({ users }: IUpdateUsers) => {
       component: (
         <InputElement
           label='Previous Email'
-          registerLabel='user'
+          register_label='user'
           variant='select'
           list={userEmails}
         />
@@ -39,7 +39,7 @@ const UpdateUser = ({ users }: IUpdateUsers) => {
 
     {
       label: 'Provide the new email',
-      component: <InputElement label='New Email' registerLabel='email' />
+      component: <InputElement label='New Email' register_label='email' />
     }
   ]
 

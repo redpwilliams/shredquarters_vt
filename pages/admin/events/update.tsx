@@ -13,7 +13,7 @@ const UpdateEvent = () => {
       component: (
         <InputElement
           label='Event'
-          registerLabel='event_name'
+          register_label='event_name'
           variant='select'
           list={eventNames}
         />
@@ -28,7 +28,7 @@ const UpdateEvent = () => {
       component: (
         <InputElement
           label='Name'
-          registerLabel='new_name'
+          register_label='new_name'
           placeholder='Previous name here'
         />
       )
@@ -39,9 +39,9 @@ const UpdateEvent = () => {
       label: 'Update the characteristics',
       component: (
         <>
-          <InputElement label='Date' type='date' registerLabel='date' />
-          <InputElement label='Start Time' type='time' registerLabel='start' />
-          <InputElement label='End Time' type='time' registerLabel='end' />
+          <InputElement label='Date' type='date' register_label='date' />
+          <InputElement label='Start Time' type='time' register_label='start' />
+          <InputElement label='End Time' type='time' register_label='end' />
         </>
       )
     },
@@ -51,7 +51,7 @@ const UpdateEvent = () => {
       component: (
         <InputElement
           label='Location'
-          registerLabel='new_location'
+          register_label='new_location'
           placeholder='Previous location here'
         />
       )

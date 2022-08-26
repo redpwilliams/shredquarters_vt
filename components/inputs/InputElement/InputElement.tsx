@@ -21,7 +21,7 @@ type Props = Variant & {
   label: string
 
   /** Custom label to give the InputField for form hook */
-  registerLabel: string
+  register_label: string
 
   /** Input type of the field */
   type?: HTMLInputTypeAttribute
@@ -53,7 +53,7 @@ const getVariant = (variant: Props['variant'], { ...props }) => {
 const Input = ({ ...props }) => {
   const { register } = useFormContext()
   return (
-    <input {...props} {...register(props.registerLabel, { required: true })} />
+    <input {...props} {...register(props.register_label, { required: true })} />
   )
 }
 
@@ -63,7 +63,7 @@ const TextArea = ({ ...props }) => {
     <textarea
       rows={5}
       {...props}
-      {...register(props.registerLabel, { required: true })}
+      {...register(props.register_label, { required: true })}
     />
   )
 }
@@ -71,7 +71,7 @@ const TextArea = ({ ...props }) => {
 const Select = ({ ...props }) => {
   const { register } = useFormContext()
   return (
-    <select {...props} {...register(props.registerLabel, { required: true })}>
+    <select {...props} {...register(props.register_label, { required: true })}>
       {props.list.map((option: string) => (
         <option key={option} value={option}>
           {option}

@@ -9,7 +9,7 @@ const DeleteOfficer = () => {
       component: (
         <InputElement
           label='Officer'
-          registerLabel='officer'
+          register_label='officer'
           variant='select'
           list={officers}
         />

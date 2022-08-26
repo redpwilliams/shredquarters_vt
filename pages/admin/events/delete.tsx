@@ -29,7 +29,7 @@ const DeleteEvent = ({ events }: Props) => {
       component: (
         <InputElement
           label='Event'
-          registerLabel='event_name'
+          register_label='event_name'
           variant='select'
           list={eventNames}
         />
