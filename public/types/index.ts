@@ -36,7 +36,10 @@ type Officer = {
   /** Officer's position/role in the club */
   position: string
 
-  /** The officer's corresponding src */
+  /** Officer's bio */
+  bio: string
+
+  /** The officer's corresponding image src */
   src: string
 }
 
