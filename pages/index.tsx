@@ -29,7 +29,6 @@ export const getStaticProps: GetStaticProps = async () => {
     .from('officers')
     .select('*')
     .order('first_name')
-  console.log(officers)
 
   return { props: { events, officers } }
 }

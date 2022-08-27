@@ -6,7 +6,6 @@ import styles from './OfficerImage.module.sass'
 const OfficerImage = ({ officer }: { officer: Officer }) => {
   const DEFAULT_IMAGE_PATH = '/img/DefaultProjectImage.png'
   const [imageUrl, setImageUrl] = useState(officer.src)
-  console.log(officer.src)
 
   useCallback(async () => {
     // Set to URL, or default image if it doesn't exist

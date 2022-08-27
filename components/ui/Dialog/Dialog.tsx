@@ -151,7 +151,6 @@ const ConfirmDialog: NextPage<IConfirm> = ({
     setSubmitReady(true)
     // Wait some time
     await new Promise((resolve) => setTimeout(resolve, 1200))
-    console.log('Start Submit')
     // Show loading animation
     setBackdropStatus(true)
     // Post data
