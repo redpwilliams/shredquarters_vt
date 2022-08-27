@@ -1,27 +1,24 @@
 import { useCallback, useState } from 'react'
 import Image from 'next/image'
+import { Officer } from '@public/types'
 
-interface Props {
-  /**
-   * Name of the image. Should be the officer's name
-   * Format: {first name}_{last_name}
-   */
-  src: string
-  first_name: string
-  // last_name: string
-}
-
-const OfficerImage = ({ src, first_name }: Props) => {
+const OfficerImage = ({ officer }: { officer: Officer }) => {
   const DEFAULT_IMAGE_PATH = '/img/DefaultProjectImage.png'
-  const [imageUrl, setImageUrl] = useState(`${src}${first_name}`)
-  console.log(src)
+  const [imageUrl, setImageUrl] = useState(officer.src)
+  console.log(officer.src)
 
   useCallback(async () => {
     // Set to URL, or default image if it doesn't exist
-    setImageUrl(src || DEFAULT_IMAGE_PATH)
-  }, [src])
+    setImageUrl(officer.src || DEFAULT_IMAGE_PATH)
+  }, [officer.src])
 
-  return <Image id='img' src={imageUrl} width={264} height={264} />
+  return (
+    <li>
+      <Image id='img' src={imageUrl} width={264} height={264} />
+      <h1>{officer.first_name}</h1>
+      <h2>officer.last_name</h2>
+    </li>
+  )
 }
 
 export { OfficerImage }
