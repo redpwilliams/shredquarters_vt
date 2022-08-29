@@ -1,20 +1,25 @@
 .container
-  display: grid
-  grid-template-columns: auto auto 20rem
-  grid-template-rows: 1
-  justify-content: flex-start
+  display: flex
+  justify-content: space-between
   align-content: flex-start
+  flex-wrap: wrap
+
+  &:not(:last-of-type)
+    margin-bottom: 4em
+
+.header
+  display: flex
 
 .img
   width: fit-content
   padding: 0.8em
 
-.left
-  display: grid
-  grid-template-columns: 65% auto
+.name
+  display: flex
+  flex-direction: column
   font-family: 'Work Sans', sans-serif
-  align-items: center
-  justify-content: space-between
+  align-items: flex-start
+  justify-content: center
   width: 100%
 
   h1
@@ -24,7 +29,6 @@
     text-transform: capitalize
     font-family: Raleway, sans-serif
     margin: 0.4em 0 0em 0.4em
-    // width: fit-content
 
   h2
     color: var(--sq-gold)
@@ -33,53 +37,58 @@
     font-weight: 400
     margin-left: 0.4em
     position: relative
-    // width: min-content
+
+.info
+  width: 46rem
+  align-self: flex-start
+  padding: 1em 0
+  flex-grow: 0
+  position: relative
 
   h3
     color: var(--sq-gray)
     font-style: italic
     font-size: 2rem
-    position: relative
     text-align: center
-    margin-left: 0.4em
+    z-index: -1
+    position: relative
+    display: block
+    background-color: var(--sq-black)
+    margin: auto auto
+    line-height: 100%
+    transform: translateY(50%)
+    padding: 0 0.6em
 
-    &::before
+    &::after
       content: ''
       width: 100%
       height: 4px
       background-color: var(--sq-white)
       position: absolute
       display: block
-      margin-left: 0.4em
-      z-index: -2
+      z-index: -1
       top: 50%
-
-    // &::after
-    //   content: ''
-    //   width: 100px
-    //   display: block
-    //   height: 10px
-    //   z-index: -1
-    //   background-color: var(--sq-black)
-    //   position: absolute
-    //   top: 50%
-    //   left: 50%
-    //   transform: translateX(-50%)
+      left: 50%
+      transform: translate(-50%, -50%)
 
   p
     color: var(--sq-white)
     font-family: 'IBM Plex Mono' monospace
     flex-grow: 1
     font-size: 1.5rem
+    margin: 2em 1em
 
-.right
-  // flex-grow: 1
-  margin: 20px 2em
-  align-self: flex-start
+  & span
+    position: relative
+    z-index: 0
+    padding: 1em
 
-  h3
-    text-align: center
-
-  p
-    text-align: left
-    padding: 0 1em
+    &::before
+      content: ''
+      width: 100%
+      height: 100%
+      position: absolute
+      background-color: var(--sq-black)
+      left: 50%
+      transform: translateX(-50%)
+      z-index: -1
