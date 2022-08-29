@@ -4,7 +4,7 @@ import { Officer } from '@public/types'
 import styles from './OfficerImage.module.sass'
 
 const OfficerImage = ({ officer }: { officer: Officer }) => {
-  const DEFAULT_IMAGE_PATH = '/img/DefaultProjectImage.png'
+  const DEFAULT_IMAGE_PATH = '/img/DefaultOfficerImage.jpg'
   const [imageUrl, setImageUrl] = useState(officer.src)
 
   useCallback(async () => {
