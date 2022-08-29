@@ -22,7 +22,7 @@ import styles from './Dialog.module.sass'
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiPaper-root': {
-    color: '#303030'
+    backgroundColor: '#303030'
   },
   '& .MuiDialogTitle-root': {
     fontSize: '2.5rem',
@@ -99,17 +99,17 @@ const ConfirmDialog: NextPage<IConfirm> = ({
       if (step.component.type.name !== inputComponentName) {
         step.component.props.children?.forEach((child: ReactElement) => {
           inputsArray.push(
-            <li key={child.props.registerLabel}>
+            <li key={child.props.register_label}>
               <h2>{child.props.label}</h2>
-              <p>{data[`${child.props.registerLabel}`]}</p>
+              <p>{data[`${child.props.register_label}`]}</p>
             </li>
           )
         })
       } else
         inputsArray.push(
-          <li key={step.component.props.registerLabel}>
+          <li key={step.component.props.register_label}>
             <h2>{step.component.props.label}</h2>
-            <p>{data[`${step.component.props.registerLabel}`]}</p>
+            <p>{data[`${step.component.props.register_label}`]}</p>
           </li>
         )
     })
