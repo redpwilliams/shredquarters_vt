@@ -25,10 +25,36 @@ export const getStaticProps: GetStaticProps = async () => {
     .select('*')
     .order('id')
 
+  // Fetch all officers
   const { data: officers }: PostgrestResponse<Officer> = await supabase
     .from('officers')
     .select('*')
     .order('first_name')
+
+  console.log(process.env.BUCKET_PATH)
+  // Get all file names in bucket
+  const { data: images } = await supabase.storage
+    .from('officer-images')
+    // This gets rid of the default image dot file
+    .list(undefined, { offset: 1 })
+
+  // Make an array of file names from each image
+  const imageNames = images?.map((image) => image.name)
+
+  officers?.forEach((officer) => {
+    const image = imageNames?.find((file_name) =>
+      // Follows the {First Name}_{Last_Name} pattern, need it to get file type
+      file_name.startsWith(`${officer.first_name}_${officer.last_name}`)
+    )
+
+    // Set the officer's src prop to the file name, or the default image if it doesn't exist
+    officer.src = image
+      ? `${process.env.BUCKET_PATH}${image}`
+      : '/img/DefaultOfficerImage.jpg'
+  })
+
+  console.log(imageNames)
+  console.log(officers)
 
   return { props: { events, officers } }
 }

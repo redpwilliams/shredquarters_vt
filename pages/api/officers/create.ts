@@ -12,18 +12,22 @@ export default async function handler(
 ) {
   await validate(req, res)
 
+  console.log(req.body)
+
   const entry: Keys = {
     first_name: req.body['First Name'],
     last_name: req.body['Last Name'],
     position: req.body['Position'],
     bio: req.body['Bio'],
-    src: `${process.env.SUPABASE_URL}/storage/v1/object/public/officer-images/${req.body['First Name']}_${req.body['Last Name']}`
+    src: `${process.env.BUCKET_PATH}${req.body['First Name']}_${req.body['Last Name']}`
   }
 
   if (req.method === 'POST') {
     const { data, error }: PostgrestResponse<Officer> = await supabase
       .from('officers')
       .insert(entry)
+
+    console.log(data, error)
 
     if (data) {
       return res.status(200).json(data)

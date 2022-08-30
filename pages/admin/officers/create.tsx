@@ -6,13 +6,13 @@ const AddOfficer = () => {
     // Officer's First Name
     {
       label: 'Provide their first name',
-      component: <InputElement label='Officer' register_label='First Name' />
+      component: <InputElement label='First Name' register_label='First Name' />
     },
 
     // Officer's First Name
     {
       label: 'Provide their last name',
-      component: <InputElement label='Officer' register_label='Last Name' />
+      component: <InputElement label='Last Name' register_label='Last Name' />
     },
 
     // Officer position
