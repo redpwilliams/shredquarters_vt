@@ -12,8 +12,6 @@ export default async function handler(
 ) {
   await validate(req, res)
 
-  console.log(req.body)
-
   const entry: Keys = {
     first_name: req.body['First Name'],
     last_name: req.body['Last Name'],
@@ -26,8 +24,6 @@ export default async function handler(
     const { data, error }: PostgrestResponse<Officer> = await supabase
       .from('officers')
       .insert(entry)
-
-    console.log(data, error)
 
     if (data) {
       return res.status(200).json(data)

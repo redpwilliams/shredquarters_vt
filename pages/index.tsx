@@ -31,7 +31,6 @@ export const getStaticProps: GetStaticProps = async () => {
     .select('*')
     .order('first_name')
 
-  console.log(process.env.BUCKET_PATH)
   // Get all file names in bucket
   const { data: images } = await supabase.storage
     .from('officer-images')
@@ -52,9 +51,6 @@ export const getStaticProps: GetStaticProps = async () => {
       ? `${process.env.BUCKET_PATH}${image}`
       : '/img/DefaultOfficerImage.jpg'
   })
-
-  console.log(imageNames)
-  console.log(officers)
 
   return { props: { events, officers } }
 }
