@@ -31,6 +31,8 @@ export const getStaticProps: GetStaticProps = async () => {
     .select('*')
     .order('first_name')
 
+  // TODO - Handle null case for officers and events, if database fetching error
+
   // Get all file names in bucket
   const { data: images } = await supabase.storage
     .from('officer-images')
@@ -130,7 +132,7 @@ const Home: NextPage<Props> = ({ events, officers }) => (
         <TextDivider header='The Plan' float={80} id='plan' />
         <section className={styles.events}>
           <ul>
-            {events.map((event) => (
+            {events?.map((event) => (
               <UpcomingEvent event={event} key={event.id} />
             ))}
           </ul>
@@ -138,7 +140,7 @@ const Home: NextPage<Props> = ({ events, officers }) => (
         <TextDivider header='The Team' float={20} id='team' />
         <section className={styles.team}>
           <ul>
-            {officers.map((officer) => (
+            {officers?.map((officer) => (
               <OfficerImage officer={officer} key={officer.id} />
             ))}
           </ul>

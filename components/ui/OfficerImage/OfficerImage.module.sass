@@ -1,17 +1,18 @@
+@use 'styles/mixins' as *
+
 .container
   display: flex
   justify-content: space-between
   align-content: flex-start
-  flex-wrap: wrap
 
   &:not(:last-of-type)
     margin-bottom: 4em
 
 .header
   display: flex
+  width: max-content
 
 .img
-  // height: 224px
   padding: 0.8em
 
 .name
@@ -39,11 +40,12 @@
     position: relative
 
 .info
-  width: 46rem
+  max-width: 50%
   align-self: flex-start
   padding: 1em 0
   flex-grow: 0
   position: relative
+  margin-left: 5em
 
   h3
     color: var(--sq-gray)
@@ -92,3 +94,30 @@
       left: 50%
       transform: translateX(-50%)
       z-index: -1
+
+@include lg-max
+
+  .container
+    flex-direction: column
+    align-items: center
+
+  .header
+    justify-content: center
+    flex-direction: column
+    align-items: center
+    flex-wrap: nowrap
+
+  .name
+    align-items: center
+    margin: 0.4em 0 0 0
+
+    & h1, & h2
+      margin: 0
+
+  .info
+    min-width: 100%
+    align-self: center
+    margin: 0
+
+    p
+      display: none
