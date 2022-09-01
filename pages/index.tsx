@@ -191,15 +191,14 @@ const Home: NextPage<Props> = ({ events, officers }) => (
             </button>
           </form>
           <div className={styles.wheel_iso}>
-            <div>
-              <Image
-                width={64}
-                height={64}
-                alt=''
-                src='/img/wheel_iso.svg'
-                layout='responsive'
-              />
-            </div>
+            <Image
+              width={64}
+              height={64}
+              alt=''
+              src='/img/wheel_iso.svg'
+              layout='responsive'
+              objectFit='contain'
+            />
           </div>
         </section>
       </div>
