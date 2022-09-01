@@ -73,7 +73,7 @@ const Home: NextPage<Props> = ({ events, officers }) => (
           </h1>
           <div className={styles.iso_truck}>
             <Image
-              src='/img/truck_iso_gold.svg'
+              src='/img/truck_iso.svg'
               layout='responsive'
               width='64'
               height='64'
@@ -92,8 +92,9 @@ const Home: NextPage<Props> = ({ events, officers }) => (
         <section>
           <ul className={styles.boards}>
             <BoardType
-              src='/img/skateboard_iso_gold.svg'
+              src='/img/skateboard_iso.svg'
               alt='Skateboard isometric picture'
+              header='Skateboards'
             >
               The hallmark of Shredquarters - you can find a variety of
               skateboarders affiliated with the club. From casual street skaters
@@ -102,8 +103,9 @@ const Home: NextPage<Props> = ({ events, officers }) => (
               even beginner shredders can thrive on their deck.
             </BoardType>
             <BoardType
-              src='/img/longboard_iso_gold.svg'
+              src='/img/longboard_iso.svg'
               alt='Longboard isometric picture'
+              header='Longboards'
             >
               Shredquarters is packed with avid longboarders of all types:
               cruising, freestyle, dancing, and more! No matter your flow, you
@@ -111,8 +113,9 @@ const Home: NextPage<Props> = ({ events, officers }) => (
               community and up your longboarding game.
             </BoardType>
             <BoardType
-              src='/img/cruiser_iso_gold.svg'
+              src='/img/cruiser_iso.svg'
               alt='Skateboard isometric picture'
+              header='Cruisers'
             >
               You will find them zooming around campus, cruisers are a unique
               part of Shredquarters. Although not trick-savvy, the cruiser

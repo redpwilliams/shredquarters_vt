@@ -30,6 +30,12 @@
   height: auto
   justify-self: center
 
+.title
+  color: var(--sq-gold)
+  font-size: clamp(var(--fs-sm), 300vw, 3.5rem)
+  max-width: 75%
+  margin-bottom: 10px !important
+
 .description
   color: $sq-white
   font-size: clamp(var(--fs-sm), 20vw, var(--fs-lg))
@@ -42,6 +48,9 @@
   .container:nth-child(n) .board
     flex-direction: column
     margin: 7.5rem auto
+
+  .title
+    margin: 10px auto
 
   .description
     height: fit-content
