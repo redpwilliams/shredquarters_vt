@@ -11,9 +11,11 @@
 
   .menu,
   .authMenu
-    position: absolute
+    position: relative
+    transform: translateY(-50%)
     top: var(--navbar-height)
     display: flex
+    top: 50%
     flex-direction: column
     justify-content: flex-start
     color: #FFFFFF
@@ -26,6 +28,9 @@
       span
         font-family: 'IBM Plex Mono', monospace
         color: var(--sq-gold)
+
+.menu
+  gap: 3rem
 
 .authMenu
   h1
