@@ -1,17 +1,24 @@
-@use "styles/colors" as *
 
 @mixin line-divider
     content: ""
     display: block
     height: 2px
-    background-color: $sq-gray
+    background-color: var(--sq-gray)
     top: 50%
     position: absolute
 
 .container
     position: relative
     z-index: 1
-    margin: 2rem
+
+    $td-margin: 2rem
+    margin: $td-margin
+
+    $id-offset: 8rem
+
+    padding: $id-offset 0
+    margin: calc(($id-offset * -1) + $td-margin) $td-margin
+
     &::after
         @include line-divider
         width: 100%
@@ -19,7 +26,7 @@
 
 .text
     font-size: 2.25rem
-    color: $sq-white
+    color: var(--sq-white)
     font-family: "IBM Plex Mono", monospace
     text-transform: lowercase
     width: fit-content
