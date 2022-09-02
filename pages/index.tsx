@@ -192,7 +192,7 @@ const Home: NextPage<Props> = ({ events, officers }) => (
               width={64}
               height={64}
               alt=''
-              src='/img/wheel_iso_gold.svg'
+              src='/img/wheel_iso.svg'
               layout='responsive'
               objectFit='contain'
             />

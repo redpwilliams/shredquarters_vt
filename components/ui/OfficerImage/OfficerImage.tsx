@@ -9,8 +9,8 @@ const OfficerImage = ({ officer }: { officer: Officer }) => (
         <Image
           id='img'
           src={officer.src}
-          width='192px'
-          height='192px'
+          width='144px'
+          height='144px'
           layout='fixed'
           objectFit='cover'
           style={{ borderRadius: '5%' }}
