@@ -5,10 +5,15 @@ import { AuthWrapper, Navbar, SideMenu, Footer } from '@components/ui'
 import { MenuContext } from '@components/context'
 import { ReactNode, useEffect, useState } from 'react'
 import { User } from '@public/types'
+import Head from 'next/head'
 
 type LayoutComponent = AppProps & {
   Component: AppProps['Component'] & {
+    // Does it have a PageLayout property?
     PageLayout?: ({ children }: { children: ReactNode }) => JSX.Element
+
+    // How about a CustomTitle?
+    CustomTitle?: ({ title }: { title: string }) => JSX.Element
   }
 }
 
@@ -25,6 +30,7 @@ function MyApp({
       const s = await getSession()
       if (s === null) throw new Error("Invalid session, can't make call")
       // Get users
+      // FIXME - WTF
       const data = await fetch('http://localhost:3000/api/users/read', {
         method: 'GET'
       })
@@ -39,28 +45,27 @@ function MyApp({
         if (!r) signOut()
       })
       .catch((e) => e)
-    // .then((s) => {
-    //   // Get users
-    //   console.log(s.user)
-    //   console.log('Tried to fetch')
-    //   fetch('http://localhost:3000/api/users/read', {
-    //     method: 'GET'
-    //   }).then(async (data) => {
-    //     // Validate user email
-    //     const users: User[] = await data.json()
-    //     const email = s?.user?.email
-
-    //     // Sign out if newly unauthorized
-    //     if (!users.find((user) => user.email === email)) signOut()
-    //   })
-    // })
-    // .catch((err) => err)
-    // .catch((err) => err)
   }, [])
 
   return (
     <SessionProvider session={session}>
       <AuthWrapper>
+        <Head>
+          <title>Shredquarters at VT</title>
+          <meta name='author' content='Red Williams' />
+          <meta name='description' content='Shredquarters at Virginia Tech' />
+          <meta charSet='UTF-8' />
+          <meta
+            name='keywords'
+            content='shredquarters virginia tech VT club skateboarding longboarding'
+          />
+          <meta
+            name='viewport'
+            content='width=device-width, initial-scale=1.0'
+          />
+
+          <link rel='icon' href='sq_favicon.ico' />
+        </Head>
         <MenuContext.Provider value={{ menuState, setMenuState }}>
           <Navbar />
           <SideMenu />
