@@ -6,7 +6,7 @@
   top: 0
   color: #FFF
   background-color: var(--sq-black)
-  padding: 3rem
+  padding: 0 3rem
   width: 100%
   height: var(--navbar-height)
   align-items: center
@@ -26,22 +26,32 @@
     gap: 5%
 
 .burger
-  display: none
+  display: flex
   flex-direction: column
-  gap: 6px
+  justify-content: space-evenly
+  align-items: center
+  height: 24px
   cursor: pointer
   margin-left: auto
+  position: relative
 
-  span
+  div
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
     display: block
     width: 25px
     height: 2px
     background-color: #FFF
-    position: relative
+
+    &::before, &::after
+      position: absolute
+      content: ''
+      width: 25px
+      height: 2px
+      background-color: #FFF
 
 @include md-max
   .burger
-    display: flex
+    // display: block
 
   .container ul
     display: none
