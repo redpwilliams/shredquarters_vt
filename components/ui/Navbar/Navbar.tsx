@@ -31,27 +31,14 @@ const BurgerIcon = () => {
 
   return (
     <div className={styles.burger} onClick={() => setMenuState(!menuState)}>
-      {/* <span
-        style={{
-          // top: `${menuState ? 'calc(-50% + 1px)' : '50%'}`,
-          transform: `rotate(${menuState ? '225deg' : '0deg'})`,
-          transition: `${
-            menuState
-              ? 'bottom 0.1s ease-out, transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s'
-              : 'bottom 0.1s ease 0.25s, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.12s'
-          }`,
-          transitionTimingFunction: `cubic-bezier(
-            ${menuState ? '0.215, 0.61, 0.355, 1' : '0.55, 0.055, 0.675, 0.19'}
-          )`
-        }}
-      /> */}
       <div
         style={{
           transitionDelay: `${menuState ? '0.12s' : '0.18s'}`,
           transform: `rotate(${menuState ? '225deg' : '0deg'})`,
           transitionTimingFunction: `cubic-bezier(
             ${menuState ? '0.215, 0.61, 0.355, 1' : '0.55, 0.055, 0.675, 0.19'}
-          )`
+          )`,
+          display: `${menuState ? 'flex' : 'hidden'}`
         }}
       />
 
@@ -60,28 +47,18 @@ const BurgerIcon = () => {
           div::before {
             top: ${menuState ? '0' : '-10px'};
             opacity: ${menuState ? '0' : '1'};
-            transition: ${
-              menuState
-                ? 'top 0.1s ease-out,opacity 0.1s ease-out 0.12s'
-                : 'top 0.1s ease-in 0.25s,opacity 0.1s ease-in'
-            };
+            transition: ${menuState
+              ? 'top 0.1s ease-out,opacity 0.1s ease-out 0.12s'
+              : 'top 0.1s ease-in 0.25s,opacity 0.1s ease-in'};
           }
 
           div::after {
             bottom: ${menuState ? '0' : '-10px'};
             transform: rotate(${menuState ? '-90deg' : '0deg'});
-            transition: ${
-              menuState
-                ? 'bottom 0.1s ease-out,transform 0.22s cubic-bezier(0.215,0.61,0.355,1) 0.12s'
-                : 'bottom 0.1s ease-in 0.25s,transform 0.22s cubic-bezier(0.55,0.055,0.675,0.19)'
-            };
+            transition: ${menuState
+              ? 'bottom 0.1s ease-out,transform 0.22s cubic-bezier(0.215,0.61,0.355,1) 0.12s'
+              : 'bottom 0.1s ease-in 0.25s,transform 0.22s cubic-bezier(0.55,0.055,0.675,0.19)'};
           }
-
-          @media (max-width: 768px) {
-            .${styles.aside} {
-              transform: translateX(${menuState ? '0' : '100'}vw);
-              visibility: ${menuState ? 'visible' : 'hidden'};
-            }
         `}
       </style>
     </div>

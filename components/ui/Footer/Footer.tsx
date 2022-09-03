@@ -8,20 +8,22 @@ const Footer: NextPage = () => {
 
   return (
     <footer className={styles.container}>
-      <h2>
-        <Link href='/'>Shredquarters 2022</Link>
-      </h2>
-      <ul>
-        <li>Instagram</li>
-        <li>Gobbler Connect</li>
-        <li>
-          {/* TODO - USeContext for admin path.
+      <div className={styles.content}>
+        <h2>
+          <Link href='/'>Shredquarters 2022</Link>
+        </h2>
+        <ul>
+          <li>Instagram</li>
+          <li>Gobbler Connect</li>
+          <li>
+            {/* TODO - USeContext for admin path.
               Ex: User navigates to /admin/events. Then back to Index
               When User navigates to /admin, they are redirected
               to /admin/events instead of just /admin (the home page) */}
-          <Link href={authState ? '/admin' : '/auth/signIn'}>Admin</Link>
-        </li>
-      </ul>
+            <Link href={authState ? '/admin' : '/auth/signIn'}>Admin</Link>
+          </li>
+        </ul>
+      </div>
       <p>
         © 2022 Shredquarters at Virginia Tech, All rights reserved. Made with
         love by <span>Red Williams</span>
