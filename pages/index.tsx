@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useState } from 'react'
 import { NextPage, GetStaticProps } from 'next'
 import {
   BoardType,
@@ -6,8 +7,9 @@ import {
   TextDivider,
   UpcomingEvent
 } from '@components/ui'
+import { StepButton } from '@components/inputs'
 
-// GSP Types Used
+// GetStaticProps Types Used
 import type { Event, Officer } from '@public/types'
 
 // Supabase Client
@@ -28,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const { data: officers }: PostgrestResponse<Officer> = await supabase
     .from('officers')
     .select('*')
-    .order('first_name')
+    .order('id')
 
   // TODO - Handle null case for officers and events, if database fetching error
 
@@ -61,165 +63,187 @@ interface Props {
   officers: Officer[]
 }
 
-const Home: NextPage<Props> = ({ events, officers }) => (
-  <div className={styles.container}>
-    <main>
-      <div className={styles.content}>
-        <section className={styles.hero}>
-          <h1>
-            Shred
-            <br />
-            quarters
-          </h1>
-          <div className={styles.iso_truck}>
-            <Image
-              src='/img/truck_iso.svg'
-              layout='responsive'
-              width='64'
-              height='64'
-              objectFit='contain'
-              alt='hero_blob'
-            />
-          </div>
-          <p>
-            An all-inclusive skate club focused primarily on skateboarding and
-            longboarding, but open to anything on wheels! Meet fellow shredders
-            in an inclusive, social, and community-oriented club right here on
-            the Virginia Tech campus.
-          </p>
-        </section>
-        <TextDivider header='The Crew' float={20} id='crew' />
-        <section>
-          <ul className={styles.boards}>
-            <BoardType
-              src='/img/skateboard_iso.svg'
-              alt='Skateboard isometric picture'
-              header='Skateboards'
+const Home: NextPage<Props> = ({ events, officers }) => {
+  // Only show the first three officers if they exist
+  const truncatedOfficers = officers.slice(0, 3)
+  const [isTruncated, setIsTruncated] = useState(true)
+
+  return (
+    <div className={styles.container}>
+      <main>
+        <div className={styles.content}>
+          <section className={styles.hero}>
+            <h1>
+              Shred
+              <br />
+              quarters
+            </h1>
+            <div className={styles.iso_truck}>
+              <Image
+                src='/img/truck_iso.svg'
+                layout='responsive'
+                width='64'
+                height='64'
+                objectFit='contain'
+                alt='hero_blob'
+              />
+            </div>
+            <p>
+              An all-inclusive skate club focused primarily on skateboarding and
+              longboarding, but open to anything on wheels! Meet fellow
+              shredders in an inclusive, social, and community-oriented club
+              right here on the Virginia Tech campus.
+            </p>
+          </section>
+          <TextDivider header='The Crew' float={20} id='crew' />
+          <section>
+            <ul className={styles.boards}>
+              <BoardType
+                src='/img/skateboard_iso.svg'
+                alt='Skateboard isometric picture'
+                header='Skateboards'
+              >
+                The hallmark of Shredquarters - you can find a variety of
+                skateboarders affiliated with the club. From casual street
+                skaters to complex trick enthusiasts, you are sure to find your
+                crowd here! Shredquarters provides a unique community experience
+                where even beginner shredders can thrive on their deck.
+              </BoardType>
+              <BoardType
+                src='/img/longboard_iso.svg'
+                alt='Longboard isometric picture'
+                header='Longboards'
+              >
+                Shredquarters is packed with avid longboarders of all types:
+                cruising, freestyle, dancing, and more! No matter your flow, you
+                are sure to find your crew here. Learn different styles from the
+                community and up your longboarding game.
+              </BoardType>
+              <BoardType
+                src='/img/cruiser_iso.svg'
+                alt='Skateboard isometric picture'
+                header='Cruisers'
+              >
+                You will find them zooming around campus, cruisers are a unique
+                part of Shredquarters. Although not trick-savvy, the cruiser
+                community here at Shredquarters is filled with talented riders
+                that have fallen in love with that familiar feeling of gliding
+                on air. If you ride a cruiser, Shredquarters is the perfect
+                place for you!
+              </BoardType>
+            </ul>
+          </section>
+          <TextDivider header='The Plan' float={80} id='plan' />
+          <section className={styles.events}>
+            <ul>
+              {events?.map((event) => (
+                <UpcomingEvent event={event} key={event.id} />
+              ))}
+            </ul>
+          </section>
+
+          {/* Map over fetched officers. Show maximum of 3 at first */}
+          {officers && (
+            <>
+              {/* Only show TextDivider if officers is defined */}
+              <TextDivider header='The Team' float={20} id='team' />
+              <section className={styles.team}>
+                <ul>
+                  {(isTruncated ? truncatedOfficers : officers).map(
+                    (officer) => (
+                      <OfficerImage officer={officer} key={officer.id} />
+                    )
+                  )}
+                </ul>
+                <StepButton
+                  onClick={() => {
+                    setIsTruncated(!isTruncated)
+                  }}
+                >
+                  See More
+                </StepButton>
+              </section>
+            </>
+          )}
+          <TextDivider header='The Network' float={80} id='network' />
+          <section className={styles.network}>
+            <h2 className={styles.cta}>Connect with the Team!</h2>
+            <form
+              className={styles.contact}
+              noValidate
+              autoComplete='off'
+              action='https://formspree.io/f/mvoyoepo'
+              method='POST'
             >
-              The hallmark of Shredquarters - you can find a variety of
-              skateboarders affiliated with the club. From casual street skaters
-              to complex trick enthusiasts, you are sure to find your crowd
-              here! Shredquarters provides a unique community experience where
-              even beginner shredders can thrive on their deck.
-            </BoardType>
-            <BoardType
-              src='/img/longboard_iso.svg'
-              alt='Longboard isometric picture'
-              header='Longboards'
-            >
-              Shredquarters is packed with avid longboarders of all types:
-              cruising, freestyle, dancing, and more! No matter your flow, you
-              are sure to find your crew here. Learn different styles from the
-              community and up your longboarding game.
-            </BoardType>
-            <BoardType
-              src='/img/cruiser_iso.svg'
-              alt='Skateboard isometric picture'
-              header='Cruisers'
-            >
-              You will find them zooming around campus, cruisers are a unique
-              part of Shredquarters. Although not trick-savvy, the cruiser
-              community here at Shredquarters is filled with talented riders
-              that have fallen in love with that familiar feeling of gliding on
-              air. If you ride a cruiser, Shredquarters is the perfect place for
-              you!
-            </BoardType>
-          </ul>
-        </section>
-        <TextDivider header='The Plan' float={80} id='plan' />
-        <section className={styles.events}>
-          <ul>
-            {events?.map((event) => (
-              <UpcomingEvent event={event} key={event.id} />
-            ))}
-          </ul>
-        </section>
-        <TextDivider header='The Team' float={20} id='team' />
-        <section className={styles.team}>
-          <ul>
-            {officers?.map((officer) => (
-              <OfficerImage officer={officer} key={officer.id} />
-            ))}
-          </ul>
-        </section>
-        <TextDivider header='The Network' float={80} id='network' />
-        <section className={styles.network}>
-          <h2 className={styles.cta}>Connect with the Team!</h2>
-          <form
-            className={styles.contact}
-            noValidate
-            autoComplete='off'
-            action='https://formspree.io/f/mvoyoepo'
-            method='POST'
-          >
-            <div className={styles.form_row} id={styles.firstname}>
-              <label>First Name</label>
-              <input type='text' name='first_name' />
-            </div>
-            <div className={styles.form_row} id={styles.lastname}>
-              <label>Last Name</label>
-              <input type='text' name='last_name' />
-            </div>
-            <div className={styles.form_row} id={styles.email}>
-              <label>Email</label>
-              <input type='email' name='email' />
-            </div>
-            <div className={styles.form_row} id={styles.phone}>
-              <label>Phone</label>
-              <input type='tel' name='phone' />
-            </div>
-            <div className={styles.form_row} id={styles.subject}>
-              <label>Subject</label>
-              <input id='text' name='subject' />
-            </div>
-            <div className={styles.form_row} id={styles.message}>
-              <label>Message</label>
-              <textarea name='message' rows={5} />
-            </div>
-            <button type='submit'>
-              Send it
-              <div className={styles.send_button}>
-                <Image
-                  width={24}
-                  height={12}
-                  alt=''
-                  src='/img/RightArrow.svg'
-                />
+              <div className={styles.form_row} id={styles.firstname}>
+                <label>First Name</label>
+                <input type='text' name='first_name' />
               </div>
-            </button>
-          </form>
-          <div className={styles.wheel_iso}>
-            <Image
-              width={64}
-              height={64}
-              alt=''
-              src='/img/wheel_iso.svg'
-              layout='responsive'
-              objectFit='contain'
-            />
-          </div>
-          <h2 className={styles.cta}>Subscribe to our Newsletter!</h2>
-          <form className={styles.newsletter}>
-            <div className={styles.form_row} id={styles.email}>
-              <label>Email</label>
-              <input type='email' name='email' />
-            </div>
-            <button type='submit'>
-              Subscribe!
-              <div className={styles.send_button}>
-                <Image
-                  width={24}
-                  height={12}
-                  alt=''
-                  src='/img/RightArrow.svg'
-                />
+              <div className={styles.form_row} id={styles.lastname}>
+                <label>Last Name</label>
+                <input type='text' name='last_name' />
               </div>
-            </button>
-          </form>
-        </section>
-      </div>
-    </main>
-  </div>
-)
+              <div className={styles.form_row} id={styles.email}>
+                <label>Email</label>
+                <input type='email' name='email' />
+              </div>
+              <div className={styles.form_row} id={styles.phone}>
+                <label>Phone</label>
+                <input type='tel' name='phone' />
+              </div>
+              <div className={styles.form_row} id={styles.subject}>
+                <label>Subject</label>
+                <input id='text' name='subject' />
+              </div>
+              <div className={styles.form_row} id={styles.message}>
+                <label>Message</label>
+                <textarea name='message' rows={5} />
+              </div>
+              <button type='submit'>
+                Send it
+                <div className={styles.send_button}>
+                  <Image
+                    width={24}
+                    height={12}
+                    alt=''
+                    src='/img/RightArrow.svg'
+                  />
+                </div>
+              </button>
+            </form>
+            <div className={styles.wheel_iso}>
+              <Image
+                width={64}
+                height={64}
+                alt=''
+                src='/img/wheel_iso.svg'
+                layout='responsive'
+                objectFit='contain'
+              />
+            </div>
+            <h2 className={styles.cta}>Subscribe to our Newsletter!</h2>
+            <form className={styles.newsletter}>
+              <div className={styles.form_row} id={styles.email}>
+                <label>Email</label>
+                <input type='email' name='email' />
+              </div>
+              <button type='submit'>
+                Subscribe!
+                <div className={styles.send_button}>
+                  <Image
+                    width={24}
+                    height={12}
+                    alt=''
+                    src='/img/RightArrow.svg'
+                  />
+                </div>
+              </button>
+            </form>
+          </section>
+        </div>
+      </main>
+    </div>
+  )
+}
 
 export default Home
