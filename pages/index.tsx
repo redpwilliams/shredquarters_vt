@@ -144,6 +144,7 @@ const Home: NextPage<Props> = ({ events, officers }) => (
         </section>
         <TextDivider header='The Network' float={80} id='network' />
         <section className={styles.network}>
+          <h2 className={styles.cta}>Connect with the Team!</h2>
           <form
             className={styles.contact}
             noValidate
@@ -197,6 +198,24 @@ const Home: NextPage<Props> = ({ events, officers }) => (
               objectFit='contain'
             />
           </div>
+          <h2 className={styles.cta}>Subscribe to our Newsletter!</h2>
+          <form className={styles.newsletter}>
+            <div className={styles.form_row} id={styles.email}>
+              <label>Email</label>
+              <input type='email' name='email' />
+            </div>
+            <button type='submit'>
+              Subscribe!
+              <div className={styles.send_button}>
+                <Image
+                  width={24}
+                  height={12}
+                  alt=''
+                  src='/img/RightArrow.svg'
+                />
+              </div>
+            </button>
+          </form>
         </section>
       </div>
     </main>

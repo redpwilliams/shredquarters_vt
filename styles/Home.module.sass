@@ -106,7 +106,7 @@
 
   @media (max-width: 50em)
     display: flex
-    flex-direction: column-reverse
+    flex-direction: column
     align-items: center
     gap: 50px
 
@@ -125,11 +125,12 @@
       width: 15vw
       height: auto
 
-.contact
+.contact, .newsletter
   display: grid
   grid-template-columns: 1fr 1fr
   gap: 15px
   margin-right: 10%
+  margin: 3em 10% 3em 0
   color: $sq-white
 
   // Specific input locations
@@ -213,3 +214,19 @@
 .wheel_iso
   min-width: 124px
   width: clamp(124px, 20vw, 225px)
+
+.cta
+  @include sub-header
+  margin: 1em 0 !important
+  padding: 0.5em 0em
+  width: fit-content
+  text-align: center
+
+.newsletter
+  grid-template-columns: none
+  align-content: center
+  width: 90%
+
+  #email
+    grid-row: 1
+    width: 100%
