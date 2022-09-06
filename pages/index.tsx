@@ -155,13 +155,16 @@ const Home: NextPage<Props> = ({ events, officers }) => {
                     )
                   )}
                 </ul>
-                <StepButton
-                  onClick={() => {
-                    setIsTruncated(!isTruncated)
-                  }}
-                >
-                  See More
-                </StepButton>
+                <div className={styles.button_container}>
+                  <StepButton
+                    onClick={() => {
+                      setIsTruncated(!isTruncated)
+                    }}
+                    style={{ width: '30rem', height: '5rem' }}
+                  >
+                    See More
+                  </StepButton>
+                </div>
               </section>
             </>
           )}
