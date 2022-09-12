@@ -1,12 +1,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { NextPage, GetStaticProps } from 'next'
-import {
-  BoardType,
-  OfficerImage,
-  TextDivider,
-  UpcomingEvent
-} from '@components/ui'
+import { BoardType, OfficerImage, TextDivider } from '@components/ui'
 import { StepButton } from '@components/inputs'
 
 // GetStaticProps Types Used
@@ -20,11 +15,15 @@ import type { PostgrestResponse } from '@supabase/supabase-js'
 import styles from '../styles/Home.module.sass'
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Fetch all events
-  const { data: events }: PostgrestResponse<Event> = await supabase
+  // Fetch next event, UTC time
+  const { data: event, error }: PostgrestResponse<Event> = await supabase
     .from('events')
     .select('*')
-    .order('id')
+    .order('date')
+    .limit(1)
+    .single()
+
+  console.log(event, error)
 
   // Fetch all officers
   const { data: officers }: PostgrestResponse<Officer> = await supabase
@@ -32,7 +31,7 @@ export const getStaticProps: GetStaticProps = async () => {
     .select('*')
     .order('id')
 
-  // TODO - Handle null case for officers and events, if database fetching error
+  // TODO - Handle null case for events, if database fetching error
 
   // Get all file names in bucket
   const { data: images } = await supabase.storage
@@ -55,18 +54,34 @@ export const getStaticProps: GetStaticProps = async () => {
       : '/img/DefaultOfficerImage.jpg'
   })
 
-  return { props: { events, officers } }
+  return { props: { event, officers } }
 }
 
 interface Props {
-  events: Event[]
+  event: Event
   officers: Officer[]
 }
 
-const Home: NextPage<Props> = ({ events, officers }) => {
+const Home: NextPage<Props> = ({ event, officers }) => {
   // Only show the first three officers if they exist
   const truncatedOfficers = officers.slice(0, 3)
   const [isTruncated, setIsTruncated] = useState(true)
+  const eventDate = new Date(event.date)
+
+  // Set time for Dates
+  let time
+
+  // Set start time
+  const startTime = new Date()
+  time = event.start_time.split(':')
+  startTime.setHours(parseInt(time[0]))
+  startTime.setMinutes(parseInt(time[1]))
+
+  // Set end time
+  const endTime = new Date()
+  time = event.end_time.split(':')
+  endTime.setHours(parseInt(time[0]))
+  endTime.setMinutes(parseInt(time[1]))
 
   return (
     <div className={styles.container}>
@@ -133,14 +148,50 @@ const Home: NextPage<Props> = ({ events, officers }) => {
               </BoardType>
             </ul>
           </section>
-          <TextDivider header='The Plan' float={80} id='plan' />
-          <section className={styles.events}>
-            <ul>
-              {events?.map((event) => (
-                <UpcomingEvent event={event} key={event.id} />
-              ))}
-            </ul>
-          </section>
+          {event && (
+            <>
+              <TextDivider header='The Plan' float={80} id='plan' />
+              <section className={styles.events}>
+                <h2 className={styles.cta}>See what&apos;s next!</h2>
+                <article className={styles.events_grid}>
+                  <header>
+                    <h3>{eventDate.getUTCDate().toLocaleString('en-US')}</h3>
+                    <h4>
+                      {eventDate.toLocaleString('en-US', { month: 'long' })}
+                    </h4>
+                    <h4 className={styles.event_timeframe}>
+                      {/* Set day of the month */}
+                      {`${eventDate.toLocaleString('en-US', {
+                        weekday: 'long'
+                      })}, 
+                      ${startTime.toLocaleTimeString('en-US', {
+                        hour: 'numeric',
+                        ...(startTime.getUTCMinutes() !== 0 && {
+                          minute: 'numeric'
+                        })
+                      })} - ${endTime.toLocaleTimeString('en-US', {
+                        hour: 'numeric',
+                        ...(endTime.getUTCMinutes() !== 0 && {
+                          minute: 'numeric'
+                        })
+                      })}`}
+                    </h4>
+                  </header>
+                  <h4 className={styles.event_location}>
+                    {event.name}
+                    <span> @ </span>
+                    {event.location}
+                  </h4>
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Laboriosam rem accusantium nostrum aperiam expedita, quo
+                    saepe illum beatae unde veniam consequuntur voluptas illo
+                    repudiandae! Doloribus earum sit animi aperiam eum.
+                  </p>
+                </article>
+              </section>
+            </>
+          )}
 
           {/* Map over fetched officers. Show maximum of 3 at first */}
           {officers && (
@@ -155,16 +206,19 @@ const Home: NextPage<Props> = ({ events, officers }) => {
                     )
                   )}
                 </ul>
-                <div className={styles.button_container}>
-                  <StepButton
-                    onClick={() => {
-                      setIsTruncated(!isTruncated)
-                    }}
-                    style={{ width: '30rem', height: '5rem' }}
-                  >
-                    See More
-                  </StepButton>
-                </div>
+                {/* Only show button if it will make a ui change */}
+                {officers.length > truncatedOfficers.length && (
+                  <div className={styles.button_container}>
+                    <StepButton
+                      onClick={() => {
+                        setIsTruncated(!isTruncated)
+                      }}
+                      style={{ width: '30rem', height: '5rem' }}
+                    >
+                      See More
+                    </StepButton>
+                  </div>
+                )}
               </section>
             </>
           )}
