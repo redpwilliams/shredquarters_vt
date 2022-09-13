@@ -9,21 +9,22 @@ import type { Event, Officer } from '@public/types'
 
 // Supabase Client
 import { supabase } from '@db/_supabase'
-import type { PostgrestResponse } from '@supabase/supabase-js'
+import type {
+  PostgrestResponse,
+  PostgrestSingleResponse
+} from '@supabase/supabase-js'
 
 // Styles
 import styles from '../styles/Home.module.sass'
 
 export const getStaticProps: GetStaticProps = async () => {
   // Fetch next event, UTC time
-  const { data: event, error }: PostgrestResponse<Event> = await supabase
+  const { data: event }: PostgrestSingleResponse<Event> = await supabase
     .from('events')
     .select('*')
     .order('date')
     .limit(1)
     .single()
-
-  console.log(event, error)
 
   // Fetch all officers
   const { data: officers }: PostgrestResponse<Officer> = await supabase

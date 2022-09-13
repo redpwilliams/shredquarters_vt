@@ -144,7 +144,6 @@ const ConfirmDialog: NextPage<IConfirm> = ({
     }
   )
 
-  // TODO - Will add a wait time for better user experience
   const handleSubmit = async () => {
     // Remove Dialog
     setOpen(false)
@@ -177,7 +176,6 @@ const ConfirmDialog: NextPage<IConfirm> = ({
         </BootstrapDialogTitle>
         <DialogContent>
           <ul className={styles.fields}>
-            {/* TODO -  */}
             {getConfirmFields().map((li) => li)}
           </ul>
         </DialogContent>

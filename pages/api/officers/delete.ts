@@ -17,16 +17,32 @@ export default async function handler(
   }
 
   // Handle GET request
-  if (req.method === 'DELETE') {
-    const { data, error }: PostgrestResponse<Officer> = await supabase
+  if (req.method === 'POST') {
+    // Get the id, first name, and last name of all officers
+    const { data: officers, error: err }: PostgrestResponse<Officer> =
+      await supabase.from('officers').select('id, first_name, last_name')
+
+    // Error check
+    if (err) return res.status(400).json(err)
+
+    // Find the officer to remove
+    const officerToRemove = officers.find(
+      (officer) =>
+        params.name.includes(officer.first_name) &&
+        params.name.includes(officer.last_name)
+    )
+
+    // Check if undefined
+    if (!officerToRemove)
+      return res.status(400).json({ error: 'Could not find officer to remove' })
+
+    // Remove that officer by id
+    const { data, error } = await supabase
       .from('officers')
       .delete()
-      .match(params)
+      .match({ id: officerToRemove.id })
 
-    if (data) {
-      return res.status(200).json(data)
-    }
-    return res.status(400).json(error)
+    return data ? res.status(200).json(data) : res.status(400).json(error)
   }
 
   // Handle wrong request type
