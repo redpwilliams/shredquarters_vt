@@ -10,6 +10,7 @@
 .container
     position: relative
     z-index: 1
+    width: 85%
 
     $td-margin: 2rem
     margin: $td-margin
@@ -17,7 +18,7 @@
     $id-offset: 8rem
 
     padding: $id-offset 0
-    margin: calc(($id-offset * -1) + $td-margin) $td-margin
+    margin: calc(($id-offset * -1) + $td-margin) auto
 
     &::after
         @include line-divider
