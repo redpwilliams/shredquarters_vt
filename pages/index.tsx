@@ -4,6 +4,12 @@ import { NextPage, GetStaticProps } from 'next'
 import { BoardType, OfficerImage, TextDivider } from '@components/ui'
 import { StepButton } from '@components/inputs'
 import { motion } from 'framer-motion'
+import {
+  firstSectionDelay,
+  heroH1Delay,
+  heroPDelay,
+  truckIsoDelay
+} from '@public/constants'
 
 // GetStaticProps Types Used
 import type { Event, Officer } from '@public/types'
@@ -90,12 +96,21 @@ const Home: NextPage<Props> = ({ event, officers }) => {
       <main>
         <div className={styles.content}>
           <section className={styles.hero}>
-            <h1>
+            <motion.h1
+              initial={{ opacity: 0, top: 20 }}
+              animate={{ opacity: 1, top: 0 }}
+              transition={{ delay: heroH1Delay }}
+            >
               Shred
               <br />
               quarters
-            </h1>
-            <div className={styles.iso_truck}>
+            </motion.h1>
+            <motion.div
+              className={styles.iso_truck}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: truckIsoDelay }}
+            >
               <Image
                 src='/img/truck_iso.svg'
                 layout='responsive'
@@ -104,20 +119,24 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 objectFit='contain'
                 alt='hero_blob'
               />
-            </div>
-            <p>
+            </motion.div>
+            <motion.p
+              initial={{ opacity: 0, top: 20 }}
+              animate={{ opacity: 1, top: 0 }}
+              transition={{ delay: heroPDelay }}
+            >
               An all-inclusive skate club focused primarily on skateboarding and
               longboarding, but open to anything on wheels! Meet fellow
               shredders in an inclusive, social, and community-oriented club
               right here on the Virginia Tech campus.
-            </p>
+            </motion.p>
           </section>
           <motion.div
             style={{ position: 'relative' }}
             initial={{ opacity: 0, top: '20px' }}
             whileInView={{ opacity: 1, top: '0px' }}
             viewport={{ once: true, margin: '0px 0px -200px 0px' }}
-            transition={{ delay: 0.5, duration: 0.35 }}
+            transition={{ delay: firstSectionDelay, duration: 0.35 }}
           >
             <TextDivider header='The Crew' float={20} id='crew' />
             <section>
@@ -162,10 +181,10 @@ const Home: NextPage<Props> = ({ event, officers }) => {
           {event && (
             <motion.div
               style={{ position: 'relative' }}
-              initial={{ opacity: 0, top: '40px' }}
+              initial={{ opacity: 0, top: '50px' }}
               whileInView={{ opacity: 1, top: '0px' }}
               viewport={{
-                once: false,
+                once: true,
                 margin: '0px 0px -200px 0px'
               }}
               transition={{ delay: 0.25, duration: 0.35 }}

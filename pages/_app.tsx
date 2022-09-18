@@ -4,6 +4,7 @@ import { getSession, SessionProvider, signOut } from 'next-auth/react'
 import { AuthWrapper, Navbar, SideMenu, Footer } from '@components/ui'
 import { MenuContext } from '@components/context'
 import { ReactNode, useEffect, useState } from 'react'
+import { useWindowSize } from '@components/hooks'
 import { User } from '@public/types'
 import Head from 'next/head'
 
@@ -23,6 +24,7 @@ function MyApp({
 }: LayoutComponent) {
   // Gets passed to context. All pages need to know to not scroll when modal is open
   const [menuState, setMenuState] = useState(false)
+  const { width } = useWindowSize({ width: undefined, height: undefined })
 
   // Validate users on load on latest approved user list
   useEffect(() => {
@@ -85,7 +87,7 @@ function MyApp({
         </Head>
         <MenuContext.Provider value={{ menuState, setMenuState }}>
           <Navbar />
-          <SideMenu />
+          {width! <= 768 && <SideMenu />}
         </MenuContext.Provider>
         {Component.PageLayout ? (
           <Component.PageLayout>

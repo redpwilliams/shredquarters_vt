@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 
 interface Size {
   width: number | undefined
@@ -13,7 +13,7 @@ const useWindowSize = ({ width, height }: Size) => {
     height
   })
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Handler to call on window resize
     function handleResize() {
       // Set window width/height to state
@@ -31,7 +31,7 @@ const useWindowSize = ({ width, height }: Size) => {
 
     // Remove event listener on cleanup
     return () => window.removeEventListener('resize', handleResize)
-  }, []) // Empty array ensures that effect is only run on mount
+  }, [width, height])
 
   return windowSize
 }
