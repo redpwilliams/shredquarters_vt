@@ -117,6 +117,9 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 width='64'
                 height='64'
                 objectFit='contain'
+                placeholder='blur'
+                blurDataURL='/img/truck_iso.svg'
+                priority
                 alt='hero_blob'
               />
             </motion.div>
