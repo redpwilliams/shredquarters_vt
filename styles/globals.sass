@@ -4,9 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap")
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap")
 
-// Debug
-$show-section-borders: false
-
 :root
   --fs-xss: #{font-sizes.$fs-xxs}
   --fs-xs: #{font-sizes.$fs-xs}
@@ -66,12 +63,6 @@ section
 
   @if $show-section-borders
     border: 2px solid blue
-
-  &:first-of-type
-    margin: 0px 10% 20px 10%
-
-    @if $show-section-borders
-      border: 2px solid green
 
 button
   cursor: pointer
