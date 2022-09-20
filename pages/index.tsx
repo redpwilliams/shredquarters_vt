@@ -82,22 +82,26 @@ const Home: NextPage<Props> = ({ event, officers }) => {
   // Only show the first three officers if they exist
   const truncatedOfficers = officers.slice(0, 3)
   const [isTruncated, setIsTruncated] = useState(true)
-  const eventDate = new Date(event.date)
+  const eventDate = new Date(event?.date)
 
   // Set time for Dates
   let time
 
   // Set start time
   const startTime = new Date()
-  time = event.start_time.split(':')
-  startTime.setHours(parseInt(time[0]))
-  startTime.setMinutes(parseInt(time[1]))
+  time = event?.start_time.split(':')
+  if (time) {
+    startTime.setHours(parseInt(time[0]))
+    startTime.setMinutes(parseInt(time[1]))
+  }
 
   // Set end time
   const endTime = new Date()
-  time = event.end_time.split(':')
-  endTime.setHours(parseInt(time[0]))
-  endTime.setMinutes(parseInt(time[1]))
+  time = event?.end_time.split(':')
+  if (time) {
+    endTime.setHours(parseInt(time[0]))
+    endTime.setMinutes(parseInt(time[1]))
+  }
 
   return (
     <div className={styles.container}>
