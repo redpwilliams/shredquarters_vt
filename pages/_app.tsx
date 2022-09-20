@@ -4,6 +4,7 @@ import { getSession, SessionProvider, signOut } from 'next-auth/react'
 import { AuthWrapper, Navbar, SideMenu, Footer } from '@components/ui'
 import { MenuContext } from '@components/context'
 import { ReactNode, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { useWindowSize } from '@components/hooks'
 import { User } from '@public/types'
 import Head from 'next/head'
@@ -48,6 +49,17 @@ function MyApp({
       })
       .catch((e) => e)
   }, [])
+
+  // Toggle off the Side Menu on route change
+  const router = useRouter()
+  useEffect(() => {
+    const handleMenuNavigation = () => {
+      if (menuState) setMenuState(false)
+    }
+    router.events.on('routeChangeStart', handleMenuNavigation)
+
+    return () => router.events.off('routeChangeStart', handleMenuNavigation)
+  })
 
   return (
     <SessionProvider session={session}>
