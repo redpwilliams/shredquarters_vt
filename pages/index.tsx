@@ -70,7 +70,10 @@ export const getStaticProps: GetStaticProps = async () => {
       : '/img/DefaultOfficerImage.jpg'
   })
 
-  return { props: { event, officers } }
+  return {
+    props: { event, officers },
+    revalidate: 60 * 60 * 6 /* Rebuild every 6 hours */
+  }
 }
 
 interface Props {
