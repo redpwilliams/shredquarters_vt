@@ -270,7 +270,7 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                       }}
                       style={{ width: '30rem', height: '5rem' }}
                     >
-                      See More
+                      {isTruncated ? 'See More' : 'See Less'}
                     </StepButton>
                   </div>
                 )}
