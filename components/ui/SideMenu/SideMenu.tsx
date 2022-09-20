@@ -54,9 +54,9 @@ const AuthMenu = () => (
       <li>
         <Link href='/admin/events/create'>Create an Event</Link>
       </li>
-      <li>
+      {/* <li>
         <Link href='/admin/events/delete'>Edit an Event</Link>
-      </li>
+      </li> */}
       <li>
         <Link href='/admin/events/delete'>Delete an Event</Link>
       </li>
@@ -66,9 +66,9 @@ const AuthMenu = () => (
       <li>
         <Link href='/admin/officers/delete'>Submit a new Officer</Link>
       </li>
-      <li>
+      {/* <li>
         <Link href='/admin/officers/delete'>Edit an existing Officer</Link>
-      </li>
+      </li> */}
       <li>
         <Link href='/admin/officers/delete'>Remove an existing Officer</Link>
       </li>

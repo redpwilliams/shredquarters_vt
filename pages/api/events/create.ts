@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { Event } from '@public/types'
 import type { PostgrestResponse } from '@supabase/postgrest-js'
-import type { Keys } from 'pages/admin/events/update'
+import type { Keys } from 'pages/admin/events/create'
 import { supabase } from '@db/_supabase'
 import { validate } from '../auth/[...nextauth]'
 
@@ -16,8 +16,10 @@ export default async function handler(
     date: req.body.date,
     start_time: req.body.start,
     end_time: req.body.end,
+    description: req.body.description,
     location: req.body.location
   }
+
   if (req.method === 'POST') {
     const { data, error }: PostgrestResponse<Event> = await supabase
       .from('events')

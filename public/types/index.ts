@@ -19,6 +19,9 @@ type Event = {
   /** End time */
   end_time: string
 
+  /** Description */
+  description: string
+
   /** Location of the event */
   location: string
 }

@@ -22,6 +22,18 @@ const CreateEvent = () => {
       )
     },
 
+    // Event Description
+    {
+      label: "Write the event's description",
+      component: (
+        <InputElement
+          label='Description'
+          register_label='description'
+          variant='textarea'
+        />
+      )
+    },
+
     // Event Location
     {
       label: "Choose the event's location",
@@ -32,6 +44,27 @@ const CreateEvent = () => {
   return <ConsoleLayout steps={CreateEventSteps} api='/api/events/create' />
 }
 
+type Keys = {
+  /** Name of the event */
+  name: string
+
+  /** When the event takes place */
+  date: string
+
+  /** Event start time */
+  start_time: string
+
+  /** Event end time */
+  end_time: string
+
+  /** Event description */
+  description: string
+
+  /** Event location */
+  location: string
+}
+
 CreateEvent.PageLayout = AdminLayout
 
 export default CreateEvent
+export type { Keys }

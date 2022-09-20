@@ -232,12 +232,7 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                     <span> @ </span>
                     {event.location}
                   </h4>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Laboriosam rem accusantium nostrum aperiam expedita, quo
-                    saepe illum beatae unde veniam consequuntur voluptas illo
-                    repudiandae! Doloribus earum sit animi aperiam eum.
-                  </p>
+                  <p>{event.description}</p>
                 </article>
               </section>
             </motion.div>
