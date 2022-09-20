@@ -25,6 +25,14 @@ import type {
 import styles from '../styles/Home.module.sass'
 
 export const getStaticProps: GetStaticProps = async () => {
+  // Delete outdated events
+  const tomorrow = new Date()
+  tomorrow.setUTCDate(tomorrow.getUTCDate() + 1)
+  await supabase
+    .from('events')
+    .delete()
+    .lt('date', tomorrow.toISOString().substring(0, 10))
+
   // Fetch next event, UTC time
   const { data: event }: PostgrestSingleResponse<Event> = await supabase
     .from('events')
