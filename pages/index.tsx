@@ -259,8 +259,12 @@ const Home: NextPage<Props> = ({ event, officers }) => {
               <section className={styles.team}>
                 <ul>
                   {(isTruncated ? truncatedOfficers : officers).map(
-                    (officer) => (
-                      <OfficerImage officer={officer} key={officer.id} />
+                    (officer, i) => (
+                      <OfficerImage
+                        officer={officer}
+                        key={officer.id}
+                        index={i}
+                      />
                     )
                   )}
                 </ul>
