@@ -23,7 +23,7 @@ export const authOptions: NextAuthOptions = {
         .select('*')
         .order('id')
 
-      return !!data?.find((user) => user.email === profile.email)
+      return !!data?.find((user) => user.email === profile?.email)
     }
   },
 
