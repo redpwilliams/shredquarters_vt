@@ -13,8 +13,19 @@ const Footer: NextPage = () => {
           <Link href='/'>Shredquarters 2022</Link>
         </h2>
         <ul>
-          <li>Instagram</li>
-          <li>Gobbler Connect</li>
+          <li>
+            <a href='https://www.instagram.com/vt_shredq/' target='_blank' rel="noreferrer">
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a
+              href='https://gobblerconnect.vt.edu/organization/shredquarters'
+              target='_blank' rel="noreferrer"
+            >
+              Gobbler Connect
+            </a>
+          </li>
           <li>
             {/* TODO - USeContext for admin path.
               Ex: User navigates to /admin/events. Then back to Index
