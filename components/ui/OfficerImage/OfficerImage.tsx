@@ -1,21 +1,9 @@
 import Image from 'next/image'
 import { Officer } from '@public/types'
-import { motion } from 'framer-motion'
 import styles from './OfficerImage.module.sass'
 
-const OfficerImage = ({
-  officer,
-  index
-}: {
-  officer: Officer
-  index: number
-}) => (
-  <motion.li
-    className={styles.container}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: index ** (1 / 3) }}
-  >
+const OfficerImage = ({ officer }: { officer: Officer }) => (
+  <li className={styles.container}>
     <div className={styles.header}>
       <div className={styles.img}>
         <Image
@@ -39,7 +27,7 @@ const OfficerImage = ({
       </h3>
       <p>{officer.bio}</p>
     </div>
-  </motion.li>
+  </li>
 )
 
 export { OfficerImage }
