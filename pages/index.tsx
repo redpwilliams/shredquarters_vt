@@ -3,13 +3,6 @@ import { useState } from 'react'
 import { NextPage, GetStaticProps } from 'next'
 import { BoardType, OfficerImage, TextDivider } from '@components/ui'
 import { StepButton } from '@components/inputs'
-import { motion } from 'framer-motion'
-import {
-  firstSectionDelay,
-  heroH1Delay,
-  heroPDelay,
-  truckIsoDelay
-} from '@public/constants'
 
 // GetStaticProps Types Used
 import type { Event, Officer } from '@public/types'
@@ -111,21 +104,12 @@ const Home: NextPage<Props> = ({ event, officers }) => {
       <main>
         <div className={styles.content}>
           <section className={styles.hero}>
-            <motion.h1
-              initial={{ opacity: 0, top: 20 }}
-              animate={{ opacity: 1, top: 0 }}
-              transition={{ delay: heroH1Delay }}
-            >
+            <h1>
               Shred
               <br />
               quarters
-            </motion.h1>
-            <motion.div
-              className={styles.iso_truck}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: truckIsoDelay }}
-            >
+            </h1>
+            <div className={styles.iso_truck}>
               <Image
                 src='/img/truck_iso.svg'
                 layout='responsive'
@@ -137,25 +121,15 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 priority
                 alt='hero_blob'
               />
-            </motion.div>
-            <motion.p
-              initial={{ opacity: 0, top: 20 }}
-              animate={{ opacity: 1, top: 0 }}
-              transition={{ delay: heroPDelay }}
-            >
+            </div>
+            <p>
               An all-inclusive skate club focused primarily on skateboarding and
               longboarding, but open to anything on wheels! Meet fellow
               shredders in an inclusive, social, and community-oriented club
               right here on the Virginia Tech campus.
-            </motion.p>
+            </p>
           </section>
-          <motion.div
-            style={{ position: 'relative' }}
-            initial={{ opacity: 0, top: '20px' }}
-            whileInView={{ opacity: 1, top: '0px' }}
-            viewport={{ once: true, margin: '0px 0px -200px 0px' }}
-            transition={{ delay: firstSectionDelay, duration: 0.35 }}
-          >
+          <div style={{ position: 'relative' }}>
             <TextDivider header='The Crew' float={20} id='crew' />
             <section>
               <ul className={styles.boards}>
@@ -195,18 +169,9 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 </BoardType>
               </ul>
             </section>
-          </motion.div>
+          </div>
           {event && (
-            <motion.div
-              style={{ position: 'relative' }}
-              initial={{ opacity: 0, top: '50px' }}
-              whileInView={{ opacity: 1, top: '0px' }}
-              viewport={{
-                once: true,
-                margin: '0px 0px -200px 0px'
-              }}
-              transition={{ delay: 0.25, duration: 0.35 }}
-            >
+            <div style={{ position: 'relative' }}>
               <TextDivider header='The Plan' float={80} id='plan' />
               <section className={styles.events}>
                 <h2 className={styles.cta}>See what&apos;s next!</h2>
@@ -242,18 +207,12 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                   <p>{event.description}</p>
                 </article>
               </section>
-            </motion.div>
+            </div>
           )}
 
           {/* Map over fetched officers. Show maximum of 3 at first */}
           {officers && (
-            <motion.div
-              style={{ position: 'relative' }}
-              initial={{ opacity: 0, top: '20px' }}
-              whileInView={{ opacity: 1, top: '0px' }}
-              viewport={{ once: true, margin: '0px 0px -200px 0px' }}
-              transition={{ delay: 0.5, duration: 0.35 }}
-            >
+            <div style={{ position: 'relative' }}>
               {/* Only show TextDivider if officers is defined */}
               <TextDivider header='The Team' float={20} id='team' />
               <section className={styles.team}>
@@ -282,15 +241,9 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                   </div>
                 )}
               </section>
-            </motion.div>
+            </div>
           )}
-          <motion.div
-            style={{ position: 'relative' }}
-            initial={{ opacity: 0, top: '20px' }}
-            whileInView={{ opacity: 1, top: '0px' }}
-            viewport={{ once: true, margin: '0px 0px -200px 0px' }}
-            transition={{ delay: 0.5, duration: 0.35 }}
-          >
+          <div style={{ position: 'relative' }}>
             <TextDivider header='The Network' float={80} id='network' />
             <section className={styles.network}>
               <h2 className={styles.cta}>Connect with the Team!</h2>
@@ -366,7 +319,7 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 </button>
               </form>
             </section>
-          </motion.div>
+          </div>
         </div>
       </main>
     </div>
