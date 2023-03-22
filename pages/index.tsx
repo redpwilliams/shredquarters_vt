@@ -178,10 +178,9 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 <h3>Club Meetings</h3>
                 <p>
                   Our club meetings are mostly at{' '}
-                  <span>
-                    Perry Street Parking Garage, at the top-most level. This
-                    lets us skate during rainy days on the lower levels.
-                  </span>
+                  <span>Perry Street Parking Garage</span>, at the top-most
+                  level. This lets us skate during rainy days on the lower
+                  levels.
                 </p>
                 <h3>Hotspots</h3>
                 <p>
@@ -263,6 +262,22 @@ const Home: NextPage<Props> = ({ event, officers }) => {
           <div style={{ position: 'relative' }}>
             <TextDivider header='The Network' float={80} id='network' />
             <section className={styles.network}>
+              <h2 className={styles.cta}>Join our GroupMe</h2>
+              <p className={styles.groupme_info}>
+                Our GroupMe is our primary form of contact with you. Get
+                constant updates about what&apos;s going on, including local
+                meetups to just hanging out!
+              </p>
+              <div className={styles.wheel_iso}>
+                <Image
+                  src='/img/SQ_QR.png'
+                  width={64}
+                  height={64}
+                  alt=''
+                  layout='responsive'
+                  objectFit='contain'
+                />
+              </div>
               <h2 className={styles.cta}>Connect with the Team!</h2>
               <form
                 className={styles.contact}
