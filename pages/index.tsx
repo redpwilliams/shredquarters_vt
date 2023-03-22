@@ -170,45 +170,66 @@ const Home: NextPage<Props> = ({ event, officers }) => {
               </ul>
             </section>
           </div>
-          {event && (
-            <div style={{ position: 'relative' }}>
-              <TextDivider header='The Plan' float={80} id='plan' />
-              <section className={styles.events}>
-                <h2 className={styles.cta}>See what&apos;s next!</h2>
-                <article className={styles.events_grid}>
-                  <header>
-                    <h3>{eventDate.getUTCDate().toLocaleString('en-US')}</h3>
-                    <h4>
-                      {eventDate.toLocaleString('en-US', { month: 'long' })}
-                    </h4>
-                    <h4 className={styles.event_timeframe}>
-                      {/* Set day of the month */}
-                      {`${eventDate.toLocaleString('en-US', {
-                        weekday: 'long'
-                      })}, 
+          <div style={{ position: 'relative' }}>
+            <TextDivider header='The Plan' float={80} id='plan' />
+            <section className={styles.events}>
+              <h2 className={styles.cta}>Where you can find us</h2>
+              <article className={styles.general_events}>
+                <h3>Club Meetings</h3>
+                <p>
+                  Our club meetings are mostly at{' '}
+                  <span>
+                    Perry Street Parking Garage, at the top-most level. This
+                    lets us skate during rainy days on the lower levels.
+                  </span>
+                </p>
+                <h3>Hotspots</h3>
+                <p>
+                  Outside of meetings, you can usually find us around
+                  &quot;Bricks&quot; by the Squires Student Center, the parking
+                  lot next to the Moss Arts Center, and the North End Parking
+                  Garage. Be sure to look out for us - especially when the
+                  whether is nice!
+                </p>
+              </article>
+              {event && (
+                <>
+                  <h2 className={styles.cta}>See what&apos;s next</h2>
+                  <article className={styles.events_grid}>
+                    <header>
+                      <h3>{eventDate.getUTCDate().toLocaleString('en-US')}</h3>
+                      <h4>
+                        {eventDate.toLocaleString('en-US', { month: 'long' })}
+                      </h4>
+                      <h4 className={styles.event_timeframe}>
+                        {/* Set day of the month */}
+                        {`${eventDate.toLocaleString('en-US', {
+                          weekday: 'long'
+                        })}, 
                       ${startTime.toLocaleTimeString('en-US', {
                         hour: 'numeric',
                         ...(startTime.getUTCMinutes() !== 0 && {
                           minute: 'numeric'
                         })
                       })} - ${endTime.toLocaleTimeString('en-US', {
-                        hour: 'numeric',
-                        ...(endTime.getUTCMinutes() !== 0 && {
-                          minute: 'numeric'
-                        })
-                      })}`}
+                          hour: 'numeric',
+                          ...(endTime.getUTCMinutes() !== 0 && {
+                            minute: 'numeric'
+                          })
+                        })}`}
+                      </h4>
+                    </header>
+                    <h4 className={styles.event_location}>
+                      {event.name}
+                      <span> @ </span>
+                      {event.location}
                     </h4>
-                  </header>
-                  <h4 className={styles.event_location}>
-                    {event.name}
-                    <span> @ </span>
-                    {event.location}
-                  </h4>
-                  <p>{event.description}</p>
-                </article>
-              </section>
-            </div>
-          )}
+                    <p>{event.description}</p>
+                  </article>
+                </>
+              )}
+            </section>
+          </div>
 
           {/* Map over fetched officers. Show maximum of 3 at first */}
           {officers && (
