@@ -266,7 +266,14 @@ const Home: NextPage<Props> = ({ event, officers }) => {
               <p className={styles.groupme_info}>
                 Our GroupMe is our primary form of contact with you. Get
                 constant updates about what&apos;s going on, including local
-                meetups to just hanging out!
+                meetups to just hanging out!{' '}
+                <a
+                  target='_blank'
+                  href='https://groupme.com/join_group/89192800/zDcHQgMY'
+                  rel='noreferrer'
+                >
+                  Click here to join.
+                </a>
               </p>
               <div className={styles.wheel_iso}>
                 <Image
