@@ -257,7 +257,7 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                   Click here to join.
                 </a>
               </p>
-              <div className={styles.wheel_iso}>
+              <div className={styles.qrcode}>
                 <Image
                   src='/img/SQ_QR.png'
                   width={64}

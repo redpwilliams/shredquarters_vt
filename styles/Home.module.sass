@@ -237,8 +237,12 @@
     text-decoration-color: $sq-gold
     text-decoration-thickness: 2px
 
+.qrcode
+  min-width: 200px
+  width: 20vw
+  max-width: 275px
+
 .wheel_iso
-  min-width: 124px
   width: clamp(124px, 20vw, 225px)
 
 .general_events
@@ -289,14 +293,6 @@
     margin: 0 auto
     width: 100%
     height: auto
-
-@include lg-max
-  .carousel_slide
-    width: calc(100% / 2)
-
-@include sm-max
-  .carousel_slide
-    width: 100%
 
 .carousel_container--swiping .carousel_wrapper.is-dragging
   cursor: grabbing

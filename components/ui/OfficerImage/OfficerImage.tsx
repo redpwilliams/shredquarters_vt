@@ -15,15 +15,10 @@ const OfficerImage = ({ officer }: { officer: Officer }) => (
       />
     </div>
     <h1 className={styles.name}>
-      {`${formatNames(officer.first_name, officer.last_name)}, `}
+      {`${officer.first_name} ${officer.last_name}`.trim()}
       <div>{officer.position}</div>
     </h1>
   </li>
 )
-
-const formatNames = (fName: string, lName: string) => {
-  if (lName) return `${fName} ${lName}`
-  return `${fName}`
-}
 
 export { OfficerImage }
