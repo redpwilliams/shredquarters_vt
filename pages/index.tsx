@@ -256,6 +256,17 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 >
                   Click here to join.
                 </a>
+                <br />
+                <br />
+                We also frequently collaborate with Greenhouse Boardshop, our
+                local skateshop offering skateboards, longboards, and apparel.{' '}
+                <a
+                  href='https://www.instagram.com/greenhouseboardshop/?hl=en'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Check them out here!
+                </a>
               </p>
               <div className={styles.qrcode}>
                 <Image
