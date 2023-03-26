@@ -1,8 +1,6 @@
 import Image from 'next/image'
-import { useState } from 'react'
 import { NextPage, GetStaticProps } from 'next'
 import { BoardType, OfficerImage, TextDivider } from '@components/ui'
-import { StepButton } from '@components/inputs'
 
 // GetStaticProps Types Used
 import type { Event, Officer } from '@public/types'
@@ -75,9 +73,6 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ event, officers }) => {
-  // Only show the first three officers if they exist
-  const truncatedOfficers = officers.slice(0, 3)
-  const [isTruncated, setIsTruncated] = useState(true)
   const eventDate = new Date(event?.date)
 
   // Set time for Dates
@@ -232,30 +227,17 @@ const Home: NextPage<Props> = ({ event, officers }) => {
 
           {/* Map over fetched officers. Show maximum of 3 at first */}
           {officers && (
-            <div style={{ position: 'relative' }}>
+            <div>
               {/* Only show TextDivider if officers is defined */}
               <TextDivider header='The Team' float={20} id='team' />
-              <section className={styles.team}>
-                <ul>
-                  {(isTruncated ? truncatedOfficers : officers).map(
-                    (officer) => (
-                      <OfficerImage officer={officer} key={officer.id} />
-                    )
-                  )}
-                </ul>
-                {/* Only show button if it will make a ui change */}
-                {officers.length > truncatedOfficers.length && (
-                  <div className={styles.button_container}>
-                    <StepButton
-                      onClick={() => {
-                        setIsTruncated((val) => !val)
-                      }}
-                      style={{ width: '30rem', height: '5rem' }}
-                    >
-                      {isTruncated ? 'See More' : 'See Less'}
-                    </StepButton>
-                  </div>
-                )}
+              <section className={styles.carousel_container}>
+                <div className={styles.carousel_wrapper}>
+                  <ul className={styles.carousel_slide}>
+                    {officers.map((officer) => (
+                      <OfficerImage officer={officer} />
+                    ))}
+                  </ul>
+                </div>
               </section>
             </div>
           )}
