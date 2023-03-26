@@ -10,11 +10,22 @@ const Footer: NextPage = () => {
     <footer className={styles.container}>
       <div className={styles.content}>
         <h2>
-          <Link href='/'>Shredquarters 2022</Link>
+          <Link href='/'>Shredquarters 2023</Link>
         </h2>
         <ul>
-          <li>Instagram</li>
-          <li>Gobbler Connect</li>
+          <li>
+            <Link href='https://www.instagram.com/vt_shredq/'> Instagram</Link>
+          </li>
+          <li>
+            <Link href='https://groupme.com/join_group/89192800/zDcHQgMY'>
+              GroupMe
+            </Link>
+          </li>
+          <li>
+            <Link href='https://gobblerconnect.vt.edu/organization/shredquarters'>
+              Gobbler Connect
+            </Link>
+          </li>
           <li>
             {/* TODO - USeContext for admin path.
               Ex: User navigates to /admin/events. Then back to Index
@@ -25,7 +36,7 @@ const Footer: NextPage = () => {
         </ul>
       </div>
       <p>
-        © 2022 Shredquarters at Virginia Tech, All rights reserved. Made with
+        © 2023 Shredquarters at Virginia Tech, All rights reserved. Made with
         love by <span>Red Williams</span>
       </p>
     </footer>
