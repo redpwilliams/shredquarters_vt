@@ -1,6 +1,11 @@
 @use "styles/colors" as *
 @use "styles/mixins" as *
 
+@mixin index-links
+  text-decoration: underline
+  text-decoration-color: $sq-gold
+  text-decoration-thickness: 2px
+
 .container
   height: 100%
 
@@ -44,6 +49,9 @@
     justify-self: center
     text-align: right
     position: relative
+
+    > a
+      @include index-links
 
 .iso_truck
   $img-size: 40vw
@@ -233,9 +241,7 @@
   width: 80%
 
   > a
-    text-decoration: underline
-    text-decoration-color: $sq-gold
-    text-decoration-thickness: 2px
+    @include index-links
 
 .qrcode
   min-width: 200px

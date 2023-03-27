@@ -121,7 +121,10 @@ const Home: NextPage<Props> = ({ event, officers }) => {
               An all-inclusive skate club focused primarily on skateboarding and
               longboarding, but open to anything on wheels! Meet fellow
               shredders in an inclusive, social, and community-oriented club
-              right here on the Virginia Tech campus.
+              right here on the Virginia Tech campus.{` `}
+              <a href='https://docs.google.com/document/d/1vpy_UcyJs3YXNIa51XY8QPZbl6K5HOW3gq5eatbIbq0/edit'>
+                Join us today!
+              </a>
             </p>
           </section>
           <div style={{ position: 'relative' }}>
