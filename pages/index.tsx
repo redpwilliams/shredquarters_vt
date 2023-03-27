@@ -1,15 +1,6 @@
 import Image from 'next/image'
-import { useState } from 'react'
 import { NextPage, GetStaticProps } from 'next'
 import { BoardType, OfficerImage, TextDivider } from '@components/ui'
-import { StepButton } from '@components/inputs'
-import { motion } from 'framer-motion'
-import {
-  firstSectionDelay,
-  heroH1Delay,
-  heroPDelay,
-  truckIsoDelay
-} from '@public/constants'
 
 // GetStaticProps Types Used
 import type { Event, Officer } from '@public/types'
@@ -82,9 +73,6 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ event, officers }) => {
-  // Only show the first three officers if they exist
-  const truncatedOfficers = officers.slice(0, 3)
-  const [isTruncated, setIsTruncated] = useState(true)
   const eventDate = new Date(event?.date)
 
   // Set time for Dates
@@ -111,21 +99,12 @@ const Home: NextPage<Props> = ({ event, officers }) => {
       <main>
         <div className={styles.content}>
           <section className={styles.hero}>
-            <motion.h1
-              initial={{ opacity: 0, top: 20 }}
-              animate={{ opacity: 1, top: 0 }}
-              transition={{ delay: heroH1Delay }}
-            >
+            <h1>
               Shred
               <br />
               quarters
-            </motion.h1>
-            <motion.div
-              className={styles.iso_truck}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: truckIsoDelay }}
-            >
+            </h1>
+            <div className={styles.iso_truck}>
               <Image
                 src='/img/truck_iso.svg'
                 layout='responsive'
@@ -137,25 +116,18 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 priority
                 alt='hero_blob'
               />
-            </motion.div>
-            <motion.p
-              initial={{ opacity: 0, top: 20 }}
-              animate={{ opacity: 1, top: 0 }}
-              transition={{ delay: heroPDelay }}
-            >
+            </div>
+            <p>
               An all-inclusive skate club focused primarily on skateboarding and
               longboarding, but open to anything on wheels! Meet fellow
               shredders in an inclusive, social, and community-oriented club
-              right here on the Virginia Tech campus.
-            </motion.p>
+              right here on the Virginia Tech campus.{` `}
+              <a href='https://docs.google.com/document/d/1vpy_UcyJs3YXNIa51XY8QPZbl6K5HOW3gq5eatbIbq0/edit'>
+                Join us today!
+              </a>
+            </p>
           </section>
-          <motion.div
-            style={{ position: 'relative' }}
-            initial={{ opacity: 0, top: '20px' }}
-            whileInView={{ opacity: 1, top: '0px' }}
-            viewport={{ once: true, margin: '0px 0px -200px 0px' }}
-            transition={{ delay: firstSectionDelay, duration: 0.35 }}
-          >
+          <div style={{ position: 'relative' }}>
             <TextDivider header='The Crew' float={20} id='crew' />
             <section>
               <ul className={styles.boards}>
@@ -195,104 +167,120 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 </BoardType>
               </ul>
             </section>
-          </motion.div>
-          {event && (
-            <motion.div
-              style={{ position: 'relative' }}
-              initial={{ opacity: 0, top: '50px' }}
-              whileInView={{ opacity: 1, top: '0px' }}
-              viewport={{
-                once: true,
-                margin: '0px 0px -200px 0px'
-              }}
-              transition={{ delay: 0.25, duration: 0.35 }}
-            >
-              <TextDivider header='The Plan' float={80} id='plan' />
-              <section className={styles.events}>
-                <h2 className={styles.cta}>See what&apos;s next!</h2>
-                <article className={styles.events_grid}>
-                  <header>
-                    <h3>{eventDate.getUTCDate().toLocaleString('en-US')}</h3>
-                    <h4>
-                      {eventDate.toLocaleString('en-US', { month: 'long' })}
-                    </h4>
-                    <h4 className={styles.event_timeframe}>
-                      {/* Set day of the month */}
-                      {`${eventDate.toLocaleString('en-US', {
-                        weekday: 'long'
-                      })}, 
+          </div>
+          <div style={{ position: 'relative' }}>
+            <TextDivider header='The Plan' float={80} id='plan' />
+            <section className={styles.events}>
+              <h2 className={styles.cta}>Where you can find us</h2>
+              <article className={styles.general_events}>
+                <h3>Club Meetings</h3>
+                <p>
+                  Our club meetings are mostly at{' '}
+                  <span>Perry Street Parking Garage</span>, at the top-most
+                  level. This lets us skate during rainy days on the lower
+                  levels.
+                </p>
+                <h3>Hotspots</h3>
+                <p>
+                  Outside of meetings, you can usually find us around
+                  &quot;Bricks&quot; by the Squires Student Center, the parking
+                  lot next to the Moss Arts Center, and the North End Parking
+                  Garage. Be sure to look out for us - especially when the
+                  whether is nice!
+                </p>
+              </article>
+              {event && (
+                <>
+                  <h2 className={styles.cta}>See what&apos;s next</h2>
+                  <article className={styles.events_grid}>
+                    <header>
+                      <h3>{eventDate.getUTCDate().toLocaleString('en-US')}</h3>
+                      <h4>
+                        {eventDate.toLocaleString('en-US', { month: 'long' })}
+                      </h4>
+                      <h4 className={styles.event_timeframe}>
+                        {/* Set day of the month */}
+                        {`${eventDate.toLocaleString('en-US', {
+                          weekday: 'long'
+                        })}, 
                       ${startTime.toLocaleTimeString('en-US', {
                         hour: 'numeric',
                         ...(startTime.getUTCMinutes() !== 0 && {
                           minute: 'numeric'
                         })
                       })} - ${endTime.toLocaleTimeString('en-US', {
-                        hour: 'numeric',
-                        ...(endTime.getUTCMinutes() !== 0 && {
-                          minute: 'numeric'
-                        })
-                      })}`}
+                          hour: 'numeric',
+                          ...(endTime.getUTCMinutes() !== 0 && {
+                            minute: 'numeric'
+                          })
+                        })}`}
+                      </h4>
+                    </header>
+                    <h4 className={styles.event_location}>
+                      {event.name}
+                      <span> @ </span>
+                      {event.location}
                     </h4>
-                  </header>
-                  <h4 className={styles.event_location}>
-                    {event.name}
-                    <span> @ </span>
-                    {event.location}
-                  </h4>
-                  <p>{event.description}</p>
-                </article>
-              </section>
-            </motion.div>
-          )}
+                    <p>{event.description}</p>
+                  </article>
+                </>
+              )}
+            </section>
+          </div>
 
           {/* Map over fetched officers. Show maximum of 3 at first */}
           {officers && (
-            <motion.div
-              style={{ position: 'relative' }}
-              initial={{ opacity: 0, top: '20px' }}
-              whileInView={{ opacity: 1, top: '0px' }}
-              viewport={{ once: true, margin: '0px 0px -200px 0px' }}
-              transition={{ delay: 0.5, duration: 0.35 }}
-            >
+            <div>
               {/* Only show TextDivider if officers is defined */}
               <TextDivider header='The Team' float={20} id='team' />
-              <section className={styles.team}>
-                <ul>
-                  {(isTruncated ? truncatedOfficers : officers).map(
-                    (officer, i) => (
-                      <OfficerImage
-                        officer={officer}
-                        key={officer.id}
-                        index={i}
-                      />
-                    )
-                  )}
-                </ul>
-                {/* Only show button if it will make a ui change */}
-                {officers.length > truncatedOfficers.length && (
-                  <div className={styles.button_container}>
-                    <StepButton
-                      onClick={() => {
-                        setIsTruncated((val) => !val)
-                      }}
-                      style={{ width: '30rem', height: '5rem' }}
-                    >
-                      {isTruncated ? 'See More' : 'See Less'}
-                    </StepButton>
-                  </div>
-                )}
+              <section className={styles.carousel_container}>
+                <div className={styles.carousel_wrapper}>
+                  <ul className={styles.carousel_slide}>
+                    {officers.map((officer) => (
+                      <OfficerImage officer={officer} />
+                    ))}
+                  </ul>
+                </div>
               </section>
-            </motion.div>
+            </div>
           )}
-          <motion.div
-            style={{ position: 'relative' }}
-            initial={{ opacity: 0, top: '20px' }}
-            whileInView={{ opacity: 1, top: '0px' }}
-            viewport={{ once: true, margin: '0px 0px -200px 0px' }}
-            transition={{ delay: 0.5, duration: 0.35 }}
-          >
+          <div style={{ position: 'relative' }}>
             <TextDivider header='The Network' float={80} id='network' />
             <section className={styles.network}>
+              <h2 className={styles.cta}>Join our GroupMe</h2>
+              <p className={styles.groupme_info}>
+                Our GroupMe is our primary form of contact with you. Get
+                constant updates about what&apos;s going on, including local
+                meetups to just hanging out!{' '}
+                <a
+                  target='_blank'
+                  href='https://groupme.com/join_group/89192800/zDcHQgMY'
+                  rel='noreferrer'
+                >
+                  Click here to join.
+                </a>
+                <br />
+                <br />
+                We also frequently collaborate with Greenhouse Boardshop, our
+                local skateshop offering skateboards, longboards, and apparel.{' '}
+                <a
+                  href='https://www.instagram.com/greenhouseboardshop/?hl=en'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Check them out here!
+                </a>
+              </p>
+              <div className={styles.qrcode}>
+                <Image
+                  src='/img/SQ_QR.png'
+                  width={64}
+                  height={64}
+                  alt=''
+                  layout='responsive'
+                  objectFit='contain'
+                />
+              </div>
               <h2 className={styles.cta}>Connect with the Team!</h2>
               <form
                 className={styles.contact}
@@ -366,7 +354,7 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 </button>
               </form>
             </section>
-          </motion.div>
+          </div>
         </div>
       </main>
     </div>

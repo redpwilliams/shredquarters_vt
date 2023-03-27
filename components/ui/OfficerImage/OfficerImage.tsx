@@ -1,45 +1,25 @@
 import Image from 'next/image'
 import { Officer } from '@public/types'
-import { motion } from 'framer-motion'
 import styles from './OfficerImage.module.sass'
 
-const OfficerImage = ({
-  officer,
-  index
-}: {
-  officer: Officer
-  index: number
-}) => (
-  <motion.li
-    className={styles.container}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: index ** (1 / 3) }}
-  >
-    <div className={styles.header}>
-      <div className={styles.img}>
-        <Image
-          id='img'
-          src={officer.src}
-          width='144px'
-          height='144px'
-          layout='fixed'
-          objectFit='cover'
-          style={{ borderRadius: '5%' }}
-        />
-      </div>
-      <div className={styles.name}>
-        <h1>{officer.first_name}</h1>
-        <h2>{officer.last_name}</h2>
-      </div>
+const OfficerImage = ({ officer }: { officer: Officer }) => (
+  <li className={styles.container} key={officer.id}>
+    <div className={styles.img}>
+      <Image
+        id='img'
+        src={officer.src}
+        layout='fill'
+        objectFit='cover'
+        objectPosition='center'
+        priority
+        style={{ borderRadius: '5%' }}
+      />
     </div>
-    <div className={styles.info}>
-      <h3>
-        <span>{officer.position}</span>
-      </h3>
-      <p>{officer.bio}</p>
-    </div>
-  </motion.li>
+    <h1 className={styles.name}>
+      {`${officer.first_name} ${officer.last_name}`.trim()}
+      <div>{officer.position}</div>
+    </h1>
+  </li>
 )
 
 export { OfficerImage }

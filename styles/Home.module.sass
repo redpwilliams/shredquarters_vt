@@ -1,6 +1,11 @@
 @use "styles/colors" as *
 @use "styles/mixins" as *
 
+@mixin index-links
+  text-decoration: underline
+  text-decoration-color: $sq-gold
+  text-decoration-thickness: 2px
+
 .container
   height: 100%
 
@@ -44,6 +49,9 @@
     justify-self: center
     text-align: right
     position: relative
+
+    > a
+      @include index-links
 
 .iso_truck
   $img-size: 40vw
@@ -226,17 +234,74 @@
       outline: none
       border-bottom: 2px solid $sq-white
 
+.groupme_info
+  color: $sq-white
+  font-family: "Raleway", sans-serif
+  font-size: 1.9rem
+  width: 80%
+
+  > a
+    @include index-links
+
+.qrcode
+  min-width: 200px
+  width: 20vw
+  max-width: 275px
+
 .wheel_iso
-  min-width: 124px
   width: clamp(124px, 20vw, 225px)
 
+.general_events
+  color: $sq-white
+  font-family: "Raleway", sans-serif
+  width: 80%
+
+  > h3
+    font-size: 3rem
+    font-weight: 500
+    padding: .2em 0em
+
+  > p
+    font-size: 1.9rem
+    color: $sq-gray
+    margin-bottom: 2em
 .cta
   @include sub-header
   margin: 1em 0 !important
   padding: 0.5em 0em
   width: fit-content
-  text-align: center
+  text-align: left
   grid-column: 1 / 3
+
+.carousel_container
+  overflow: scroll
+  position: relative
+  margin: 0 auto
+  width: 80%
+
+.carousel_wrapper
+  transition: transform 500ms ease-in-out
+  height: 100%
+  width: min-content
+
+.carousel_slide
+  display: flex
+  flex-wrap: nowrap
+  justify-content: space-between
+
+.carousel_item
+  width: 100%
+  margin-bottom: 1rem
+  text-align: center
+
+  img
+    display: block
+    margin: 0 auto
+    width: 100%
+    height: auto
+
+.carousel_container--swiping .carousel_wrapper.is-dragging
+  cursor: grabbing
 
 .newsletter
   grid-template-columns: none
