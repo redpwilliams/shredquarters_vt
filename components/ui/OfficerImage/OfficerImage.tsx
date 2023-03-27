@@ -3,7 +3,7 @@ import { Officer } from '@public/types'
 import styles from './OfficerImage.module.sass'
 
 const OfficerImage = ({ officer }: { officer: Officer }) => (
-  <li className={styles.container}>
+  <li className={styles.container} key={officer.id}>
     <div className={styles.img}>
       <Image
         id='img'
