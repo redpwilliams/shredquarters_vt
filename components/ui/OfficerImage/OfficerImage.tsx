@@ -11,6 +11,7 @@ const OfficerImage = ({ officer }: { officer: Officer }) => (
         layout='fill'
         objectFit='cover'
         objectPosition='center'
+        priority
         style={{ borderRadius: '5%' }}
       />
     </div>
