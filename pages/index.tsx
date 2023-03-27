@@ -186,7 +186,7 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                   &quot;Bricks&quot; by the Squires Student Center, the parking
                   lot next to the Moss Arts Center, and the North End Parking
                   Garage. Be sure to look out for us - especially when the
-                  whether is nice!
+                  weather is nice!
                 </p>
               </article>
               {event && (
