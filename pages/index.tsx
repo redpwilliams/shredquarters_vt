@@ -270,6 +270,17 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 >
                   Check them out here!
                 </a>
+                <br />
+                <br />
+                Looking for specific events?{' '}
+                <a
+                  href='https://calendar.google.com/calendar/u/0?cid=MWM1OTU1M2ZiMmQ5ZWE1MGI5YTcwM2UyZTU1MmYzZWJlYjRlMDUwNmM5ZGZiNWIzZjkzYTlmMjAyNTA3NTJmYkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Subscribe to our calendar
+                </a>{' '}
+                to see exactly what&aps;s coming up next.
               </p>
               <div className={styles.qrcode}>
                 <Image
@@ -291,27 +302,49 @@ const Home: NextPage<Props> = ({ event, officers }) => {
               >
                 <div className={styles.form_row} id={styles.firstname}>
                   <label>First Name</label>
-                  <input type='text' name='first_name' />
+                  <input
+                    type='text'
+                    name='first_name'
+                    placeholder='First Name'
+                  />
                 </div>
                 <div className={styles.form_row} id={styles.lastname}>
                   <label>Last Name</label>
-                  <input type='text' name='last_name' />
+                  <input type='text' name='last_name' placeholder='Last Name' />
                 </div>
                 <div className={styles.form_row} id={styles.email}>
                   <label>Email</label>
-                  <input type='email' name='email' />
+                  <input
+                    type='email'
+                    name='email'
+                    placeholder='xyz@gmail.com'
+                  />
                 </div>
                 <div className={styles.form_row} id={styles.phone}>
                   <label>Phone</label>
-                  <input type='tel' name='phone' />
+                  <input
+                    type='tel'
+                    name='phone'
+                    placeholder='123 456 7890'
+                    pattern='[0-9]{3} [0-9]{3} [0-9]{4}'
+                    maxLength={12}
+                  />
                 </div>
                 <div className={styles.form_row} id={styles.subject}>
                   <label>Subject</label>
-                  <input id='text' name='subject' />
+                  <input
+                    id='text'
+                    name='subject'
+                    placeholder='I have a question about . . .'
+                  />
                 </div>
                 <div className={styles.form_row} id={styles.message}>
                   <label>Message</label>
-                  <textarea name='message' rows={5} />
+                  <textarea
+                    name='message'
+                    rows={5}
+                    placeholder='Your message here'
+                  />
                 </div>
                 <button type='submit'>
                   Send it
@@ -339,7 +372,11 @@ const Home: NextPage<Props> = ({ event, officers }) => {
               <form className={styles.newsletter}>
                 <div className={styles.form_row} id={styles.email}>
                   <label>Email</label>
-                  <input type='email' name='email' />
+                  <input
+                    type='email'
+                    name='email'
+                    placeholder='xyz@gmail.com'
+                  />
                 </div>
                 <button type='submit'>
                   Subscribe!
