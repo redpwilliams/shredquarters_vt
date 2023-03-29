@@ -1,4 +1,4 @@
-import styles from '@styles/Signin.module.sass'
+import styles from '@styles/SignIn.module.sass'
 
 const Custom404 = () => (
   <div className={styles.container}>
