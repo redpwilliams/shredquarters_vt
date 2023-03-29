@@ -280,7 +280,7 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 >
                   Subscribe to our calendar
                 </a>{' '}
-                to see exactly what&aps;s coming up next.
+                to see exactly what&apos;s coming up next.
               </p>
               <div className={styles.qrcode}>
                 <Image
