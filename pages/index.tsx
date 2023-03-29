@@ -270,6 +270,17 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 >
                   Check them out here!
                 </a>
+                <br />
+                <br />
+                Looking for specific events?{' '}
+                <a
+                  href='https://calendar.google.com/calendar/u/0?cid=MWM1OTU1M2ZiMmQ5ZWE1MGI5YTcwM2UyZTU1MmYzZWJlYjRlMDUwNmM5ZGZiNWIzZjkzYTlmMjAyNTA3NTJmYkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Subscribe to our calendar
+                </a>{' '}
+                to see exactly what&aps;s coming up next.
               </p>
               <div className={styles.qrcode}>
                 <Image
