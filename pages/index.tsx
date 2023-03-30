@@ -344,6 +344,7 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                     name='message'
                     rows={5}
                     placeholder='Your message here'
+                    // NOTE -  Maybe have some intriguing questions that are selected at random
                   />
                 </div>
                 <button type='submit'>
@@ -369,7 +370,13 @@ const Home: NextPage<Props> = ({ event, officers }) => {
                 />
               </div>
               <h2 className={styles.cta}>Subscribe to our Newsletter!</h2>
-              <form className={styles.newsletter}>
+              <form
+                className={styles.newsletter}
+                noValidate
+                autoComplete='off'
+                action='https://formspree.io/f/mvoyoepo'
+                method='POST'
+              >
                 <div className={styles.form_row} id={styles.email}>
                   <label>Email</label>
                   <input
