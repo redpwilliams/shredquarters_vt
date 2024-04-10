@@ -10,7 +10,7 @@ const Footer: NextPage = () => {
     <footer className={styles.container}>
       <div className={styles.content}>
         <h2>
-          <Link href='/'>Shredquarters 2023</Link>
+          <Link href='/'>Shredquarters 2024</Link>
         </h2>
         <ul>
           <li>
@@ -36,7 +36,7 @@ const Footer: NextPage = () => {
         </ul>
       </div>
       <p>
-        © 2023 Shredquarters at Virginia Tech, All rights reserved. Made with
+        © 2024 Shredquarters at Virginia Tech, All rights reserved. Made with
         love by <span>Red Williams</span>
       </p>
     </footer>
